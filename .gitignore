@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# clang
+
+.clang-format
+compile_commands.json
+.cache
