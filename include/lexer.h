@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 15:00:49 by habouiba          #+#    #+#             */
-/*   Updated: 2022/05/31 16:57:16 by aoumouss         ###   ########.fr       */
+/*   Created: 2022/05/30 15:25:10 by aoumouss          #+#    #+#             */
+/*   Updated: 2022/05/30 15:25:11 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+# ifndef LEXER_H
+# define LEXER_H
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include "builtins.h"
-# include "utils.h"
-# include "libft.h"
+enum {
+  REDIRECTION,
+  WORD,
+  PIPE,
+  SEMICOLON,
+  AND,
+  OR,
+};
 
-# define PROGRAM_NAME "minishell"
-#endif // MINISHELL_H
+#endif

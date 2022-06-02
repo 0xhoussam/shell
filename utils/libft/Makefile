@@ -57,13 +57,13 @@ $(NAME): $(O_FILES)
 bonus: $(O_FILES_B)
 
 %.o: %.c
-	$(CC) $(CFLAGS) $< -o $@
-	ar rc $(NAME) $@
+	@$(CC) $(CFLAGS) $< -o $@
+	@ar rc $(NAME) $@
 
 re: fclean all
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 clean:
-	rm -f *.o
+	@rm -f $(O_FILES) $(O_FILES_B)
