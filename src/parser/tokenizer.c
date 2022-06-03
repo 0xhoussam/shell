@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
+/*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/31 15:37:39 by habouiba          #+#    #+#             */
-/*   Updated: 2022/05/31 16:50:41 by aoumouss         ###   ########.fr       */
+/*   Created: 2022/06/02 16:23:46 by habouiba          #+#    #+#             */
+/*   Updated: 2022/06/02 16:28:37 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	cd(const char *dir_name)
+t_list	*extract_tokens_from_line(const char *line)
 {
-	DIR	*dir;
+	t_list	*tokens;
+	int		i;
 
-	if (!dir_name)
-		return ;
-	dir = opendir(dir_name);
-	if (!dir)
+	tokens = 0;
+	i = 0;
+	while (line[i])
 	{
-		write(2, PROGRAM_NAME, ft_strlen(PROGRAM_NAME));
-		write(2, ": cd: ", strlen(": cd: "));
-		perror(dir_name);
-		return ;
+		if_helper(line, &tokens, &i);
 	}
-	chdir(dir_name);
-	closedir(dir);
 }

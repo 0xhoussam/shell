@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_isipace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 15:00:49 by habouiba          #+#    #+#             */
-/*   Updated: 2022/05/31 16:57:16 by aoumouss         ###   ########.fr       */
+/*   Created: 2022/06/03 19:03:50 by habouiba          #+#    #+#             */
+/*   Updated: 2022/06/03 19:04:04 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include "builtins.h"
-# include "utils.h"
-# include "libft.h"
-# include "lexer.h"
-
-# define PROGRAM_NAME "minishell"
-#endif // MINISHELL_H
+int	ft_isspace(char c)
+{
+	if (c == '\t' || c == '\n'
+		|| c == '\v' || c == '\f'
+		|| c == '\r' || c == ' ')
+		return (1);
+	return (0);
+}

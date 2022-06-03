@@ -6,7 +6,7 @@
 /*   By: habouiba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 18:38:58 by habouiba          #+#    #+#             */
-/*   Updated: 2021/11/08 21:37:55 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/03 19:05:47 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+int		ft_isspace(char c);
 
 typedef struct s_list
 {

@@ -34,7 +34,8 @@ C_FILES=ft_bzero.c \
 	ft_strtrim.c \
 	ft_substr.c \
 	ft_tolower.c \
-	ft_toupper.c\
+	ft_toupper.c \
+	ft_isspace
 
 B_FILES=ft_lstnew.c \
 	ft_lstadd_front.c \

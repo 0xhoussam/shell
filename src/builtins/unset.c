@@ -10,5 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
+#include "minishell.h"
 
+void    unset(t_env_list **list, char *key)
+{
+    env_list_delete(list, key);
+}
