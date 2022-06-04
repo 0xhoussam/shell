@@ -12,13 +12,17 @@ UTILS_DIR = ./utils/
 BUILT_INT_DIR = $(SRC_DIR)builtins/
 BUILT_INS = echo.c pwd.c cd.c export.c
 
+PARSER_IN_DIR = $(SRC_DIR)parser/tokenizer-helpers/
+PARSER_INS = if-helper.c
+
 UTILS_INT_DIR = $(UTILS_DIR)
 UTILS_INS = env_array_to_list.c env_list_to_array.c \
-			env_list_delete.c sort.c env_list_insert.c \
+			env_list_delete.c sort.c env_list_insert.c 2d_array_free.c
 
 CFILES = $(addprefix $(SRC_DIR), $(SRC_FILES))
 CFILES += $(addprefix $(BUILT_INT_DIR), $(BUILT_INS))
 CFILES += $(addprefix $(UTILS_INT_DIR), $(UTILS_INS))
+CFILES += $(addprefix $(PARSER_IN_DIR), $(PARSER_INS))
 
 OFILES = $(patsubst %.c, %.o, $(CFILES))
 
@@ -41,7 +45,7 @@ error: re all
 
 $(LIBFT):
 	@echo "$(yellow)Compiling libft... $(reset)"
-	@$(MAKE) -C $(LIBFT_DIR)
+	@$(MAKE) bonus -C $(LIBFT_DIR)
 	@echo "$(green)libft compiled \n$(reset)"
 
 %.o:%.c

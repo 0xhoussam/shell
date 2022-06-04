@@ -15,6 +15,10 @@
 
 #include "libft.h"
 
+# define KEYWORDS "cd pwd unset echo export env exit"
+# define PUNCTUATIONS ", * ; ( ) | \" \' / { } [ ] | &"
+# define OPERATORS "+ - * / < > << >> = == != & && | ||"
+
 enum e_token_type {
 	IDENTIFIER,
 	OPERATOR,
@@ -26,33 +30,37 @@ enum e_token_type {
 };
 
 enum e_keywords {
-	ECHO, // done
-	READ,
-	SET,
+	CD,
+	PWD,
+	//READ,
+	//SET,
 	UNSET, // doing...
-	READONLY,
-	SHIFT,
+	ECHO, // done
+	//READONLY,
+	//SHIFT,
 	EXPORT,
-	IF, // done
-	FI,
-	ELSE,
-	WHILE,
-	DO,
-	DONE,
-	FOR,
-	UNTIL,
-	CASE,
-	ESACK,
-	BREAK,
-	CONTINUE,
+	ENV,
 	EXIT,
-	RETURN,
-	TRAP,
-	WAIT,
-	EVAL,
-	EXEC,
-	ULIMIT,
-	UMASK
+	//IF, // done
+	//FI,
+	//ELSE,
+	//WHILE,
+	//DO,
+	//DONE,
+	//FOR,
+	//UNTIL,
+	//CASE,
+	//ESACK,
+	//BREAK,
+	//CONTINUE,
+	//EXIT,
+	//RETURN,
+	//TRAP,
+	//WAIT,
+	//EVAL,
+	//EXEC,
+	//ULIMIT,
+	//UMASK
 };
 
 enum e_punctuation {
@@ -92,6 +100,6 @@ typedef struct s_token {
 	char				*str;
 }	t_token;
 
-void	if_helper(const char *line, t_list **tokens, int *i);
-void	echo_helper(const char *line, t_list **tokens, int *i);
+void	if_helper(const char *line, t_list **tokens, int *i, const char *word);
+// void	echo_helper(const char *line, t_list **tokens, int *i);
 #endif

@@ -19,5 +19,5 @@ void        env_list_delete(t_env_list **list, char *key);
 t_env_list *env_list_insert(t_env_list **head, char *key, char *value);
 size_t	    max_strs_len(char *s1, char *s2);
 void        sort_strs(char **strs);
-
+void	array_2d_free(char **args);
 #endif
