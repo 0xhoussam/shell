@@ -6,7 +6,7 @@
 /*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:34:40 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/03 19:07:23 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/06 09:31:11 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	if_helper(const char *line, t_list **tokens, int *i, const char *word)
 		return ;
 	if (ft_strncmp(&line[*i], word, ft_strlen(word)))
 		return ;
+	printf("DEBUGING: '%c'", line[*i + ft_strlen(word)]);
 	// if (!ft_isspace(line[*i + ft_strlen(word) + 1])) // todo: handle spaces
 	// 	return ;
 	token = malloc(sizeof(t_token));
