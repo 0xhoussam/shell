@@ -100,6 +100,8 @@ typedef struct s_token {
 	char				*str;
 }	t_token;
 
-void	if_helper(const char *line, t_list **tokens, int *i, const char *word);
+void	extract_token(const char *line, t_list **tokens, int *i, const char *word);
+t_list	*extract_tokens_from_line(const char *line);
 // void	echo_helper(const char *line, t_list **tokens, int *i);
+
 #endif

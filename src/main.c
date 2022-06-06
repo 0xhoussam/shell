@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "lexer.h"
 #include "minishell.h"
 
 int main(int ac, char **av, char **env) {
@@ -19,7 +20,19 @@ int main(int ac, char **av, char **env) {
 	env = (char **)env;
 	t_list *tokens = NULL;
 
-	char *line = "cd echo";
-
-
+	// char *line = "cd () echo <>";
+	char *line = "+ echo";  // TODO: the first token type is overiding all the next tokens
+  tokens = extract_tokens_from_line(line);
+  t_list *token = tokens;
+  while (token)
+    {
+      t_token *t = (t_token *)tokens->content;
+      if (t->token_type == KEYWORD)
+        printf("KeyWord\n");
+      else if (t->token_type == PUNCTUATION)
+        printf("Punctuation\n");
+      else if (t->token_type == OPERATOR)
+        printf("Operation\n");
+      token = token->next;
+    }
 }

@@ -28,19 +28,19 @@ t_list	*extract_tokens_from_line(const char *line)
 		j = 0;
 		while (keywords[j])
 		{
-			if_helper(line, &tokens, &i, keywords[j]);
+			extract_token(line, &tokens, &i, keywords[j]);
 			j++;
 		}
 		j = 0;
 		while (punctuations[j])
 		{
-			if_helper(line, &tokens, &i, punctuations[j]);
+			extract_token(line, &tokens, &i, punctuations[j]);
 			j++;
 		}
 		j = 0;
 		while (operators[j])
 		{
-			if_helper(line, &tokens, &i, operators[j]);
+			extract_token(line, &tokens, &i, operators[j]);
 			j++;
 		}
 		while (ft_isspace(line[i]))

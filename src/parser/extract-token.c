@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "lexer.h"
 #include "minishell.h"
 
 // line: if [] then  eccho -n "dakjbf" fi \n grep "houssam" file.c
@@ -30,28 +31,34 @@ int	index_of(char **str, const char *word)
 
 void	token_detector(t_token *token, const char *word)
 {
-	char **tokens;
+	char **key_tokens;
+	char **pun_tokens;
+	char **op_tokens;
 
-	tokens = ft_split(KEYWORDS, ' ');
-	if (ft_strnstr(KEYWORDS, word, ft_strlen(KEYWORDS)))
+	key_tokens = ft_split(KEYWORDS, ' ');
+	pun_tokens = ft_split(PUNCTUATIONS, ' ');
+	op_tokens = ft_split(OPERATORS, ' ');
+	if (ft_strnstr(KEYWORDS, word, ft_strlen(word)))
 	{
 		token->token_type = KEYWORD;
-		token->keyword = index_of(tokens, word);
+		token->keyword = index_of(key_tokens, word);
 	}
-	if (ft_strnstr(PUNCTUATIONS, word, ft_strlen(PUNCTUATIONS)))
+	if (ft_strnstr(PUNCTUATIONS, word, ft_strlen(word)))
 	{
 		token->token_type = PUNCTUATION;
-		token->punc = index_of(tokens, word);
+		token->punc = index_of(pun_tokens, word);
 	}
-	if (ft_strnstr(OPERATORS, word, ft_strlen(OPERATORS)))
+	if (ft_strnstr(OPERATORS, word, ft_strlen(word)))
 	{
 		token->token_type = OPERATOR;
-		token->op = index_of(tokens, word);
+		token->op = index_of(op_tokens, word);
 	}
-	array_2d_free(tokens);
+	array_2d_free(key_tokens);
+	array_2d_free(pun_tokens);
+	array_2d_free(op_tokens);
 }
 
-void	if_helper(const char *line, t_list **tokens, int *i, const char *word)
+void	extract_token(const char *line, t_list **tokens, int *i, const char *word)
 {
 	size_t	len;
 	t_list	*node;
@@ -62,7 +69,6 @@ void	if_helper(const char *line, t_list **tokens, int *i, const char *word)
 		return ;
 	if (ft_strncmp(&line[*i], word, ft_strlen(word)))
 		return ;
-	printf("DEBUGING: '%c'", line[*i + ft_strlen(word)]);
 	// if (!ft_isspace(line[*i + ft_strlen(word) + 1])) // todo: handle spaces
 	// 	return ;
 	token = malloc(sizeof(t_token));
@@ -81,6 +87,5 @@ void	if_helper(const char *line, t_list **tokens, int *i, const char *word)
 		return ;
 	}
 	*i += ft_strlen(word);
-	(*i) += 1;
 	ft_lstadd_back(tokens, node);
 }

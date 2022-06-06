@@ -12,8 +12,8 @@ UTILS_DIR = ./utils/
 BUILT_INT_DIR = $(SRC_DIR)builtins/
 BUILT_INS = echo.c pwd.c cd.c export.c
 
-PARSER_IN_DIR = $(SRC_DIR)parser/tokenizer-helpers/
-PARSER_INS = if-helper.c
+PARSER_IN_DIR = $(SRC_DIR)parser/
+PARSER_INS = tokenizer.c extract-token.c
 
 UTILS_INT_DIR = $(UTILS_DIR)
 UTILS_INS = env_array_to_list.c env_list_to_array.c \
