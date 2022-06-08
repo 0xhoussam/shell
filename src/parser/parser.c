@@ -6,12 +6,13 @@
 /*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:34:33 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/08 08:39:46 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/08 12:07:56 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
 #include "libft.h"
+#include "utils.h"
 
 const char *get_cmd_name(const char *cmd)
 {
@@ -27,38 +28,51 @@ const char *get_cmd_name(const char *cmd)
 
 // echo  "hello " hi "world"
 
-size_t	get_first_arg(const char *s, const char **subs)
+size_t get_first_arg(const char *s, char **subs)
 {
-	size_t		i;
-	size_t		j;
+  size_t i;
+  size_t j;
+  char  *tmp;
 
-	i = 0;
-	subs = 0;
-	if (!s[i])
-			return (0);
-	if (s[i] == '\'' || s[i] == '"')
-		i++;
-	j = i;
-	while (s[j] && s[j] != '"' && s[j] != '\'')
-	 j++;
-	*subs = ft_substr(s, i, j);
-	return (i + j);
+  i = 0;
+  *subs = 0;
+  if (!s[i])
+    return (0);
+  if (s[i] == '\'' || s[i] == '"')
+    i++;
+  j = 0;
+  while (s[i + j] && s[i + j] != '"' && s[i + j] != '\'')
+    j++;
+  tmp = ft_substr(s, i, j);
+  *subs = ft_strtrim(tmp, "\"");
+  free(tmp);
+  return (i + j);
 }
 
 t_list *get_cmd_args(const char *cmd)
 {
-	t_list	*args;
-	size_t	i;
-	const char	*arg;
+  t_list *args;
+  size_t  i;
+  char   *arg;
+  char   *tmp;
 
-	args = NULL;
-	i = 0;
-	while (cmd[i])
-	{
-		i += get_first_arg(&cmd[i], &arg);
-		ft_lstadd_back(&args, ft_lstnew((void *)arg));
-	}
-	return (args);
+  args = NULL;
+  arg = NULL;
+  i = 0;
+  tmp = ft_strtrim(cmd, " ");
+  while (tmp[i])
+  {
+    i += get_first_arg(&tmp[i], &arg);
+    if (ft_strlen(arg) != 0)
+      ft_lstadd_back(&args, ft_lstnew((void *)arg));
+    else
+    {
+      free(arg);
+      arg = NULL;
+    }
+  }
+  free(tmp);
+  return (args);
 }
 
 void extract_attr(const char *str, t_list **cmds)
@@ -82,6 +96,7 @@ t_list *parser(const char *line)
 
   if (!line || ft_strlen(line) == 0)
     return NULL;
+  cmds = NULL;
   line_tokens = ft_split(line, '|');
   if (!line_tokens)
     return (NULL);
@@ -94,5 +109,6 @@ t_list *parser(const char *line)
     free(tmp);
     i++;
   }
+  array_2d_free(line_tokens);
   return (cmds);
 }

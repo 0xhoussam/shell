@@ -6,14 +6,14 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/08 08:40:59 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/08 12:12:54 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
 #include "minishell.h"
 
-const char *__asan_default_options() { return "detect_leaks=0"; }
+// const char *__asan_default_options() { return "detect_leaks=0"; }
 
 int main(int ac, char **av, char **env)
 {
@@ -24,9 +24,8 @@ int main(int ac, char **av, char **env)
   t_list *cmds;
   t_list *tmp;
 
-  cmds = parser("ls ../ | echo \"hello world\" | grep file.c \"main\"");
+  cmds = parser("echo hello world houssam | grep \"Hell\" world");
   tmp = cmds;
-  printf("Hello World");
   while (tmp)
   {
     printf("COMMAND NAME: %s \t", ((t_cmd *)tmp->content)->cmd_name);
@@ -34,7 +33,10 @@ int main(int ac, char **av, char **env)
     {
       printf("'%s'  ", (char *)i->content);
     }
+    ft_lstclear(&((t_cmd *)tmp->content)->args, free);
     printf("\n");
+    free((void *)((t_cmd *)tmp->content)->cmd_name);
     tmp = tmp->next;
   }
+  ft_lstclear(&cmds, free);
 }

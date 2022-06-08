@@ -40,6 +40,9 @@ $(NAME): $(LIBFT) $(OFILES)
 fsanitize: CFLAGS += -fsanitize=address -g
 fsanitize: re all
 
+debug: CFLAGS += -g
+debug: re all
+
 error: CFLAGS += -Wall -Werror -Wextra
 error: re all
 
