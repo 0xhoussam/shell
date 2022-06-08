@@ -6,33 +6,35 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/06 09:28:50 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/07 15:35:43 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
 #include "minishell.h"
 
-int main(int ac, char **av, char **env) {
+const char *__asan_default_options() { return "detect_leaks=0"; }
 
-	ac = (int)ac;
-	av = (char **)av;
-	env = (char **)env;
-	t_list *tokens = NULL;
+int main(int ac, char **av, char **env)
+{
 
-	// char *line = "cd () echo <>";
-	char *line = "+ echo";  // TODO: the first token type is overiding all the next tokens
-  tokens = extract_tokens_from_line(line);
-  t_list *token = tokens;
-  while (token)
+  ac = (int)ac;
+  av = (char **)av;
+  env = (char **)env;
+  t_list *cmds;
+  t_list *tmp;
+
+  cmds = parser("ls . | echo -n \"hello world\" | grep file.c \"main\"");
+  tmp = cmds;
+  printf("Hello World");
+  while (tmp)
+  {
+    printf("COMMAND NAME: %s \t", ((t_cmd *)tmp->content)->cmd_name);
+    for (t_list *i = ((t_cmd *)tmp->content)->args; i != NULL; i = i->next)
     {
-      t_token *t = (t_token *)tokens->content;
-      if (t->token_type == KEYWORD)
-        printf("KeyWord\n");
-      else if (t->token_type == PUNCTUATION)
-        printf("Punctuation\n");
-      else if (t->token_type == OPERATOR)
-        printf("Operation\n");
-      token = token->next;
+      printf("'%s'  ", (char *)i->content);
     }
+    printf("\n");
+    tmp = tmp->next;
+  }
 }
