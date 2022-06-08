@@ -6,7 +6,7 @@
 /*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:34:33 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/07 15:25:47 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/08 08:39:46 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,43 +25,51 @@ const char *get_cmd_name(const char *cmd)
   return (s);
 }
 
-t_list *get_cmd_args(const char *cmd, size_t cmd_name_len)
-{
-  int     i;
-  int     j;
-  t_list *args;
-  t_list *new_node;
-  char   *arg;
+// echo  "hello " hi "world"
 
-  args = NULL;
-  i = cmd_name_len;
-  args = ft_lstnew(NULL);
-  while (cmd[i])
-  {
-    j = 0;
-    while (cmd[i] && ft_isspace(cmd[i]))
-      i++;
-    while (cmd[i + j] && !ft_isspace(cmd[i + j]))
-      j++;
-    arg = ft_substr(cmd, i, j);
-    new_node = ft_lstnew(arg);
-    ft_lstadd_back(&args, new_node);
-    i += j;
-  }
-  return (args);
+size_t	get_first_arg(const char *s, const char **subs)
+{
+	size_t		i;
+	size_t		j;
+
+	i = 0;
+	subs = 0;
+	if (!s[i])
+			return (0);
+	if (s[i] == '\'' || s[i] == '"')
+		i++;
+	j = i;
+	while (s[j] && s[j] != '"' && s[j] != '\'')
+	 j++;
+	*subs = ft_substr(s, i, j);
+	return (i + j);
 }
 
-// echo -n "hello world"
+t_list *get_cmd_args(const char *cmd)
+{
+	t_list	*args;
+	size_t	i;
+	const char	*arg;
+
+	args = NULL;
+	i = 0;
+	while (cmd[i])
+	{
+		i += get_first_arg(&cmd[i], &arg);
+		ft_lstadd_back(&args, ft_lstnew((void *)arg));
+	}
+	return (args);
+}
+
 void extract_attr(const char *str, t_list **cmds)
 {
   t_cmd *cmd;
-  // char **tmp;
 
   cmd = malloc(sizeof(t_cmd));
   if (!cmd)
     return;
   cmd->cmd_name = get_cmd_name(str);
-  cmd->args = get_cmd_args(str, ft_strlen(cmd->cmd_name));
+  cmd->args = get_cmd_args(&str[ft_strlen(cmd->cmd_name)]);
   ft_lstadd_back(cmds, ft_lstnew(cmd));
 }
 

@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/07 15:35:43 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/08 08:40:59 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main(int ac, char **av, char **env)
   t_list *cmds;
   t_list *tmp;
 
-  cmds = parser("ls . | echo -n \"hello world\" | grep file.c \"main\"");
+  cmds = parser("ls ../ | echo \"hello world\" | grep file.c \"main\"");
   tmp = cmds;
   printf("Hello World");
   while (tmp)
