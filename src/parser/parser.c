@@ -6,7 +6,7 @@
 /*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:34:33 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/08 12:07:56 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/09 07:16:04 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,39 @@ const char *get_cmd_name(const char *cmd)
   return (s);
 }
 
-// echo  "hello " hi "world"
+char	*join_3_strings(char *s1, char *s2, char *s3)
+{
+	char	*tmp;
+	char	*str;
+
+	str = ft_strjoin(s1, s2);
+	tmp = str;
+	str = ft_strjoin(str, s3);
+	free(tmp);
+	return (str);
+}
+
+char	*expande_string(char *s, t_env_list *env)
+{
+	size_t	l_idx;
+	size_t	r_idx;
+	char		*l_str;
+	char		*r_str;
+	char		*key;
+	char		*value;
+
+	if (!ft_strnstr(s, "${", ft_strlen(s)))
+		return NULL;
+	l_idx = ft_strnstr(s, "${", ft_strlen(s)) - s;
+	if (!ft_strnstr(&s[l_idx], "}", ft_strlen(&s[l_idx])))
+		return NULL;
+	r_idx = ft_strnstr(&s[l_idx], "}", ft_strlen(&s[l_idx])) - s;
+	l_str = ft_substr(s, 0, l_idx);
+	r_str = ft_substr(s, r_idx + 1, -1);
+	key = ft_substr(s, l_idx + 2, r_idx - l_idx - 2);
+	value = env_list_get(env, key);
+	return (join_3_strings(l_str, value, r_str));
+}
 
 size_t get_first_arg(const char *s, char **subs)
 {

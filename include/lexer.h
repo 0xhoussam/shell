@@ -6,7 +6,7 @@
 /*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 12:14:08 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/07 12:14:11 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/09 07:00:50 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include "libft.h"
 #include <stdio.h>
+#include "builtins.h"
 
 // int prev_exit_code;
 
@@ -41,4 +42,5 @@ typedef struct s_cmd {
 } t_cmd;
 
 t_list	*parser(const char *line);
+char	*expande_string(char *s, t_env_list *env);
 #endif

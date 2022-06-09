@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:49:56 by habouiba          #+#    #+#             */
-/*   Updated: 2022/05/31 17:05:31 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/09 06:30:48 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@
 #endif
 # define ECHO_N_FLAG 0x01
 
-struct s_env_list
+typedef struct s_env_list
 {
     char *key;
     char *value;
     struct s_env_list *next;
-};
+}	t_env_list;
 
 typedef struct s_env_list t_env_list;
 

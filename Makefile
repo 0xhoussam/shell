@@ -17,7 +17,8 @@ PARSER_INS = parser.c
 
 UTILS_INT_DIR = $(UTILS_DIR)
 UTILS_INS = env_array_to_list.c env_list_to_array.c \
-			env_list_delete.c sort.c env_list_insert.c 2d_array_free.c
+			env_list_delete.c sort.c env_list_insert.c 2d_array_free.c \
+			env_list_get.c
 
 CFILES = $(addprefix $(SRC_DIR), $(SRC_FILES))
 CFILES += $(addprefix $(BUILT_INT_DIR), $(BUILT_INS))
