@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lexer.h"
+#include "parser.h"
 #include "minishell.h"
 
 // const char *__asan_default_options() { return "detect_leaks=0"; }
@@ -39,10 +39,16 @@ int main(int ac, char **av, char **env)
   //   tmp = tmp->next;
   // }
   // ft_lstclear(&cmds, free);
-	t_env_list t;
+  t_cmd cmd;
 
-	t.value = "houssam";
-	t.key = "VARIABLE";
-	t.next = NULL;
-	printf("%s\n", expande_string("Hi ${VARIABLE} World", &t));
+  cmd.cmd_name = "ls";
+  cmd.args = NULL;
+  get_args(&cmd, "file1 file2 file3");
+  get_args(&cmd, "file2 file3");
+  get_args(&cmd, "file3");
+  get_args(&cmd, "-n");
+  for (t_list *i = cmd.args; i ; i = i->next)
+  {
+    printf("%s\n", (char *)i->content);
+  }
 }

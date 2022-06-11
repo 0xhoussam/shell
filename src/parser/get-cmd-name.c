@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   get-cmd-name.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: habouiba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 15:00:49 by habouiba          #+#    #+#             */
-/*   Updated: 2022/05/31 16:57:16 by aoumouss         ###   ########.fr       */
+/*   Created: 2022/06/11 07:08:42 by habouiba          #+#    #+#             */
+/*   Updated: 2022/06/11 07:08:45 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "parser.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include "builtins.h"
-# include "utils.h"
-# include "libft.h"
-# include "parser.h"
+size_t	get_cmd_name(t_cmd *cmd, char const *s)
+{
+	size_t	i;
 
-# define PROGRAM_NAME "minishell"
-#endif // MINISHELL_H
+	if (cmd->cmd_name)
+		return (0);
+	i = 0;
+	while (ft_isalpha(s[i]))
+		i++;
+	cmd->cmd_name = ft_substr(s, 0, i);
+	return (i);
+}

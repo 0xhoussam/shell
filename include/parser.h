@@ -20,8 +20,9 @@
 // int prev_exit_code;
 
 typedef enum e_redir_type {
-  DOUBLE,
+  NIL,
   SINGLE,
+  DOUBLE,
   HEREDOC
 } t_redir_type;
 
@@ -37,10 +38,15 @@ typedef struct s_cmd {
   const char  *in; // default NULL
   const char  *out; // default NULL
   const char  *deli; // default NULL
-  t_redir_type redir; // default 
+  t_redir_type in_redir; // default 
+  t_redir_type out_redir; // default 
   t_priority  priority;
 } t_cmd;
 
 t_list	*parser(const char *line);
 char	*expande_string(char *s, t_env_list *env);
+size_t	get_cmd_name(t_cmd *cmd, char const *s);
+size_t	get_input_dir(t_cmd *cmd, const char *s);
+size_t	get_output_dir(t_cmd *cmd, const char *s);
+size_t	get_args(t_cmd *cmd, const char *s);
 #endif

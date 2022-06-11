@@ -13,7 +13,8 @@ BUILT_INT_DIR = $(SRC_DIR)builtins/
 BUILT_INS = echo.c pwd.c cd.c export.c
 
 PARSER_IN_DIR = $(SRC_DIR)parser/
-PARSER_INS = parser.c
+PARSER_INS =	parser.c get-cmd-name.c get-input-redir.c get-output-redir.c \
+				get-args.c
 
 UTILS_INT_DIR = $(UTILS_DIR)
 UTILS_INS = env_array_to_list.c env_list_to_array.c \
