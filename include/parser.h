@@ -35,9 +35,9 @@ typedef enum e_priority {
 typedef struct s_cmd {
   const char  *cmd_name;
   t_list      *args; // default NULL
-  const char  *in; // default NULL
-  const char  *out; // default NULL
-  const char  *deli; // default NULL
+  char  *in; // default NULL
+  char  *out; // default NULL
+  char  *deli; // default NULL
   t_redir_type in_redir; // default 
   t_redir_type out_redir; // default 
   t_priority  priority;

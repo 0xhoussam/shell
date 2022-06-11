@@ -38,6 +38,8 @@ size_t	get_input_dir(t_cmd *cmd, const char *s)
 	j = i;
 	while (ft_isalpha(s[j]))
 		j++;
+	if (cmd->in)
+		free(cmd->in);
 	cmd->in = ft_substr(s, i, j);
 	return (j);
 }

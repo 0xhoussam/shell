@@ -45,6 +45,8 @@ size_t	get_output_dir(t_cmd *cmd, const char *s)
 	j = i;
 	while (ft_isalpha(s[j]))
 		j++;
-	cmd->in = ft_substr(s, i, j);
+	if (cmd->out)
+		free(cmd->out);
+	cmd->out = ft_substr(s, i, j);
 	return (j);	
 }
