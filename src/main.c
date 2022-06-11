@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/11 16:20:30 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/11 17:38:58 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 
 // const char *__asan_default_options() { return "detect_leaks=0"; }
 
-int main(int ac, char **av, char **env)
-{
+int main(int ac, char **av, char **env) {
 
   ac = (int)ac;
   av = (char **)av;
@@ -42,5 +41,9 @@ int main(int ac, char **av, char **env)
   // ft_lstclear(&cmds, free);
   t_list *cmds;
 
-  cmds = parser("ls . | cat file");
+  cmds = parser(ft_strdup("ls ../ > log"));
+  // printf("%p", cmds);
+  // printf("%s\n", ((t_cmd *)cmds->content)->cmd_name);
+  // printf("%s", ((t_cmd *)cmds->content)->out);
+  // printf("%i", ((t_cmd *)cmds->content)->out_redir);
 }

@@ -6,11 +6,11 @@
 /*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 09:37:21 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/11 09:37:23 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/11 16:57:33 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.c"
+#include "parser.h"
 #include <stdio.h>
 
 size_t	get_args(t_cmd *cmd, const char *s)

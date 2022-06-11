@@ -6,13 +6,13 @@
 /*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 07:50:39 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/11 15:53:19 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/11 16:47:47 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.c"
+#include "parser.h"
 
-size_t get_output_dir(t_cmd *cmd, const char *s)
+size_t get_output_redir(t_cmd *cmd, const char *s)
 {
   size_t s_len;
   size_t i;
@@ -22,9 +22,9 @@ size_t get_output_dir(t_cmd *cmd, const char *s)
   s_len = ft_strlen(s);
   if (s_len < 2)
     return (0);
-  if (s[0] != '<')
+  if (s[0] != '>')
     return (0);
-  if (s[1] == '<')
+  if (s[1] == '>')
   {
     cmd->out_redir = HEREDOC;
     k = 2;
@@ -40,6 +40,7 @@ size_t get_output_dir(t_cmd *cmd, const char *s)
     cmd->out_redir = SINGLE;
     i = 1;
   }
+  printf("Hello WORLD\n");
   while (ft_isspace(s[i]))
     i++;
   j = i;
@@ -47,6 +48,6 @@ size_t get_output_dir(t_cmd *cmd, const char *s)
     j++;
   if (cmd->out)
     free(cmd->out);
-  cmd->out = ft_substr(s, i, j);
+  cmd->out = ft_substr(s, i, j - i);
   return (j);
 }

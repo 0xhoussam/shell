@@ -6,7 +6,7 @@
 /*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:34:33 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/11 16:25:01 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/11 18:15:20 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,41 +48,43 @@
 // 	return (join_3_strings(l_str, value, r_str));
 // }
 
-void _parsers(t_list **cmds, t_cmd *cmd, const char *s)
-{
+void recursive_parser(t_list **cmds, t_cmd *cmd, char *s) {
   size_t i;
 
-  if (!cmd)
-  {
+  if (!s)
+    return;
+  if (!*s) {
+    if (cmd->cmd_name)
+      ft_lstadd_back(cmds, ft_lstnew(cmd));
+    return;
+  }
+  while (ft_isspace(*s))
+    s++;
+  printf("cmd: '%s'\n", s);
+  if (!cmd) {
     cmd = malloc(sizeof(t_cmd));
     ft_bzero(cmd, sizeof(t_cmd));
   }
   i = get_cmd_name(cmd, s);
   if (i > 0)
-    _parsers(cmds, cmd, &s[i]);
-  i = get_output_dir(cmd, s);
+    recursive_parser(cmds, cmd, &s[i]);
+  i = get_input_redir(cmd, s);
   if (i > 0)
-    _parsers(cmds, cmd, &s[i]);
-  i = get_input_dir(cmd, s);
+    recursive_parser(cmds, cmd, &s[i]);
+  i = get_output_redir(cmd, s);
   if (i > 0)
-    _parsers(cmds, cmd, &s[i]);
+    recursive_parser(cmds, cmd, &s[i]);
   i = get_args(cmd, s);
-  if (s > 0)
-    _parsers(cmds, cmd, &s[i]);
-  i = parse_semicolon(cmd, s);
   if (i > 0)
-  {
-    ft_lstadd_back(cmds, ft_lstnew(cmd));
-    _parsers(cmds, NULL, &s[i]);
-  }
+    recursive_parser(cmds, cmd, &s[i]);
+  // TODO: make a one function run at a time;
 }
 
-t_list *parsers(const char *line)
-{
+t_list *parser(char *line) {
   t_list *cmds;
 
   cmds = malloc(sizeof(t_list));
   cmds = NULL;
-  _parsers(&cmds, NULL, line);
+  recursive_parser(&cmds, NULL, line);
   return (cmds);
 }
