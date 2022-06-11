@@ -14,3 +14,7 @@
 - [ ] test && parser
 - [ ] parse or ( || )
 - [ ] test || parser
+- [ ] parse |
+- [ ] test |
+- [ ] parse ;
+- [ ] test ; parser

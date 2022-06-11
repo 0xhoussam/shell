@@ -6,7 +6,7 @@
 /*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:34:33 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/09 07:16:04 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/11 16:25:01 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,28 +48,41 @@
 // 	return (join_3_strings(l_str, value, r_str));
 // }
 
-// t_list *parser(const char *line)
-// {
-//   char  **line_tokens;
-//   t_list *cmds;
-//   char   *tmp;
-//   int     i;
+void _parsers(t_list **cmds, t_cmd *cmd, const char *s)
+{
+  size_t i;
 
-//   if (!line || ft_strlen(line) == 0)
-//     return NULL;
-//   cmds = NULL;
-//   line_tokens = ft_split(line, '|');
-//   if (!line_tokens)
-//     return (NULL);
-//   i = 0;
-//   while (line_tokens[i])
-//   {
-//     tmp = line_tokens[i];
-//     line_tokens[i] = ft_strtrim(line_tokens[i], " \n\t\v\f\r");
-//     extract_attr(line_tokens[i], &cmds);
-//     free(tmp);
-//     i++;
-//   }
-//   array_2d_free(line_tokens);
-//   return (cmds);
-// }
+  if (!cmd)
+  {
+    cmd = malloc(sizeof(t_cmd));
+    ft_bzero(cmd, sizeof(t_cmd));
+  }
+  i = get_cmd_name(cmd, s);
+  if (i > 0)
+    _parsers(cmds, cmd, &s[i]);
+  i = get_output_dir(cmd, s);
+  if (i > 0)
+    _parsers(cmds, cmd, &s[i]);
+  i = get_input_dir(cmd, s);
+  if (i > 0)
+    _parsers(cmds, cmd, &s[i]);
+  i = get_args(cmd, s);
+  if (s > 0)
+    _parsers(cmds, cmd, &s[i]);
+  i = parse_semicolon(cmd, s);
+  if (i > 0)
+  {
+    ft_lstadd_back(cmds, ft_lstnew(cmd));
+    _parsers(cmds, NULL, &s[i]);
+  }
+}
+
+t_list *parsers(const char *line)
+{
+  t_list *cmds;
+
+  cmds = malloc(sizeof(t_list));
+  cmds = NULL;
+  _parsers(&cmds, NULL, line);
+  return (cmds);
+}

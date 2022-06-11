@@ -6,12 +6,12 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/09 07:22:32 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/11 16:20:30 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
 #include "minishell.h"
+#include "parser.h"
 #include "tests.h"
 
 // const char *__asan_default_options() { return "detect_leaks=0"; }
@@ -40,5 +40,7 @@ int main(int ac, char **av, char **env)
   //   tmp = tmp->next;
   // }
   // ft_lstclear(&cmds, free);
-  get_args_test();
+  t_list *cmds;
+
+  cmds = parser("ls . | cat file");
 }
