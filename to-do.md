@@ -1,12 +1,12 @@
 # TODO
 
 - [x] parse command name
-- [ ] test command name parser
 - [x] parse args
 - [x] test args parser
-- [x] parse redirection
-- [ ] test redirection parser
 - [x] parse io
+- [x] parse redirection
+- [x] test command name parser
+- [...] test redirection parser
 - [ ] test io parser
 - [ ] parse wildcard
 - [ ] test wildcard parser
@@ -18,3 +18,4 @@
 - [ ] test |
 - [ ] parse ;
 - [ ] test ; parser
+- [ ] make heredoc del a linked list
