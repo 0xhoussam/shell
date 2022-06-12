@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   get_env_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 15:00:49 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/11 16:12:10 by aoumouss         ###   ########.fr       */
+/*   Created: 2022/06/11 17:53:04 by aoumouss          #+#    #+#             */
+/*   Updated: 2022/06/11 18:18:41 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "minishell.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include "builtins.h"
-# include "utils.h"
-# include "libft.h"
-# include "parser.h"
-# include "executer.h"
+char	*get_env_path(char *env[])
+{
+	int	i;
 
-# define PROGRAM_NAME "minishell"
-#endif // MINISHELL_H
+	i = 0;
+	while (env[i])
+	{
+		if (ft_strncmp(env[i], "PATH=", 5) == 0)
+			return (env[i] + 5);
+		i++;
+	}
+	return (NULL);
+}

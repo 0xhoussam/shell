@@ -22,3 +22,9 @@
 - [ ] make heredoc del a linked list
 - [ ] parse double quotes
 - [ ] parse single quotes
+
+## execution
+
+- [ ] handle multiple pipes
+- [ ] handle exit value of a process
+- [ ] 
