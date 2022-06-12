@@ -6,7 +6,7 @@
 /*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:34:33 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/11 18:15:20 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/12 15:05:42 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,24 +60,24 @@ void recursive_parser(t_list **cmds, t_cmd *cmd, char *s) {
   }
   while (ft_isspace(*s))
     s++;
-  printf("cmd: '%s'\n", s);
   if (!cmd) {
     cmd = malloc(sizeof(t_cmd));
     ft_bzero(cmd, sizeof(t_cmd));
   }
   i = get_cmd_name(cmd, s);
   if (i > 0)
-    recursive_parser(cmds, cmd, &s[i]);
+    return recursive_parser(cmds, cmd, &s[i]);
   i = get_input_redir(cmd, s);
-  if (i > 0)
-    recursive_parser(cmds, cmd, &s[i]);
+  if (i > 0) {
+    return recursive_parser(cmds, cmd, &s[i]);
+  }
   i = get_output_redir(cmd, s);
-  if (i > 0)
-    recursive_parser(cmds, cmd, &s[i]);
+  if (i > 0) {
+    return recursive_parser(cmds, cmd, &s[i]);
+  }
   i = get_args(cmd, s);
   if (i > 0)
-    recursive_parser(cmds, cmd, &s[i]);
-  // TODO: make a one function run at a time;
+    return recursive_parser(cmds, cmd, &s[i]);
 }
 
 t_list *parser(char *line) {

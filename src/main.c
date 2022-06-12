@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/12 12:34:50 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/12 15:26:58 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ int main(int ac, char **av, char **env) {
   //   tmp = tmp->next;
   // }
   // ft_lstclear(&cmds, free);
-  // t_list *cmds;
+  t_list *cmds;
 
-  // cmds = parser(ft_strdup("ls ../ > log"));
-  // printf("%p", cmds);
-  // printf("%s\n", ((t_cmd *)cmds->content)->cmd_name);
-  // printf("%s", ((t_cmd *)cmds->content)->out);
-  // printf("%i", ((t_cmd *)cmds->content)->out_redir);
-  get_input_redir_test();
+  cmds = NULL;
+  cmds = parser(ft_strdup("ls ../ > log"));
+  printf("%s\n", ((t_cmd *)cmds->content)->cmd_name);
+  printf("%s\n", ((t_cmd *)cmds->content)->out);
+  printf("%s\n",
+         ((t_cmd *)cmds->content)->out_redir == SINGLE ? "single" : "wrong");
 }

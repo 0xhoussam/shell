@@ -6,7 +6,8 @@
 - [x] parse io
 - [x] parse redirection
 - [x] test command name parser
-- [...] test redirection parser
+- [x] test redirection parser
+- [...] main loop
 - [ ] test io parser
 - [ ] parse wildcard
 - [ ] test wildcard parser
@@ -19,3 +20,5 @@
 - [ ] parse ;
 - [ ] test ; parser
 - [ ] make heredoc del a linked list
+- [ ] parse double quotes
+- [ ] parse single quotes
