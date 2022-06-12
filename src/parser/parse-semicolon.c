@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse-semicolon.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:55:31 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/11 16:00:59 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/12 21:09:47 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ size_t parse_semicolon(t_cmd *cmd, const char *s)
     return 0;
   if (s[0] != ';')
     return (0);
-  cmd->right_priority = SEMICOLON;
+  cmd->right_delimiter = SEMICOLON;
   return (1);
 }
