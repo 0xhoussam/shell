@@ -1,5 +1,7 @@
 # TODO
 
+## Parsing
+
 - [x] parse command name
 - [x] parse args
 - [x] test args parser
@@ -23,8 +25,8 @@
 - [ ] parse double quotes
 - [ ] parse single quotes
 
-## execution
+## Execution
 
-- [ ] handle multiple pipes
+- [ ] handle multiple heredoc
 - [ ] handle exit value of a process
 - [ ] 
