@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 12:14:08 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/11 18:17:34 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/12 21:10:01 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ typedef struct s_cmd {
   char *heredoc_del;      // default NULL
   t_redir_type in_redir;  // default
   t_redir_type out_redir; // default
-  t_delimiter left_priority;
-  t_delimiter right_priority;
+  t_delimiter left_delimiter;
+  t_delimiter right_delimiter;
 } t_cmd;
 
 t_list *parser(char *line);
