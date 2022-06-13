@@ -6,7 +6,7 @@
 /*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:34:33 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/12 15:05:42 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/13 10:48:53 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,36 @@
 // 	return (join_3_strings(l_str, value, r_str));
 // }
 
+void init_cmd(t_cmd *cmd) {
+  if (!cmd)
+    return;
+  cmd->cmd_name = NULL;
+  cmd->args = NULL;
+  cmd->heredoc_del = NULL;
+  cmd->in = NULL;
+  cmd->out = NULL;
+  cmd->in_redir = NIL;
+  cmd->out_redir = NIL;
+  cmd->left_priority = NONE;
+  cmd->right_priority = NONE;
+}
+
 void recursive_parser(t_list **cmds, t_cmd *cmd, char *s) {
   size_t i;
 
   if (!s)
     return;
   if (!*s) {
-    if (cmd->cmd_name)
+    if (cmd->cmd_name) {
       ft_lstadd_back(cmds, ft_lstnew(cmd));
+    }
     return;
   }
   while (ft_isspace(*s))
     s++;
   if (!cmd) {
     cmd = malloc(sizeof(t_cmd));
-    ft_bzero(cmd, sizeof(t_cmd));
+    init_cmd(cmd);
   }
   i = get_cmd_name(cmd, s);
   if (i > 0)
@@ -76,8 +91,14 @@ void recursive_parser(t_list **cmds, t_cmd *cmd, char *s) {
     return recursive_parser(cmds, cmd, &s[i]);
   }
   i = get_args(cmd, s);
-  if (i > 0)
+  if (i > 0) {
     return recursive_parser(cmds, cmd, &s[i]);
+  }
+  i = parse_pipe(cmds, &cmd, s);
+  if (i > 0) {
+    parse_pipe(cmds, &cmd, s);
+    recursive_parser(cmds, NULL, &s[1]);
+  }
 }
 
 t_list *parser(char *line) {
