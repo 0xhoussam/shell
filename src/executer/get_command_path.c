@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:53:19 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/12 22:18:33 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/13 15:36:50 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,7 @@ static char	*search_for_cmd(char *command, char **paths)
 		{
 			if (access(path, X_OK) < 0)
 			{
-				ft_putstr_fd("pipex: permission denied: ", 2);
-				ft_putstr_fd(command, 2);
-				ft_putstr_fd("\n", 2);
+				print_error(command, USE_ERRNO);
 				return (NULL);
 			}
 			else
@@ -81,16 +79,11 @@ static char	*check_command(char *command, char **paths)
 	{
 		if (access(command, X_OK) < 0)
 		{
-			ft_putstr_fd("pipex: permission denied: ", 2);
-			ft_putstr_fd(command, 2);
-			ft_putstr_fd("\n", 2);
+			print_error(command, USE_ERRNO);
 			return (NULL);
 		}
 		else
 			return (ft_strdup(command));
 	}
-	ft_putstr_fd("command not found: ", 2);
-	ft_putstr_fd(command, 2);
-	ft_putstr_fd("\n", 2);
 	return (NULL);
 }

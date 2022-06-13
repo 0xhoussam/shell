@@ -6,12 +6,12 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 13:13:49 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/13 00:05:31 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/13 17:58:50 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-char	**join_args(t_cmd *cmd);
+char **join_args(t_cmd *cmd);
 
 int ft_exec(t_params *params)
 {
@@ -36,12 +36,12 @@ int ft_exec(t_params *params)
 	return (0);
 }
 
-char	**join_args(t_cmd *cmd)
+char **join_args(t_cmd *cmd)
 {
-	t_list	*list;
-	char	**args;
-	int		list_size;
-	int		i;
+	t_list *list;
+	char **args;
+	int list_size;
+	int i;
 
 	list = cmd->args;
 	if (!list)

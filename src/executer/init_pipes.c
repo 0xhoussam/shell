@@ -6,30 +6,31 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:56:50 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/13 00:02:26 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:57:17 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int *init_pipes(int size)
+int **init_pipes(int size)
 {
-	int *pipes;
+	int **pipes;
 	int i;
 
-	if (size % 2)
-		size += 1;
-	pipes = ft_calloc(sizeof(int), size);
+	pipes = malloc(sizeof(int *) * size);
+	if (!pipes)
+		return (NULL);
 	i = 0;
 	while (i < size)
 	{
-		if (pipe(pipes + i) < 0)
+		pipes[i] = malloc(sizeof(int) * 2);
+		if (pipe(pipes[i]) < 0)
 		{
 			print_error("pipe", USE_ERRNO);
 			free(pipes);
 			return (NULL);
 		}
-		i += 2;
+		i++;
 	}
 	return (pipes);
 }
