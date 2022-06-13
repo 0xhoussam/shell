@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 12:14:08 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/12 21:10:01 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/13 11:38:00 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,6 @@ size_t get_input_redir(t_cmd *cmd, const char *s);
 size_t get_output_redir(t_cmd *cmd, const char *s);
 size_t get_args(t_cmd *cmd, const char *s);
 size_t parse_semicolon(t_cmd *cmd, const char *s);
+size_t parse_pipe(t_list **cmds, t_cmd **cmd, const char *s);
+void init_cmd(t_cmd *cmd);
 #endif
