@@ -1,5 +1,7 @@
 # TODO
 
+## Parsing
+
 - [x] parse command name
 - [x] parse args
 - [x] test args parser
@@ -22,3 +24,9 @@
 - [ ] make heredoc del a linked list
 - [ ] parse double quotes
 - [ ] parse single quotes
+
+## Execution
+
+- [ ] handle multiple heredoc
+- [ ] handle exit value of a process
+- [ ] 

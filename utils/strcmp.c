@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   strcmp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 15:00:49 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/11 16:12:10 by aoumouss         ###   ########.fr       */
+/*   Created: 2022/06/11 16:36:30 by aoumouss          #+#    #+#             */
+/*   Updated: 2022/06/11 16:36:35 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
-
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include "builtins.h"
-# include "utils.h"
-# include "libft.h"
-# include "parser.h"
-# include "executer.h"
-
-# define PROGRAM_NAME "minishell"
-#endif // MINISHELL_H
+int	ft_strcmp(char *s1, char *s2)
+{
+	while (*s1 || *s2)
+	{
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		s1++;
+		s2++;
+	}
+	return (0);
+}

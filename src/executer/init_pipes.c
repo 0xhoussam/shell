@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   init_pipes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 15:00:49 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/11 16:12:10 by aoumouss         ###   ########.fr       */
+/*   Created: 2022/06/11 18:56:50 by aoumouss          #+#    #+#             */
+/*   Updated: 2022/06/12 18:45:43 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "minishell.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include "builtins.h"
-# include "utils.h"
-# include "libft.h"
-# include "parser.h"
-# include "executer.h"
+int *init_pipes(int size)
+{
+	int pipes;
+	int i;
 
-# define PROGRAM_NAME "minishell"
-#endif // MINISHELL_H
+	pipes = ft_calloc(sizeof(int), size);
+	i = 0;
+	while (i < size)
+	{
+		if (pipe(pipes + i) < 0)
+		{
+			perror(PIPE_ERROR);
+			free(pipes);
+			return (NULL);
+		}
+		i += 2;
+	}
+	return (pipes);
+}
