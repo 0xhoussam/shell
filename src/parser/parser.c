@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:34:33 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/13 11:42:35 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/13 12:58:47 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void recursive_parser(t_list **cmds, t_cmd *cmd, char *s) {
   if (!s)
     return;
   if (!*s) {
-    if (cmd->cmd_name) {
+    if (cmd) {
       ft_lstadd_back(cmds, ft_lstnew(cmd));
     }
     return;
@@ -96,9 +96,16 @@ void recursive_parser(t_list **cmds, t_cmd *cmd, char *s) {
   }
   i = parse_pipe(cmds, &cmd, s);
   if (i > 0) {
+    cmd = NULL;
     parse_pipe(cmds, &cmd, s);
     recursive_parser(cmds, NULL, &s[1]);
   }
+  // i = parse_semicolon(cmds, &cmd, s);
+  // if (i > 0) {
+  //   cmd = NULL;
+  //   parse_semicolon(cmds, &cmd, s);
+  //   recursive_parser(cmds, NULL, &s[1]);
+  // }
 }
 
 t_list *parser(char *line) {

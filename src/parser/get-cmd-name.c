@@ -6,7 +6,7 @@
 /*   By: habouiba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 07:08:42 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/12 11:25:51 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/13 12:02:11 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 size_t get_cmd_name(t_cmd *cmd, char const *s) {
   size_t i;
 
-  if (!cmd || cmd->cmd_name || !s || !*s)
+  if (!cmd || cmd->cmd_name || !s || !*s || *s == '<' || *s == '>' ||
+      *s == ';' || *s == '&' || *s == '|')
     return (0);
   i = 0;
   while (ft_isalpha(s[i]))

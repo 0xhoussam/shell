@@ -6,7 +6,7 @@
 /*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 07:50:39 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/12 12:30:59 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/13 12:10:17 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ size_t get_output_redir(t_cmd *cmd, const char *s) {
   if (s[0] != '>')
     return (0);
   if (s[1] == '>') {
-    cmd->in_redir = DOUBLE;
+    cmd->out_redir = DOUBLE;
     i = 2;
   } else {
     cmd->out_redir = SINGLE;
