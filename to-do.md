@@ -9,8 +9,9 @@
 - [x] parse redirection
 - [x] test command name parser
 - [x] test redirection parser
-- [...] main loop
-- [ ] test io parser
+- [x] main loop
+- [x] test io parser
+- [...] parse ;
 - [ ] parse wildcard
 - [ ] test wildcard parser
 - [ ] parse and ( && )
@@ -19,11 +20,11 @@
 - [ ] test || parser
 - [ ] parse |
 - [ ] test |
-- [ ] parse ;
 - [ ] test ; parser
 - [ ] make heredoc del a linked list
 - [ ] parse double quotes
 - [ ] parse single quotes
+- [ ] handle multiple heredoc
 
 ## Execution
 
