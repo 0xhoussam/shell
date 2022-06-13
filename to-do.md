@@ -29,4 +29,4 @@
 
 - [ ] handle multiple heredoc
 - [ ] handle exit value of a process
-- [ ] 
+- [ ] update get_command_path.c

@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/13 10:58:52 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/13 11:42:35 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,31 +22,11 @@ int main(int ac, char **av, char **env) {
   ac = (int)ac;
   av = (char **)av;
   env = (char **)env;
-  // t_list *cmds;
-  // t_list *tmp;
+  
+  t_list *commands = generator();
+  t_list *tmp = commands;
 
-  // cmds = parser("echo hello world houssam | grep \"Hell\" world");
-  // tmp = cmds;
-  // while (tmp)
-  // {
-  //   printf("COMMAND NAME: %s \t", ((t_cmd *)tmp->content)->cmd_name);
-  //   for (t_list *i = ((t_cmd *)tmp->content)->args; i != NULL; i = i->next)
-  //   {
-  //     printf("'%s'  ", (char *)i->content);
-  //   }
-  //   ft_lstclear(&((t_cmd *)tmp->content)->args, free);
-  //   printf("\n");
-  //   free((void *)((t_cmd *)tmp->content)->cmd_name);
-  //   tmp = tmp->next;
-  // }
-  // ft_lstclear(&cmds, free);
-  t_list *cmds;
-
-  cmds = NULL;
-  cmds = parser(ft_strdup("ls ../ > log | cat tmp"));
-  print_cmds(cmds);
 }
-
 void print_cmds(t_list *cmds) {
   // char *a[] = {"none", "and", "or", "semicolon", "pipe"};
   // char *b[] = {"nil", "single", "double", "heredoc"};
@@ -62,8 +42,8 @@ void print_cmds(t_list *cmds) {
   //   printf("%s  ", (char *)arg->content);
   // }
   // printf("\n");
-  // printf("left prio %s\n", a[((t_cmd *)node->content)->left_priority]);
-  // printf("right prio %s\n", a[((t_cmd *)node->content)->right_priority]);
+  // printf("left prio %s\n", a[((t_cmd *)node->content)->left_delimiter]);
+  // printf("right prio %s\n", a[((t_cmd *)node->content)->right_delimiter]);
   // printf("in %s type %s\n", ((t_cmd *)node->content)->in,
   //        b[((t_cmd *)node->content)->in_redir]);
   // printf("out %s type %s\n", ((t_cmd *)node->content)->out,

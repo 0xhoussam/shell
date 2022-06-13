@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:34:33 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/13 10:48:53 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/13 11:42:35 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void init_cmd(t_cmd *cmd) {
   cmd->out = NULL;
   cmd->in_redir = NIL;
   cmd->out_redir = NIL;
-  cmd->left_priority = NONE;
-  cmd->right_priority = NONE;
+  cmd->left_delimiter = NONE;
+  cmd->right_delimiter = NONE;
 }
 
 void recursive_parser(t_list **cmds, t_cmd *cmd, char *s) {

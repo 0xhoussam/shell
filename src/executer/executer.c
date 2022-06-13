@@ -6,11 +6,14 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:49:53 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/12 19:00:51 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/13 00:04:42 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	close_pipes(int *pipe, int size);
+int	wait_for_processes(int size);
 
 int executer(t_list *list, char **env)
 {
@@ -35,6 +38,7 @@ int executer(t_list *list, char **env)
 			ft_exec(&params);
 			exit(g_exit_code);
 		}
+		list = list->next;
 		i++;
 	}
 	close_pipes(params.pipes, lst_size + 1);
@@ -66,7 +70,6 @@ int	wait_for_processes(int size)
 	while (i < size)
 	{
 		wait(&status);
-		
 		i++;
 	}
 	return (0);

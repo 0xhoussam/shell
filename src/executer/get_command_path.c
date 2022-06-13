@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:53:19 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/11 17:53:35 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/12 22:18:33 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ char	*get_cmd_path(t_params *params)
 	char	*command;
 	char	**env;
 
-	command = params->cmd->cmd_name;
+	command = (char *) params->cmd->cmd_name;
 	env = params->env;
-	path = get_path(env);
+	path = get_env_path(env);
 	if (path == NULL)
 		return (NULL);
 	paths = ft_split(path, ':');
@@ -35,10 +35,10 @@ char	*get_cmd_path(t_params *params)
 	command_path = check_command(command, paths);
 	if (!command_path)
 	{
-		free_up_chars(paths);
+		array_2d_free(paths);
 		return (NULL);
 	}
-	free_up_chars(paths);
+	array_2d_free(paths);
 	return (command_path);
 }
 
@@ -56,9 +56,9 @@ static char	*search_for_cmd(char *command, char **paths)
 		{
 			if (access(path, X_OK) < 0)
 			{
-				ft_putstr("pipex: permission denied: ", 2);
-				ft_putstr(command, 2);
-				ft_putstr("\n", 2);
+				ft_putstr_fd("pipex: permission denied: ", 2);
+				ft_putstr_fd(command, 2);
+				ft_putstr_fd("\n", 2);
 				return (NULL);
 			}
 			else
@@ -81,16 +81,16 @@ static char	*check_command(char *command, char **paths)
 	{
 		if (access(command, X_OK) < 0)
 		{
-			ft_putstr("pipex: permission denied: ", 2);
-			ft_putstr(command, 2);
-			ft_putstr("\n", 2);
+			ft_putstr_fd("pipex: permission denied: ", 2);
+			ft_putstr_fd(command, 2);
+			ft_putstr_fd("\n", 2);
 			return (NULL);
 		}
 		else
 			return (ft_strdup(command));
 	}
-	ft_putstr("command not found: ", 2);
-	ft_putstr(command, 2);
-	ft_putstr("\n", 2);
+	ft_putstr_fd("command not found: ", 2);
+	ft_putstr_fd(command, 2);
+	ft_putstr_fd("\n", 2);
 	return (NULL);
 }
