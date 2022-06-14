@@ -6,16 +6,17 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:00:38 by habouiba          #+#    #+#             */
-/*   Updated: 2022/05/31 15:25:56 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/14 16:16:30 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-size_t  echo(const char *str, int flags)
+size_t  echo(t_params *params)
 {
-    printf("%s", str);
-    if (!(flags & ECHO_N_FLAG))
-        printf("\n");
-    return (ft_strlen(str));
+    char    **str;
+
+    str = join_args(params->cmd);
+    printf("%s", *str);
+    return (ft_strlen(*str));
 }

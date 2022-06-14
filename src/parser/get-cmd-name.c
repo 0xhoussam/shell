@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get-cmd-name.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habouiba <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 07:08:42 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/13 12:02:11 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/14 17:59:00 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
-#include "utils.h"
+#include "minishell.h"
 
 size_t get_cmd_name(t_cmd *cmd, char const *s, t_env_list *lst) {
   size_t i;

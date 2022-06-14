@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get-output-redir.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 07:50:39 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/13 12:10:17 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/14 17:59:16 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "minishell.h"
 
 size_t get_output_redir(t_cmd *cmd, const char *s) {
   size_t s_len;

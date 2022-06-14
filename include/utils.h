@@ -6,14 +6,14 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:24:05 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/11 18:38:15 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/14 17:50:01 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 #define UTILS_H
 
-#include "builtins.h"
+# include "types.h"
 
 t_env_list	*env_array_to_list(char **env);
 char		**env_list_to_array(t_env_list *list);

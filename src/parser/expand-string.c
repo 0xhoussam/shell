@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   expand-string.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 10:46:44 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/14 11:07:29 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/14 17:58:44 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
-#include "utils.h"
+#include "minishell.h"
 
 int is_inside_single_quotes(char *s, size_t idx) {
   int i;

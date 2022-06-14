@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse-and.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 06:41:59 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/14 06:44:22 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/14 17:59:20 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "minishell.h"
 
 size_t parse_and(t_list **cmds, t_cmd **cmd, const char *s) {
   if (*s != '&')

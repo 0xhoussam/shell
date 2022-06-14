@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse-or.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 06:50:35 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/14 06:51:15 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/14 17:59:27 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "minishell.h"
 
 size_t parse_or(t_list **cmds, t_cmd **cmd, const char *s) {
   if (*s != '|')

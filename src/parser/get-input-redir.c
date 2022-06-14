@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get-input-redir.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 07:28:33 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/12 14:58:11 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/14 17:59:06 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "minishell.h"
 
 size_t get_input_redir(t_cmd *cmd, const char *s) {
   size_t s_len;

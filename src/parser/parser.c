@@ -6,13 +6,11 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:34:33 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/14 07:25:29 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/14 17:59:47 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
-#include "libft.h"
-#include "utils.h"
+#include "minishell.h"
 
 void init_cmd(t_cmd *cmd) {
   if (!cmd)
