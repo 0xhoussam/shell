@@ -6,12 +6,11 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 13:13:49 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/13 17:58:50 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/14 15:52:32 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-char **join_args(t_cmd *cmd);
 
 int ft_exec(t_params *params)
 {
@@ -34,29 +33,4 @@ int ft_exec(t_params *params)
 	array_2d_free(args);
 	free(cmd);
 	return (0);
-}
-
-char **join_args(t_cmd *cmd)
-{
-	t_list *list;
-	char **args;
-	int list_size;
-	int i;
-
-	list = cmd->args;
-	if (!list)
-		return (NULL);
-	list_size = ft_lstsize(list);
-	args = ft_calloc(sizeof(char *), list_size + 1);
-	if (!args)
-		return (NULL);
-	i = 0;
-	while (list)
-	{
-		args[i] = (char *)list->content;
-		list = list->next;
-		i++;
-	}
-	args[i] = NULL;
-	return (args);
 }

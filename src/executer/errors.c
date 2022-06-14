@@ -6,11 +6,12 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:26:15 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/13 15:38:47 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/14 18:04:01 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
 char	*generate_error_string(const char *cmd, char *error);
 
 int print_error(const char *cmd, char *error)
