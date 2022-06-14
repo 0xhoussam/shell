@@ -6,15 +6,15 @@ t_list *generator()
 	// commands names
 	char **commands = malloc(sizeof(char *) * 4);
 	commands[0] = "sleep";
-	commands[1] = "cat";
-	commands[2] = "ls";
+	commands[1] = "ls";
+	commands[2] = "cat";
 	commands[3] = "grep";
 
 	// cat arguments
 	char **cat = malloc(sizeof(char *) * 4);
 	cat[0] = "cat";
 	cat[1] = "-e";
-	cat[2] = "/dev/random";
+	cat[2] = NULL;
 	cat[3] = NULL;
 
 	// ls arguments
@@ -79,6 +79,11 @@ t_list *generator()
 			cmd->left_delimiter = NONE;
 		if (ft_strcmp(commands[i], "grep") == 0)
 			cmd->right_delimiter = NONE;
+		if (ft_strcmp(commands[i], "cat") == 0)
+		{
+			cmd->out = "test";
+			cmd->out_redir = DOUBLE;
+		}
 		ft_lstadd_back(&list, ft_lstnew(cmd));
 		i++;
 	}
