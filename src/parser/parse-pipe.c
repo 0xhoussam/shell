@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:31:07 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/13 12:44:01 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/14 06:43:13 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 size_t parse_pipe(t_list **cmds, t_cmd **cmd, const char *s) {
   if (*s != '|')
+    return (0);
+  if (s[1] == '|')
     return (0);
   if (*cmd) {
     (*cmd)->right_delimiter = PIPE;
