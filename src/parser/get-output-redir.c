@@ -33,12 +33,16 @@ size_t get_output_redir(t_cmd *cmd, const char *s) {
   }
   while (ft_isspace(s[i]))
     i++;
+  if (s[i] == '"')
+    i++;
   j = i;
   while (ft_isalpha(s[j]))
     j++;
   if (cmd->out)
     free(cmd->out);
   cmd->out = ft_substr(s, i, j - i);
+  if (s[j] == '"')
+    j++;
   return (j);
 }
 

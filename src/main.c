@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/14 07:48:11 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/14 11:01:16 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,8 @@ int main(int ac, char **av, char **env) {
   lst.next = NULL;
   t_list *cmds;
 
-  // cmds = parser("echo hi || ls .");
-  // print_cmds(cmds);
-  parse_double_quotes("\"hello '${name}' world ${name}", &lst);
+  cmds = parser("$name >tmp hello || ls .", &lst);
+  print_cmds(cmds);
 }
 void print_cmds(t_list *cmds) {
   char *a[] = {"none", "and", "or", "semicolon", "pipe"};

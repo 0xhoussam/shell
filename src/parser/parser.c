@@ -28,7 +28,7 @@ void init_cmd(t_cmd *cmd) {
   cmd->right_delimiter = NONE;
 }
 
-void recursive_parser(t_list **cmds, t_cmd *cmd, char *s) {
+void recursive_parser(t_list **cmds, t_cmd *cmd, char *s, t_env_list *lst) {
   size_t i;
 
   if (!s)
@@ -45,53 +45,53 @@ void recursive_parser(t_list **cmds, t_cmd *cmd, char *s) {
     cmd = malloc(sizeof(t_cmd));
     init_cmd(cmd);
   }
-  i = get_cmd_name(cmd, s);
+  i = get_cmd_name(cmd, s, lst);
   if (i > 0)
-    return recursive_parser(cmds, cmd, &s[i]);
+    return recursive_parser(cmds, cmd, &s[i], lst);
   i = get_input_redir(cmd, s);
   if (i > 0) {
-    return recursive_parser(cmds, cmd, &s[i]);
+    return recursive_parser(cmds, cmd, &s[i], lst);
   }
   i = get_output_redir(cmd, s);
   if (i > 0) {
-    return recursive_parser(cmds, cmd, &s[i]);
+    return recursive_parser(cmds, cmd, &s[i], lst);
   }
   i = get_args(cmd, s);
   if (i > 0) {
-    return recursive_parser(cmds, cmd, &s[i]);
+    return recursive_parser(cmds, cmd, &s[i], lst);
   }
   /*------------------------------------------------*/
   i = parse_pipe(cmds, &cmd, s);
   if (i > 0) {
     cmd = NULL;
     parse_pipe(cmds, &cmd, s);
-    recursive_parser(cmds, cmd, &s[1]);
+    recursive_parser(cmds, cmd, &s[1], lst);
   }
   i = parse_semicolon(cmds, &cmd, s);
   if (i > 0) {
     cmd = NULL;
     parse_semicolon(cmds, &cmd, s);
-    recursive_parser(cmds, cmd, &s[1]);
+    recursive_parser(cmds, cmd, &s[1], lst);
   }
   i = parse_and(cmds, &cmd, s);
   if (i > 0) {
     cmd = NULL;
     parse_and(cmds, &cmd, s);
-    recursive_parser(cmds, cmd, &s[2]);
+    recursive_parser(cmds, cmd, &s[2], lst);
   }
   i = parse_or(cmds, &cmd, s);
   if (i > 0) {
     cmd = NULL;
     parse_or(cmds, &cmd, s);
-    recursive_parser(cmds, cmd, &s[2]);
+    recursive_parser(cmds, cmd, &s[2], lst);
   }
 }
 
-t_list *parser(char *line) {
+t_list *parser(char *line, t_env_list *lst) {
   t_list *cmds;
 
   cmds = malloc(sizeof(t_list));
   cmds = NULL;
-  recursive_parser(&cmds, NULL, line);
+  recursive_parser(&cmds, NULL, line, lst);
   return (cmds);
 }

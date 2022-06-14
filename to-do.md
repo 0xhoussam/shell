@@ -15,7 +15,7 @@
 - [x] parse and ( && )
 - [x] parse |
 - [x] parse or ( || )
-- [...] parse double quotes
+- [ ] parse double quotes
 - [ ] test && parser
 - [ ] parse wildcard
 - [ ] test wildcard parser
@@ -23,6 +23,8 @@
 - [ ] make heredoc del a linked list
 - [ ] parse single quotes
 - [ ] handle multiple heredoc
+- [ ] loop in the first line in expand it
+- [ ] make cmd name expand variables
 
 ## Execution
 
