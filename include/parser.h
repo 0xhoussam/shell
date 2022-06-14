@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 12:14:08 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/13 12:28:01 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/14 07:41:07 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,7 @@ size_t get_args(t_cmd *cmd, const char *s);
 size_t parse_pipe(t_list **cmds, t_cmd **cmd, const char *s);
 void init_cmd(t_cmd *cmd);
 size_t parse_semicolon(t_list **cmds, t_cmd **cmd, const char *s);
+size_t parse_and(t_list **cmds, t_cmd **cmd, const char *s);
+size_t parse_or(t_list **cmds, t_cmd **cmd, const char *s);
+char *parse_double_quotes(char *s, t_env_list *lst);
 #endif

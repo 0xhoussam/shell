@@ -14,7 +14,8 @@ BUILT_INS = echo.c pwd.c cd.c export.c
 
 PARSER_IN_DIR = $(SRC_DIR)parser/
 PARSER_INS =	parser.c get-cmd-name.c get-input-redir.c get-output-redir.c \
-				get-args.c parse-semicolon.c parse-pipe.c
+				get-args.c parse-semicolon.c parse-pipe.c parse-and.c parse-or.c \
+				parse-double-quotes.c
 
 GENERATOR_DIR = generator/
 GENERATOR =	index.c

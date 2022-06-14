@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/13 12:56:05 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/14 07:48:11 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,18 @@ int main(int ac, char **av, char **env) {
   ac = (int)ac;
   av = (char **)av;
   env = (char **)env;
+  t_env_list lst;
 
   t_list *commands = generator();
   t_list *tmp = commands;
-
+  lst.key = "name";
+  lst.value = "houssam";
+  lst.next = NULL;
   t_list *cmds;
 
-  cmds = parser("echo hi | ls . | grep hossam");
+  // cmds = parser("echo hi || ls .");
   // print_cmds(cmds);
+  parse_double_quotes("\"hello '${name}' world ${name}", &lst);
 }
 void print_cmds(t_list *cmds) {
   char *a[] = {"none", "and", "or", "semicolon", "pipe"};
@@ -51,3 +55,5 @@ void print_cmds(t_list *cmds) {
     printf("heredoc: %s\n", ((t_cmd *)node->content)->heredoc_del);
   }
 }
+
+// TODO ; is not working noting printing

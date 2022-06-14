@@ -11,18 +11,16 @@
 - [x] test redirection parser
 - [x] main loop
 - [x] test io parser
-- [...] parse ;
+- [x] parse ;
+- [x] parse and ( && )
+- [x] parse |
+- [x] parse or ( || )
+- [...] parse double quotes
+- [ ] test && parser
 - [ ] parse wildcard
 - [ ] test wildcard parser
-- [ ] parse and ( && )
-- [ ] test && parser
-- [ ] parse or ( || )
 - [ ] test || parser
-- [ ] parse |
-- [ ] test |
-- [ ] test ; parser
 - [ ] make heredoc del a linked list
-- [ ] parse double quotes
 - [ ] parse single quotes
 - [ ] handle multiple heredoc
 
