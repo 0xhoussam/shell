@@ -6,13 +6,13 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:04:05 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/13 18:17:15 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/14 13:46:01 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int dup_std(char *file, int std, int mode);
+static int dup_std(t_cmd *cmd, char *file, int std, int mode);
 static int heredoc_handler(t_params *params);
 static int pipe_handler(t_params *params);
 void close_pipes(t_params *params);
@@ -23,24 +23,20 @@ int redir_handler(t_params *params)
 
 	cmd = params->cmd;
 	if (cmd->in_redir == SINGLE)
-		dup_std(cmd->in, STDIN_FILENO, O_RDONLY);
+		dup_std(cmd, cmd->in, STDIN_FILENO, O_RDONLY);
 	else if (cmd->in_redir == DOUBLE)
-		dup_std(cmd->in, STDIN_FILENO, O_RDONLY);
+		dup_std(cmd, cmd->in, STDIN_FILENO, O_RDONLY);
 	else if (cmd->out_redir == SINGLE)
-		dup_std(cmd->out, STDOUT_FILENO, O_CREAT | O_WRONLY | O_TRUNC);
+		dup_std(cmd, cmd->out, STDOUT_FILENO, O_CREAT | O_WRONLY | O_TRUNC);
 	else if (cmd->out_redir == DOUBLE)
-		dup_std(cmd->out, STDOUT_FILENO, O_CREAT | O_WRONLY | O_APPEND);
+		dup_std(cmd, cmd->out, STDOUT_FILENO, O_CREAT | O_WRONLY | O_APPEND);
 	else if (cmd->in_redir == HEREDOC)
-	{
 		heredoc_handler(params);
-		pipe_handler(params);
-	}
-	else
-		pipe_handler(params);
+	pipe_handler(params);
 	return (0);
 }
 
-static int dup_std(char *file, int std, int mode)
+static int dup_std(t_cmd *cmd, char *file, int std, int mode)
 {
 	int fd;
 
@@ -49,6 +45,11 @@ static int dup_std(char *file, int std, int mode)
 		return (print_error(file, USE_ERRNO));
 	if (dup2(fd, std) < 0)
 		return (print_error(file, USE_ERRNO));
+	close(fd);
+	if (std == STDIN_FILENO && cmd->left_delimiter == PIPE)
+		cmd->left_delimiter = NONE;
+	if (std == STDOUT_FILENO && cmd->right_delimiter == PIPE)
+		cmd->right_delimiter = NONE;
 	return (0);
 }
 
@@ -59,8 +60,7 @@ static int heredoc_handler(t_params *params)
 
 	cmd = params->cmd;
 	char buff;
-	close(params->pipes[params->index][1]);
-	close(params->pipes[params->index][0]);
+	close_pipe(params->pipes[params->index]);
 	pipe(params->pipes[params->index]);
 	while (1)
 	{
@@ -111,10 +111,7 @@ void close_pipes(t_params *params)
 	pipes = params->pipes;
 	while (i < params->cmds_list_size + 1)
 	{
-		if (close(pipes[i][0]) < 0)
-			print_error(params->cmd->cmd_name, USE_ERRNO);
-		if (close(pipes[i][1]) < 0)
-			print_error(params->cmd->cmd_name, USE_ERRNO);
+		close_pipe(pipes[i]);
 		i++;
 	}
 }

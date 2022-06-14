@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:49:53 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/13 17:58:36 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/14 13:46:04 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,12 @@ int executer(t_list *list, char **env)
 			params.cmd = (t_cmd *)list->content;
 			params.index = i;
 			ft_exec(&params);
-			exit(0);
 		}
-		if (close(params.pipes[i][1]) < 0)
-			return (print_error("close", USE_ERRNO));
-		if (close(params.pipes[i][0]))
-			return (print_error("close", USE_ERRNO));
+		close_pipe(params.pipes[i]);
 		list = list->next;
 		i++;
 	}
-	if (close(params.pipes[i][1]))
-		return (print_error("close", USE_ERRNO));
-	if (close(params.pipes[i][0]))
-		return (print_error("close", USE_ERRNO));
+	close_pipe(params.pipes[i]);
 	wait_for_processes(params.cmds_list_size);
 	return (0);
 }
