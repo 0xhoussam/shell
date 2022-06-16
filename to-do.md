@@ -4,26 +4,17 @@
 
 - [x] parse command name
 - [x] parse args
-- [x] test args parser
 - [x] parse io
 - [x] parse redirection
-- [x] test command name parser
 - [x] test redirection parser
 - [x] main loop
-- [x] test io parser
 - [x] parse ;
 - [x] parse and ( && )
 - [x] parse |
 - [x] parse or ( || )
 - [x] make cmd name expand variables
-- [ ] parse double quotes
-- [ ] test && parser
-- [ ] parse wildcard
-- [ ] test wildcard parser
-- [ ] test || parser
-- [ ] make heredoc del a linked list
-- [ ] parse single quotes
-- [ ] loop in the first line in expand it
+- [x] make args parse double quotes
+- [*] parse wildcard *
 
 ## Execution
 
