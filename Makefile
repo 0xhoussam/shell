@@ -10,7 +10,7 @@ SRC_FILES = main.c
 UTILS_DIR = ./utils/
 
 BUILT_INT_DIR = $(SRC_DIR)builtins/
-BUILT_INS = echo.c pwd.c cd.c export.c
+BUILT_INS = echo.c pwd.c cd.c export.c ft_exit.c unset.c env.c
 
 PARSER_IN_DIR = $(SRC_DIR)parser/
 PARSER_INS =	parser.c get-cmd-name.c get-input-redir.c get-output-redir.c \
