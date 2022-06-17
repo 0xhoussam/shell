@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:26:15 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/14 18:04:01 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/17 15:50:54 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,16 @@ int print_error(const char *cmd, char *error)
 	error_str = generate_error_string(cmd, error);
 
 	if (!ft_strcmp(error, USE_ERRNO))
+	{
 		perror(error_str);
+		exit(1);
+	}
 	else
 		ft_putendl_fd(error_str, 2);
 	if (!ft_strcmp(error, CMD_NOT_FOUND))
 		exit(CMD_NOT_FOUND_ERRNO);
 	free(error_str);
-	return (1);
+	exit (0);
 }
 
 char	*generate_error_string(const char *cmd, char *error)

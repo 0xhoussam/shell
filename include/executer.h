@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 14:02:11 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/14 17:52:14 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/17 14:13:47 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ int		executer(t_list *list, char **env);
 // utils
 void	close_pipe(int *pipe);
 char	**join_args(t_cmd *cmd);
+int 	wait_for_processes();
 
 #endif

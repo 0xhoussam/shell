@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 21:51:35 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/14 15:52:26 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/17 15:30:55 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,19 @@ char **join_args(t_cmd *cmd)
 	}
 	args[i] = NULL;
 	return (args);
+}
+
+int	wait_for_processes()
+{
+	int i;
+	int ret;
+
+	i = 0;
+	ret = 1;
+	while (ret > 0)
+	{	
+		ret = waitpid(-1, NULL, 0);
+		i++;
+	}
+	return (0);
 }
