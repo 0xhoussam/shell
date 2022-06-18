@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/18 09:56:54 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/18 16:25:56 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int main(int ac, char **av, char **env) {
   // t_list *commands = generator();
   // print_cmds(commands);
   // executer(commands, env);
-  t_list *cmds = parser("ls * <<\"hello\"| cat file.c", NULL);
+  t_list *cmds =
+      parser("ls * <<\"hello\" << marhba << goodbye | cat file.c", NULL);
   printc(cmds);
   return (g_exit_code);
 }
@@ -67,7 +68,7 @@ void printc(t_list *cmds) {
   char *a[] = {"NONE", "AND", "OR", "SEMICOLON", "PIPE"};
   char *b[] = {"NIL", "SINGLE", "DOUBLE", "HEREDOC"};
   for (t_list *node = cmds; node; node = node->next) {
-		printf("------------------------------------------------\n\n");
+    printf("------------------------------------------------\n\n");
     t_cmd *cmd = node->content;
     printf("cmd_name: %s\n", cmd->cmd_name);
     printf("args: ");
@@ -79,6 +80,9 @@ void printc(t_list *cmds) {
     printf("out: %s type: %s\n", cmd->out, b[cmd->out_redir]);
     printf("left: %s\n", a[cmd->left_delimiter]);
     printf("right: %s\n", a[cmd->right_delimiter]);
-    printf("heredoc %s\n", cmd->heredoc_del);
+    for (t_list *hered = cmd->heredoc_del; hered; hered = hered->next) {
+      printf("%s ", (char *)hered->content);
+    }
+    printf("\n\n");
   }
 }

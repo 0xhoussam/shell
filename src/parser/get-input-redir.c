@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 07:28:33 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/18 09:53:20 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/18 16:23:54 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ size_t get_input_redir(t_cmd *cmd, const char *s) {
     i = k;
     while (!ft_isspace(s[i]))
       i++;
-    cmd->heredoc_del = ft_substr(s, k, i - k);
+    ft_lstadd_back(&cmd->heredoc_del, ft_lstnew(ft_substr(s, k, i - k)));
     return (i);
   } else {
     cmd->in_redir = SINGLE;
@@ -48,52 +48,4 @@ size_t get_input_redir(t_cmd *cmd, const char *s) {
     free(cmd->in);
   cmd->in = ft_substr(s, i, j - i);
   return (j);
-}
-
-/*	TESTS		*/
-
-void get_input_redir_test1() {
-  t_cmd cmd;
-
-  cmd.in = NULL;
-  get_input_redir(NULL, NULL);
-  get_input_redir(&cmd, NULL);
-  get_input_redir(NULL, "< hello ls");
-  size_t i = get_input_redir(&cmd, "< hello ls .");
-  if (i == 7 && !ft_strncmp("hello\0", cmd.in, 5) && cmd.in_redir == SINGLE) {
-    printf("TEST1: ok");
-  } else
-    printf("TEST1: failed");
-  printf("\n");
-}
-
-void get_input_redir_test2() {
-  t_cmd cmd;
-
-  cmd.in = NULL;
-  size_t i = get_input_redir(NULL, "");
-  if (i == 0)
-    printf("TEST2: ok");
-  else
-    printf("TEST2: failed");
-  printf("\n");
-}
-void get_input_redir_test3() {
-  t_cmd cmd;
-
-  cmd.heredoc_del = NULL;
-  cmd.in_redir = NIL;
-  size_t i = get_input_redir(&cmd, "<< EOF ls");
-  if (i == 6 && !ft_strncmp("EOF\0", cmd.heredoc_del, 4) &&
-      cmd.in_redir == HEREDOC)
-    printf("TEST2: ok");
-  else
-    printf("TEST2: failed '%s' %zu %i", cmd.heredoc_del, i, cmd.in_redir);
-  printf("\n");
-}
-
-void get_input_redir_test() {
-  get_input_redir_test1();
-  get_input_redir_test2();
-  get_input_redir_test3();
 }
