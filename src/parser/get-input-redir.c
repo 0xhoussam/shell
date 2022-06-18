@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 07:28:33 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/14 17:59:06 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/18 09:53:20 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ size_t get_input_redir(t_cmd *cmd, const char *s) {
   while (ft_isspace(s[i]))
     i++;
   j = i;
-  while (!ft_isspace(s[j]))
+  while (!ft_isspace(s[j]) && !is_spicial(s[j]))
     j++;
   if (cmd->in)
     free(cmd->in);

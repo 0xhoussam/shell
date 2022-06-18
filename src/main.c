@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/18 09:04:53 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/18 09:56:54 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int main(int ac, char **av, char **env) {
   // t_list *commands = generator();
   // print_cmds(commands);
   // executer(commands, env);
-  t_list *cmds = parser("ls * | cat file.c", NULL);
+  t_list *cmds = parser("ls * <<\"hello\"| cat file.c", NULL);
   printc(cmds);
   return (g_exit_code);
 }

@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   includes.c                                         :+:      :+:    :+:   */
+/*   is_special.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/17 11:11:54 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/18 09:55:17 by habouiba         ###   ########.fr       */
+/*   Created: 2022/06/18 09:52:12 by habouiba          #+#    #+#             */
+/*   Updated: 2022/06/18 09:52:41 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-int ft_includes(const char *s, int c) {
-  int i;
-
-  i = -1;
-  while (s[++i]) {
-    if (s[i] == c)
-      return (1);
-  }
-  if (s[i] == c)
-    return (1);
-  return (0);
+int	is_spicial(char c)
+{
+	if (ft_includes("<>|;&", c))
+		return (1);
+	return (0);
 }
+

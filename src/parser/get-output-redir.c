@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 07:50:39 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/14 17:59:16 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/18 09:53:05 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,12 @@ size_t get_output_redir(t_cmd *cmd, const char *s) {
   }
   while (ft_isspace(s[i]))
     i++;
-  if (s[i] == '"')
-    i++;
   j = i;
-  while (ft_isalpha(s[j]))
+  while (!ft_isspace(s[j]) && !is_spicial(s[j]))
     j++;
   if (cmd->out)
     free(cmd->out);
   cmd->out = ft_substr(s, i, j - i);
-  if (s[j] == '"')
-    j++;
   return (j);
 }
 

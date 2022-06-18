@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:24:05 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/17 11:19:30 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/18 09:52:47 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ char *env_list_get(t_env_list *list,
 int ft_strcmp(char *s1, char *s2);
 int ft_includes(const char *s, int c);
 int is_valid(const char *s, int c);
-
+int ft_includes(const char *s, int c);
+int is_valid(const char *s, int c);
+int	is_spicial(char c);
 #endif
