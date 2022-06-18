@@ -56,25 +56,28 @@ static int dup_std(t_cmd *cmd, char *file, int std, int mode)
 static int heredoc_handler(t_params *params)
 {
 	char *line;
-	t_cmd *cmd;
+	t_list *args;
 
-	cmd = params->cmd;
-	char buff;
-	close_pipe(params->pipes[params->index]);
-	pipe(params->pipes[params->index]);
-	while (1)
+	args = params->cmd->heredoc_del;
+	while (args)
 	{
-		ft_putstr_fd("> ", 1);
-		line = get_next_line(STDIN_FILENO);
-		line[ft_strlen(line) - 1] = '\0';
-		if (!ft_strcmp(cmd->heredoc_del, line))
+		close_pipe(params->pipes[params->index]);
+		pipe(params->pipes[params->index]);
+		while (1)
 		{
+			ft_putstr_fd("> ", 1);
+			line = get_next_line(STDIN_FILENO);
+			line[ft_strlen(line) - 1] = '\0';
+			if (!ft_strcmp(args->content, line))
+			{
+				free(line);
+				break;
+			}
+			write(params->pipes[params->index][1], line, ft_strlen(line));
+			write(params->pipes[params->index][1], "\n", 1);
 			free(line);
-			break;
 		}
-		write(params->pipes[params->index][1], line, ft_strlen(line));
-		write(params->pipes[params->index][1], "\n", 1);
-		free(line);
+		args = args->next;
 	}
 	return (0);
 }
