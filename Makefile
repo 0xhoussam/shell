@@ -4,10 +4,12 @@ NAME=minishell
 INCLUDE = -I include -I utils/libft
 CFLAGS = $(INCLUDE) #-Wall -Werror -Wextra
 
-SRC_DIR = ./src/
+OBJS_DIR = objs/
+
+SRC_DIR = src/
 SRC_FILES = main.c
 
-UTILS_DIR = ./utils/
+UTILS_DIR = utils/
 
 BUILT_INT_DIR = $(SRC_DIR)builtins/
 BUILT_INS = echo.c pwd.c cd.c export.c ft_exit.c unset.c env.c
@@ -29,7 +31,7 @@ UTILS_INS = env_array_to_list.c env_list_to_array.c \
 			env_list_delete.c sort.c env_list_insert.c 2d_array_free.c \
 			env_list_get.c ft_strcmp.c includes.c validate.c
 
-GET_NEXT_LINE_INT_DIR = $(UTILS_DIR)/get_next_line/
+GET_NEXT_LINE_INT_DIR = $(UTILS_DIR)get_next_line/
 GET_NEXT_LINE_INS = get_next_line.c get_next_line_utils.c
 
 CFILES = $(addprefix $(SRC_DIR), $(SRC_FILES))
@@ -41,7 +43,8 @@ CFILES += $(addprefix $(EXECUTER_IN_DIR), $(EXECUTER_INS))
 CFILES += $(addprefix $(GET_NEXT_LINE_INT_DIR), $(GET_NEXT_LINE_INS))
 
 
-OFILES = $(patsubst %.c, %.o, $(CFILES))
+OFILES_ = $(patsubst %.c, %.o, $(CFILES))
+OFILES = $(addprefix $(OBJS_DIR), $(OFILES_))
 
 LIBFT_DIR = ./utils/libft
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -69,8 +72,9 @@ $(LIBFT):
 	@$(MAKE) bonus -C $(LIBFT_DIR)
 	@echo "$(green)libft compiled \n$(reset)"
 
-%.o:%.c
+$(OBJS_DIR)%.o:%.c
 	@echo "$(yellow)Compiling $(reset)$<"
+	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 re: fclean all 
@@ -82,6 +86,7 @@ fclean: clean
 clean:
 	@echo "$(yellow)Cleaning object files... $(reset)"
 	@rm -f $(OFILES)
+	@rm -rf $(OBJS_DIR)
 	@echo "$(green)object files cleaned \n $(reset)"
 	@echo "$(yellow)cleaning libft... $(reset)"
 	@$(MAKE) clean -C $(LIBFT_DIR) 
