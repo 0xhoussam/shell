@@ -6,37 +6,37 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 10:46:44 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/14 17:58:44 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/17 12:43:10 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "types.h"
+#include "libft.h"
+#include "util.h"
 
-int is_inside_single_quotes(char *s, size_t idx) {
-  int i;
+// ""
+// ''
+// $
 
-  i = 0;
-  s = &s[idx];
-  while (*s) {
-    if (*s == '\'')
-      i++;
-    s++;
-  }
-  if (i % 2 == 0)
-    return (0);
-  return (1);
+static char *ft_chardump(int c)
+{
+	char *str;
+
+	str = malloc(sizeof(char) * 2);
+	if (!str)
+		return (NULL);
+	str[0] = c;
+	str[1] = '\0';
+	return (str);
 }
 
-// char *expand_string(char *s, size_t start, size_t end) {
-//   char *result;
+char *expand(const char *str, t_env_list *env)
+{
+	int i;
 
-// 	while (s[start] && start < end)
-// 	{
-// 			if (s[start] == '$' && !is_inside_single_quotes(s,
-// start))
-// 			{
-
-// 			}
-// 	}
-//   return (result);
-// }
+	i = 0;
+	while (str[i])
+	{
+	}
+	return (NULL);
+}

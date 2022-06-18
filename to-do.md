@@ -15,7 +15,10 @@
 - [x] make cmd name expand variables
 - [x] make args parse double quotes
 - [*] parse wildcard *
-
+- [ ] expand $
+- [ ] expand *
+- [ ] remove ''
+- [ ] remove ""
 ## Execution
 
 - [ ] handle multiple heredoc

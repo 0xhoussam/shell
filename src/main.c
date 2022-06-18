@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/16 09:55:03 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/18 09:04:53 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int main(int ac, char **av, char **env) {
   // t_list *commands = generator();
   // print_cmds(commands);
   // executer(commands, env);
-  t_list *cmds = parser("<tmp cat -n \"hello world ages\"", NULL);
+  t_list *cmds = parser("ls * | cat file.c", NULL);
   printc(cmds);
   return (g_exit_code);
 }
@@ -66,11 +66,12 @@ void printc(t_list *cmds) {
   char *a[] = {"NONE", "AND", "OR", "SEMICOLON", "PIPE"};
   char *b[] = {"NIL", "SINGLE", "DOUBLE", "HEREDOC"};
   for (t_list *node = cmds; node; node = node->next) {
+		printf("------------------------------------------------\n\n");
     t_cmd *cmd = node->content;
     printf("cmd_name: %s\n", cmd->cmd_name);
     printf("args: ");
     for (t_list *arg = cmd->args; arg; arg = arg->next) {
-      printf("'%s' ", (char *)arg->content);
+      printf("%s ", (char *)arg->content);
     }
     printf("\n");
     printf("in: %s type: %s\n", cmd->in, b[cmd->in_redir]);
