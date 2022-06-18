@@ -30,6 +30,6 @@
 # include "utils.h"
 
 
-int	g_exit_code;
+extern int	g_exit_code;
 
 #endif // MINISHELL_H

@@ -13,6 +13,7 @@
 #include "minishell.h"
 #include "tests.h"
 
+int g_exit_code = 0;
 // const char *__asan_default_options() { return "detect_leaks=0"; }
 
 void print_cmds(t_list *cmds);
