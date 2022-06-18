@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 21:51:35 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/17 15:30:55 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/18 14:55:42 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char **join_args(t_cmd *cmd)
 	return (args);
 }
 
-int	wait_for_processes()
+int	wait_for_processes(int change_exit_code)
 {
 	int i;
 	int ret;
@@ -54,7 +54,10 @@ int	wait_for_processes()
 	ret = 1;
 	while (ret > 0)
 	{	
-		ret = waitpid(-1, NULL, 0);
+		if (change_exit_code)
+			ret = waitpid(-1, &g_exit_code, 0);
+		else
+			ret = waitpid(-1, NULL, 0);
 		i++;
 	}
 	return (0);

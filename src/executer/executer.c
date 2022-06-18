@@ -6,22 +6,22 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:49:53 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/17 15:31:26 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/18 14:56:39 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void 	init_params(t_params *params, char **env, int list_size);
+void	init_params(t_params *params, char **env, int list_size);
 int		builtins_handler(t_params *params, t_list *list, int id);
-void 	binary_handler(t_params *params, t_list *list, int id);
+void	binary_handler(t_params *params, t_list *list, int id);
 void	and_or_handler(t_params *params);
 
-int executer(t_list *list, char **env)
+int	executer(t_list *list, char **env)
 {
-	t_params params;
-	char *cmd_name;
-	int i;
+	t_params	params;
+	char		*cmd_name;
+	int			i;
 
 	init_params(&params, env, ft_lstsize(list));
 	i = 0;
@@ -40,7 +40,7 @@ int executer(t_list *list, char **env)
 		i++;
 	}
 	close_pipe(params.pipes[i]);
-	wait_for_processes(params.cmds_list_size);
+	wait_for_processes(1);
 	return (0);
 }
 
@@ -97,12 +97,12 @@ void	and_or_handler(t_params *params)
 			waitpid(params->pids[params->index], &g_exit_code, 0);
 		if (WEXITSTATUS(g_exit_code) != 0 && cmd->right_delimiter == AND)
 		{
-			wait_for_processes();
+			wait_for_processes(0);
 			exit(WEXITSTATUS(g_exit_code));
 		}
 		if (WEXITSTATUS(g_exit_code) == 0 && cmd->right_delimiter == OR)
 		{
-			wait_for_processes();
+			wait_for_processes(0);
 			exit(EXIT_SUCCESS);
 		}
 	}

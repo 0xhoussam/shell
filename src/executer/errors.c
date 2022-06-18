@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:26:15 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/17 15:50:54 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/18 14:57:42 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 char	*generate_error_string(const char *cmd, char *error);
 
-int print_error(const char *cmd, char *error)
+int	print_error(const char *cmd, char *error)
 {
-	char *error_str;
+	char	*error_str;
 
 	error_str = generate_error_string(cmd, error);
-
 	if (!ft_strcmp(error, USE_ERRNO))
 	{
 		perror(error_str);
@@ -28,7 +27,7 @@ int print_error(const char *cmd, char *error)
 	else
 		ft_putendl_fd(error_str, 2);
 	if (!ft_strcmp(error, CMD_NOT_FOUND))
-		exit(CMD_NOT_FOUND_ERRNO);
+		exit(CMD_NOT_FOUND_ERRNO);	
 	free(error_str);
 	exit (0);
 }
@@ -38,14 +37,14 @@ char	*generate_error_string(const char *cmd, char *error)
 	char	*error_str;
 	char	*tmp;
 
-	tmp = ft_strjoin(PROGRAM_NAME, ": "); // tmp = "minishell: "
-	error_str = ft_strjoin(tmp, cmd); // error = "minishell: cmd"
+	tmp = ft_strjoin(PROGRAM_NAME, ": ");
+	error_str = ft_strjoin(tmp, cmd);
 	free(tmp);
 	if (*error)
 	{
-		tmp = ft_strjoin(error_str, ": "); // tmp = "minishell: cmd: "
+		tmp = ft_strjoin(error_str, ": ");
 		free(error_str);
-		error_str = ft_strjoin(tmp, error); // error = "minishell: cmd: error_name"
+		error_str = ft_strjoin(tmp, error);
 	}
 	return (error_str);
 }
