@@ -20,7 +20,7 @@ t_list *generator()
 	// ls arguments
 	char **ls = malloc(sizeof(char *) * 3);
 	ls[0] = "ls";
-	ls[1] = "cat_file";
+	ls[1] = "-l";
 	ls[2] = NULL;
 
 	// grep arguments
@@ -81,8 +81,17 @@ t_list *generator()
 			cmd->right_delimiter = NONE;
 		if (ft_strcmp(commands[i], "cat") == 0)
 		{
-			cmd->out = "test";
-			cmd->out_redir = DOUBLE;
+			cmd->in = "file";
+			cmd->in_redir = SINGLE;
+			cmd->right_delimiter = OR;
+		}
+		if (ft_strcmp(commands[i], "grep") == 0)
+		{
+			cmd->left_delimiter = OR;
+			cmd->in_redir = HEREDOC;
+			ft_lstadd_back(&cmd->heredoc_del, ft_lstnew("a"));
+			ft_lstadd_back(&cmd->heredoc_del, ft_lstnew("b"));
+			ft_lstadd_back(&cmd->heredoc_del, ft_lstnew("c"));
 		}
 		ft_lstadd_back(&list, ft_lstnew(cmd));
 		i++;
