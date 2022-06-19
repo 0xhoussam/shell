@@ -54,7 +54,7 @@ all: $(NAME)
 $(NAME): $(LIBFT) $(OFILES)
 	@echo "$(green)source files compiled successfully \n $(reset)"
 	@echo "$(yellow)linking object files.. $(reset)"
-	@$(CC) $(CFLAGS) $(OFILES) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OFILES) $(LIBFT) -o $(NAME) -lreadline
 	@echo "$(green)All done, binary file path: $(NAME)$(reset)"
 
 fsanitize: CFLAGS += -fsanitize=address -g
@@ -75,7 +75,7 @@ $(LIBFT):
 $(OBJS_DIR)%.o:%.c
 	@echo "$(yellow)Compiling $(reset)$<"
 	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@ -lreadline
 
 re: fclean all 
 
