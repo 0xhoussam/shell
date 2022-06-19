@@ -21,7 +21,6 @@ int ft_exec(t_params *params)
 	args = join_args(params->cmd);
 	if (!cmd)
 		print_error(params->cmd->cmd_name, CMD_NOT_FOUND);
-	redir_handler(params);
 	if (execve(cmd, args, params->env) < 0)
 	{
 		print_error("execve", USE_ERRNO);

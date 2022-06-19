@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   executer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:49:53 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/18 14:56:39 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/19 16:03:32 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 void	init_params(t_params *params, char **env, int list_size);
-int		builtins_handler(t_params *params, t_list *list, int id);
+void	builtins_handler(t_params *params, t_list *list, int id);
 void	binary_handler(t_params *params, t_list *list, int id);
 void	and_or_handler(t_params *params);
 
@@ -24,6 +24,7 @@ int	executer(t_list *list, char **env)
 	int			i;
 
 	init_params(&params, env, ft_lstsize(list));
+	heredocs_handler(list, &params);
 	i = 0;
 	while (i < params.cmds_list_size)
 	{
@@ -31,7 +32,7 @@ int	executer(t_list *list, char **env)
 		params.index = i;
 		cmd_name = (char *)params.cmd->cmd_name;
 		if (ft_strnstr(BUILTINS, cmd_name, ft_strlen(cmd_name)))
-			g_exit_code = builtins_handler(&params, list, i);
+			builtins_handler(&params, list, i);
 		else
 			binary_handler(&params, list, i);
 		close_pipe(params.pipes[i]);
@@ -52,7 +53,7 @@ void	init_params(t_params *params, char **env, int list_size)
 	params->env = env;
 }
 
-int	builtins_handler(t_params *params, t_list *list, int id)
+void	builtins_handler(t_params *params, t_list *list, int id)
 {
 	char	*cmd_name;
 
@@ -71,7 +72,6 @@ int	builtins_handler(t_params *params, t_list *list, int id)
 		env(params);
 	if (!ft_strcmp(cmd_name, "exit"))
 		ft_exit(params);
-	return (0);
 }
 
 void	binary_handler(t_params *params, t_list *list, int id)
@@ -81,6 +81,7 @@ void	binary_handler(t_params *params, t_list *list, int id)
 		print_error("fork", USE_ERRNO);
 	if (!params->pids[id])
 	{
+		redir_handler(params);
 		ft_exec(params);
 		exit(0);
 	}
@@ -94,7 +95,10 @@ void	and_or_handler(t_params *params)
 	if (cmd->right_delimiter == AND || cmd->right_delimiter == OR)
 	{
 		if (!ft_strnstr(BUILTINS, cmd->cmd_name, ft_strlen(cmd->cmd_name)))
+		{
 			waitpid(params->pids[params->index], &g_exit_code, 0);
+			wait_for_processes(0);
+		}
 		if (WEXITSTATUS(g_exit_code) != 0 && cmd->right_delimiter == AND)
 		{
 			wait_for_processes(0);

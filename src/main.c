@@ -3,51 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/18 17:30:28 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/19 17:13:17 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "tests.h"
 
-int  g_exit_code = 0;
+int g_exit_code = 0;
 // const char *__asan_default_options() { return "detect_leaks=0"; }
 
 void print_cmds(t_list *cmds);
 void printc(t_list *cmds);
 
-// int main(int ac, char **av, char **env) {
-
-//   ac = (int)ac;
-//   av = (char **)av;
-//   env = (char **)env;
-//   t_env_list lst;
-
-//   t_list *commands = generator();
-//   print_cmds(commands);
-//   executer(commands, env);
-//   return (g_exit_code);
-// }
-
-int  main(int ac, char **av, char **env)
+int main(int ac, char **av, char **env)
 {
     ac = (int)ac;
     av = (char **)av;
     env = (char **)env;
     t_env_list lst;
 
-    // t_list *commands = generator();
-    // print_cmds(commands);
-    // executer(commands, env);
-    lst.key = "name";
-    lst.value = "houssam";
-    lst.next = NULL;
-    char *a = remove_double_quotes("\"$name hello $name hello\"", &lst);
-    printf("%s\n", a);
-    return (g_exit_code);
+    t_list *commands = generator();
+    print_cmds(commands);
+    executer(commands, env);
+    // lst.key = "name";
+    // lst.value = "houssam";
+    // lst.next = NULL;
+    // char *a = remove_double_quotes("\"$name hello $name hello\"", &lst);
+    // printf("%s\n", a);
+    return (WEXITSTATUS(g_exit_code));
 }
 
 void print_cmds(t_list *cmds)
@@ -57,13 +44,31 @@ void print_cmds(t_list *cmds)
         t_cmd *cmd = (t_cmd *)cmds->content;
         printf("%s ", (char *)cmd->cmd_name);
         t_list *args = cmd->args;
+        t_list *heredocs = cmd->heredoc_del;
+        while (heredocs)
+        {
+            printf("<<%s ", (char *)heredocs->content);
+            heredocs = heredocs->next;
+        }
+        if (cmd->in)
+            printf("<%s ", (char *)cmd->in);
+        if (cmd->out)
+            printf(">%s ", (char *)cmd->out);
         while (args->next)
         {
+            
             printf("%s ", (char *)args->next->content);
             args = args->next;
         }
         if (cmds->next)
-            printf(" | ");
+        {
+            if (cmd->right_delimiter == PIPE)
+                printf(" | ");
+            else if (cmd->right_delimiter == AND)
+                printf(" && ");
+            else if (cmd->right_delimiter == OR)
+                printf(" || ");
+        }
         cmds = cmds->next;
     }
     printf("\n");
