@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/19 17:13:17 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/19 20:10:24 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,19 @@ int main(int ac, char **av, char **env)
     ac = (int)ac;
     av = (char **)av;
     env = (char **)env;
-    t_env_list lst;
+    t_env_list *lst;
 
-    t_list *commands = generator();
-    print_cmds(commands);
+    lst = env_array_to_list(env);
+    t_list *commands = parser("cat <file >| ls -l", lst);
+    t_list *cmds = commands;
+    while (cmds)
+    {
+        t_cmd *cmd = (t_cmd *)cmds->content;
+        ft_lstadd_front(&cmd->args, ft_lstnew(cmd->cmd_name));
+        cmds = cmds->next;
+    }
+    // print_cmds(commands);
+    printc(commands);
     executer(commands, env);
     // lst.key = "name";
     // lst.value = "houssam";
