@@ -1,5 +1,6 @@
 CC = gcc
 NAME=minishell
+MAKEFLAGS += --no-print-directory
 
 INCLUDE = -I include -I utils/libft
 CFLAGS = $(INCLUDE) #-Wall -Werror -Wextra
