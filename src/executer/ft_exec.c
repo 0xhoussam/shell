@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 13:13:49 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/17 17:06:43 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/20 17:45:46 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,8 @@ int ft_exec(t_params *params)
 		print_error(params->cmd->cmd_name, CMD_NOT_FOUND);
 	if (execve(cmd, args, params->env) < 0)
 	{
-		print_error("execve", USE_ERRNO);
-		array_2d_free(args);
-		free(cmd);
-		// free_params(params);
-		print_error(params->cmd->cmd_name, EXECVE_FAILED);
+		if (errno != ENOEXEC)
+			print_error(ft_strjoin("execve: ", cmd), USE_ERRNO);
 	}
 	array_2d_free(args);
 	free(cmd);
