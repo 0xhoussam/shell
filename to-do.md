@@ -35,3 +35,5 @@
 - [ ] handle executing relative files (check a file contain . or ..)
 - [x] execute heredocs first
 - [x] wait for all prev processes on case of && or ||
+- [ ] do not exit from main process
+- [ ] serialize command arguments (might be added in the parser)
