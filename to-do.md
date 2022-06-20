@@ -33,3 +33,5 @@
 - [x] change inputs priority in redir_handler
 - [ ] rewrite builtins
 - [ ] handle executing relative files (check a file contain . or ..)
+- [x] execute heredocs first
+- [x] wait for all prev processes on case of && or ||

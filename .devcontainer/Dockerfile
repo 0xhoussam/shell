@@ -14,7 +14,8 @@ RUN apt install zsh \
 				lldb \
 				valgrind \
 				strace \
-				ltrace -y
+				ltrace \
+				libreadline-dev -y
 
 RUN pip3 install norminette c-formatter-42
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended

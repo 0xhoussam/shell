@@ -1,5 +1,6 @@
 CC = gcc
 NAME=minishell
+MAKEFLAGS += --no-print-directory
 
 INCLUDE = -I include -I utils/libft
 CFLAGS = $(INCLUDE) #-Wall -Werror -Wextra
@@ -24,7 +25,7 @@ GENERATOR =	index.c
 
 EXECUTER_IN_DIR = $(SRC_DIR)executer/
 EXECUTER_INS =	errors.c executer.c get_command_path.c get_env_path.c \
-				init_pipes.c redir_handler.c ft_exec.c utils.c
+				init_pipes.c redir_handler.c ft_exec.c utils.c heredocs_handler.c
 
 UTILS_INT_DIR = $(UTILS_DIR)
 UTILS_INS = env_array_to_list.c env_list_to_array.c \
@@ -54,7 +55,7 @@ all: $(NAME)
 $(NAME): $(LIBFT) $(OFILES)
 	@echo "$(green)source files compiled successfully \n $(reset)"
 	@echo "$(yellow)linking object files.. $(reset)"
-	@$(CC) $(CFLAGS) $(OFILES) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OFILES) $(LIBFT) -o $(NAME) -lreadline
 	@echo "$(green)All done, binary file path: $(NAME)$(reset)"
 
 fsanitize: CFLAGS += -fsanitize=address -g
@@ -75,7 +76,7 @@ $(LIBFT):
 $(OBJS_DIR)%.o:%.c
 	@echo "$(yellow)Compiling $(reset)$<"
 	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@ -lreadline
 
 re: fclean all 
 
