@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:26:15 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/20 18:04:24 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/20 19:38:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	print_error(const char *cmd, char *error)
 	if (!ft_strcmp(error, CMD_NOT_FOUND))
 		exit(CMD_NOT_FOUND_ERRNO);
 	free(error_str);
-	exit (0);
+	exit (1);
 }
 
 char	*generate_error_string(const char *cmd, char *error)

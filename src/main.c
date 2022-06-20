@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/20 18:46:44 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/20 20:03:30 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int main(int ac, char **av, char **env)
     env = (char **)env;
     t_env_list *lst;
 
-    t_list *commands = parser("./cat | ls", lst);
+    t_list *commands = parser("echo hello world", lst);
 	// evaluate_str_and_var(commands, lst);
 	t_list *cmds = commands;
 	while (cmds)

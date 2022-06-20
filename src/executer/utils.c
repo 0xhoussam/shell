@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 21:51:35 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/18 14:55:42 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/20 19:50:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,12 @@ void close_pipe(int *pipe)
 		print_error("close pipe", USE_ERRNO);
 }
 
-char **join_args(t_cmd *cmd)
+char	**join_args(t_list *list)
 {
-	t_list *list;
-	char **args;
-	int list_size;
-	int i;
+	char	**args;
+	int		i;
+	int		list_size;
 
-	list = cmd->args;
 	if (!list)
 		return (NULL);
 	list_size = ft_lstsize(list);

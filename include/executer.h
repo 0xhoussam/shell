@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 14:02:11 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/20 14:54:14 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/20 19:50:29 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int		executer(t_list *list, char **env);
 
 // utils
 void	close_pipe(int *pipe);
-char	**join_args(t_cmd *cmd);
+char	**join_args(t_list *list);
 int 	wait_for_processes(int change_exit_code);
 #endif

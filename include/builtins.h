@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:49:56 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/14 17:56:15 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/20 19:56:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "types.h"
 
-size_t  echo(t_params *params);
+void	echo(t_params *params);
 void    pwd(t_params *params);
 void    cd(t_params *params);
 void    export(t_params *params);
