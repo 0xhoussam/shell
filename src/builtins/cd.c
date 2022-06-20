@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:37:39 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/20 15:24:35 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/20 18:54:58 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	cd(t_params *params)
 	DIR		*dir;
 
 	dir_name = NULL;
-	if (ft_lstsize(params->cmd->args) > 1)
+	if (ft_lstsize(params->cmd->args) > 2)
 		return (print_error("cd", "too many arguments"));
-	if (params->cmd->args)
-		dir_name = params->cmd->args->content;
+	if (params->cmd->args->next)
+		dir_name = params->cmd->args->next->content;
 	if (!dir_name || !ft_strcmp(dir_name, "~"))
 		return (open_home_dir(params));
 	if (!ft_strcmp(dir_name, "-"))
