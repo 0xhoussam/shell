@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defs.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 17:45:04 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/17 11:08:30 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/20 18:03:39 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 // ERRORS
 # define CMD_NOT_FOUND "command not found"
 # define CMD_NOT_FOUND_ERRNO 127
+# define PERMISSION_DENIED_ERRNO 126
 # define EXECVE_FAILED "execve failed"
 # define EXECVE_FAILED_ERRNO 3
 # define PIPE_ERROR "pipe error"
