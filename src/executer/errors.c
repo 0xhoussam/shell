@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:26:15 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/18 14:57:42 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/20 18:04:24 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*generate_error_string(const char *cmd, char *error);
 
-int	print_error(const char *cmd, char *error)
+void	print_error(const char *cmd, char *error)
 {
 	char	*error_str;
 
@@ -22,12 +22,14 @@ int	print_error(const char *cmd, char *error)
 	if (!ft_strcmp(error, USE_ERRNO))
 	{
 		perror(error_str);
+		if (errno == 13)
+			exit(PERMISSION_DENIED_ERRNO);
 		exit(1);
 	}
 	else
 		ft_putendl_fd(error_str, 2);
 	if (!ft_strcmp(error, CMD_NOT_FOUND))
-		exit(CMD_NOT_FOUND_ERRNO);	
+		exit(CMD_NOT_FOUND_ERRNO);
 	free(error_str);
 	exit (0);
 }

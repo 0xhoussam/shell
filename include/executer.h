@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 14:02:11 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/19 15:05:40 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/20 14:54:14 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@
 
 int		ft_exec(t_params *params);
 char	*get_cmd_path(t_params *params);
-char	*get_env_path(char *env[]);
 void	heredocs_handler(t_list *list, t_params *params);
 void	redir_handler(t_params *params);
-int		print_error(const char *cmd, char *error);
+void	print_error(const char *cmd, char *error);
 int		**init_pipes(int size);
 int		executer(t_list *list, char **env);
 
@@ -29,5 +28,4 @@ int		executer(t_list *list, char **env);
 void	close_pipe(int *pipe);
 char	**join_args(t_cmd *cmd);
 int 	wait_for_processes(int change_exit_code);
-
 #endif
