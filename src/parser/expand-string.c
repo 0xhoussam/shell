@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 10:46:44 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/18 17:50:24 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/20 11:13:19 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,22 +67,17 @@ void	remove_double_quotes(char **s, t_env_list *env)
 char	*join_3_strings(char *s1, char *s2, char *s3)
 {
 	size_t	len;
-	size_t	i;
-	size_t	j;
 	char	*str;
 
 	len = ft_strlen(s1) + ft_strlen(s2) + ft_strlen(s3);
 	str = malloc(len + 1);
 	if (!str)
 		return (NULL);
-	i = 0;
-	j = 0;
-	printf("\n'%s'\n", s1);
-	printf("\n'%s'\n", s2);
-	printf("\n'%s'\n", s3);
-	ft_strlcat(str, s1, len);
-	ft_strlcat(str, s2, len);
-	ft_strlcat(str, s3, len);
+	printf("DEBUG:  '%s'\n", s3);
+	ft_strlcat(str, s1, len + 1);
+	ft_strlcat(str, s2, len + 1);
+	ft_strlcat(str, s3, len + 1);
+	printf("DEBUG:  '%s'\n", str);
 	free(s1);
 	if (!*s2)
 		free(s2);
