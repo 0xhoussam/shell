@@ -70,14 +70,12 @@ char	*join_3_strings(char *s1, char *s2, char *s3)
 	char	*str;
 
 	len = ft_strlen(s1) + ft_strlen(s2) + ft_strlen(s3);
-	str = malloc(len + 1);
+	str = ft_calloc(len + 1, sizeof(char));
 	if (!str)
 		return (NULL);
-	printf("DEBUG:  '%s'\n", s3);
 	ft_strlcat(str, s1, len + 1);
 	ft_strlcat(str, s2, len + 1);
 	ft_strlcat(str, s3, len + 1);
-	printf("DEBUG:  '%s'\n", str);
 	free(s1);
 	if (!*s2)
 		free(s2);
