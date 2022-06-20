@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:53:19 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/20 17:47:11 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/20 20:02:24 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ char	*get_cmd_path(t_params *params)
 	command_path = check_command(command, paths);
 	if (!command_path)
 	{
-		array_2d_free(paths);
+		free_2d_array(paths);
 		return (NULL);
 	}
-	array_2d_free(paths);
+	free_2d_array(paths);
 	return (command_path);
 }
 static char	*check_command(char *command, char **paths)

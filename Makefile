@@ -29,7 +29,7 @@ EXECUTER_INS =	errors.c executer.c get_command_path.c utils.c \
 
 UTILS_INT_DIR = $(UTILS_DIR)
 UTILS_INS = env_array_to_list.c env_list_to_array.c \
-			env_list_delete.c sort.c env_list_insert.c 2d_array_free.c \
+			env_list_delete.c sort.c env_list_insert.c free_2d_array.c \
 			env_list_get.c ft_strcmp.c includes.c validate.c is_special.c \
 			env_list_clean.c
 
