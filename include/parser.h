@@ -37,4 +37,5 @@ char	*remove_last_and_first(char *s);
 void	remove_single_quotes(char **s);
 void	remove_double_quotes(char **s, t_env_list *env);
 char	*extract_word(const char *s, size_t *k);
+void	delete_commands(t_list **cmds);
 #endif

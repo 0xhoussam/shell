@@ -91,7 +91,6 @@ void recursive_parser(t_list **cmds, t_cmd *cmd, char *s, t_env_list *lst) {
 t_list *parser(char *line, t_env_list *lst) {
   t_list *cmds;
 
-  cmds = malloc(sizeof(t_list));
   cmds = NULL;
   recursive_parser(&cmds, NULL, line, lst);
   return (cmds);

@@ -27,15 +27,13 @@ int main(int ac, char **av, char **env)
 	t_env_list *lst;
 
 	lst = env_array_to_list(env);
-	// t_list *commands = parser("cat $USER <file >| ls -l", lst);
-	// evaluate_str_and_var(commands, lst);
+	t_list *commands = parser("cat $USER <file | ls -l", lst);
+	evaluate_str_and_var(commands, lst);
 	// print_cmds(commands);
-	// printc(commands);
+	printc(commands);
 	//executer(commands, env);
-
-	char *s = _expand("hello $NAME world", lst);
-	printf("'%s'\n", s);
-	free(s);
+	delete_commands(&commands);
+	env_list_clean(&lst);
 	return (WEXITSTATUS(g_exit_code));
 }
 

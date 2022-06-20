@@ -18,7 +18,7 @@ BUILT_INS = echo.c pwd.c cd.c export.c ft_exit.c unset.c env.c
 PARSER_IN_DIR = $(SRC_DIR)parser/
 PARSER_INS =	parser.c get-cmd-name.c get-input-redir.c get-output-redir.c \
 				get-args.c parse-semicolon.c parse-pipe.c parse-and.c parse-or.c \
-				expand-string.c expand-asterisk.c
+				expand-string.c expand-asterisk.c parser-utils.c delete-commands.c
 
 GENERATOR_DIR = generator/
 GENERATOR =	index.c
@@ -30,7 +30,8 @@ EXECUTER_INS =	errors.c executer.c get_command_path.c get_env_path.c \
 UTILS_INT_DIR = $(UTILS_DIR)
 UTILS_INS = env_array_to_list.c env_list_to_array.c \
 			env_list_delete.c sort.c env_list_insert.c 2d_array_free.c \
-			env_list_get.c ft_strcmp.c includes.c validate.c is_special.c
+			env_list_get.c ft_strcmp.c includes.c validate.c is_special.c \
+			env_list_clean.c
 
 GET_NEXT_LINE_INT_DIR = $(UTILS_DIR)get_next_line/
 GET_NEXT_LINE_INS = get_next_line.c get_next_line_utils.c
@@ -78,7 +79,7 @@ $(OBJS_DIR)%.o:%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@ -lreadline
 
-re: fclean all 
+re: fclean all
 
 fclean: clean
 	@rm -f $(NAME)
@@ -90,7 +91,7 @@ clean:
 	@rm -rf $(OBJS_DIR)
 	@echo "$(green)object files cleaned \n $(reset)"
 	@echo "$(yellow)cleaning libft... $(reset)"
-	@$(MAKE) clean -C $(LIBFT_DIR) 
+	@$(MAKE) clean -C $(LIBFT_DIR)
 	@echo "$(green)libft cleaned \n $(reset)"
 
 .PHONY: clean fclean re
