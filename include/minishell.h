@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:00:49 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/19 15:11:37 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/20 17:35:25 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <dirent.h>
 # include <fcntl.h>
+# include <errno.h>
 # include <sys/wait.h>
 
 # include "types.h"
