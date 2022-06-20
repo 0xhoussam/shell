@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_command_path.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:53:19 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/13 15:36:50 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/20 17:47:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*get_cmd_path(t_params *params)
 
 	command = (char *) params->cmd->cmd_name;
 	env = params->env;
-	path = get_env_path(env);
+	path = get_env_variable(params->env, "PATH");
 	if (path == NULL)
 		return (NULL);
 	paths = ft_split(path, ':');
@@ -40,6 +40,29 @@ char	*get_cmd_path(t_params *params)
 	}
 	array_2d_free(paths);
 	return (command_path);
+}
+static char	*check_command(char *command, char **paths)
+{
+	char	*path;
+
+	if (command[0] == '.')
+	{
+		if (access(command, F_OK) < 0)
+		{
+			print_error(command, USE_ERRNO);
+			return (NULL);
+		}	
+		if (access(command, X_OK) < 0)
+		{
+			print_error(command, USE_ERRNO);
+			return (NULL);
+		}
+		return (ft_strdup(command));
+	}
+	path = search_for_cmd(command, paths);
+	if (path)
+		return (path);
+	return (NULL);
 }
 
 static char	*search_for_cmd(char *command, char **paths)
@@ -68,22 +91,3 @@ static char	*search_for_cmd(char *command, char **paths)
 	return (NULL);
 }
 
-static char	*check_command(char *command, char **paths)
-{
-	char	*path;
-
-	path = search_for_cmd(command, paths);
-	if (path)
-		return (path);
-	if (access(command, F_OK) == 0)
-	{
-		if (access(command, X_OK) < 0)
-		{
-			print_error(command, USE_ERRNO);
-			return (NULL);
-		}
-		else
-			return (ft_strdup(command));
-	}
-	return (NULL);
-}

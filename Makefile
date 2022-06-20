@@ -24,8 +24,8 @@ GENERATOR_DIR = generator/
 GENERATOR =	index.c
 
 EXECUTER_IN_DIR = $(SRC_DIR)executer/
-EXECUTER_INS =	errors.c executer.c get_command_path.c get_env_path.c \
-				init_pipes.c redir_handler.c ft_exec.c utils.c heredocs_handler.c
+EXECUTER_INS =	errors.c executer.c get_command_path.c utils.c \
+				init_pipes.c redir_handler.c ft_exec.c heredocs_handler.c
 
 UTILS_INT_DIR = $(UTILS_DIR)
 UTILS_INS = env_array_to_list.c env_list_to_array.c \
