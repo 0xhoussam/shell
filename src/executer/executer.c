@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:49:53 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/19 16:03:32 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/20 15:11:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	executer(t_list *list, char **env)
 		params.cmd = (t_cmd *)list->content;
 		params.index = i;
 		cmd_name = (char *)params.cmd->cmd_name;
-		if (ft_strnstr(BUILTINS, cmd_name, ft_strlen(cmd_name)))
+		if (ft_strnstr(BUILTINS, cmd_name, ft_strlen(BUILTINS)))
 			builtins_handler(&params, list, i);
 		else
 			binary_handler(&params, list, i);
