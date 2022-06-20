@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:24:05 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/18 09:52:47 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/20 18:39:52 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void		env_list_clean(t_env_list **lst);
 size_t		max_strs_len(char *s1, char *s2);
 void 		sort_strs(char **strs);
 void 		array_2d_free(char **args);
-char 		*env_list_get(t_env_list *list, const char *key); // empty string on failure
+char 		*env_list_get(t_env_list *list, const char *key);
+char		*get_env_variable(char **env, char *key);
 int 		ft_strcmp(char *s1, char *s2);
 int 		ft_includes(const char *s, int c);
 int 		is_valid(const char *s, int c);

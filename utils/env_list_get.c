@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_list_get.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 06:48:42 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/09 06:59:08 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/20 15:20:05 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,20 @@ char				*env_list_get(t_env_list *list, const char *key)
 			current = current->next;
 	}
 	return (ft_strdup(""));
+}
+
+char	*get_env_variable(char **env, char *key)
+{
+	int	i;
+	int	key_len;
+
+	key_len = ft_strlen(key);
+	i = 0;
+	while (env[i])
+	{
+		if (!ft_strncmp(env[i], key, key_len))
+			return (env[i] + key_len + 1);
+		i++;
+	}
+	return (NULL);
 }
