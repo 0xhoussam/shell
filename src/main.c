@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/20 11:15:18 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/20 11:55:53 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int g_exit_code = 0;
 
 void print_cmds(t_list *cmds);
 void printc(t_list *cmds);
-
+/*
 int main(int ac, char **av, char **env)
 {
     ac = (int)ac;
@@ -45,29 +45,29 @@ int main(int ac, char **av, char **env)
     // printf("%s\n", a);
     return (WEXITSTATUS(g_exit_code));
 }
+*/
 
+int main(int ac, char **av, char **env)
+{
+    ac = (int)ac;
+    av = (char **)av;
+    env = (char **)env;
+    t_env_list lst;
 
-// int main(int ac, char **av, char **env)
-// {
-//     ac = (int)ac;
-//     av = (char **)av;
-//     env = (char **)env;
-//     t_env_list lst;
-
-// 		lst.key = "name";
-// 		lst.value = "houssam";
-// 		lst.next = NULL;
-//     t_list *commands = parser("$name <'$name abouiba' | ls -l", &lst);
-// 		evaluate_str_and_var(commands, &lst);
-//     printc(commands);
-//     //executer(commands, env);
-//     // lst.key = "name";
-//     // lst.value = "houssam";
-//     // lst.next = NULL;
-//     // char *a = remove_double_quotes("\"$name hello $name hello\"", &lst);
-//     // printf("%s\n", a);
-//     return (WEXITSTATUS(g_exit_code));
-// }
+		lst.key = "name";
+		lst.value = "houssam";
+		lst.next = NULL;
+    t_list *commands = parser("cat | ls", &lst);
+		evaluate_str_and_var(commands, &lst);
+    printc(commands);
+    //executer(commands, env);
+    // lst.key = "name";
+    // lst.value = "houssam";
+    // lst.next = NULL;
+    // char *a = remove_double_quotes("\"$name hello $name hello\"", &lst);
+    // printf("%s\n", a);
+    return (WEXITSTATUS(g_exit_code));
+}
 
 void print_cmds(t_list *cmds)
 {

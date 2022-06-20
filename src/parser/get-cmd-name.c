@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 07:08:42 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/17 12:53:40 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/20 11:57:07 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ size_t get_cmd_name(t_cmd *cmd, char const *s, t_env_list *lst) {
       *s == ';' || *s == '&' || *s == '|')
     return (0);
   i = 0;
-  while (!ft_isspace(s[i]))
+  while (s[i] && !ft_isspace(s[i]))
     i++;
   cmd->cmd_name = ft_substr(s, 0, i);
   return (i);
