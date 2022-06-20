@@ -31,14 +31,14 @@ void recursive_parser(t_list **cmds, t_cmd *cmd, char *s, t_env_list *lst) {
 
   if (!s)
     return;
+  while (ft_isspace(*s))
+    s++;
   if (!*s) {
     if (cmd) {
       ft_lstadd_back(cmds, ft_lstnew(cmd));
     }
     return;
   }
-  while (ft_isspace(*s))
-    s++;
   if (!cmd) {
     cmd = malloc(sizeof(t_cmd));
     init_cmd(cmd);
@@ -66,25 +66,25 @@ void recursive_parser(t_list **cmds, t_cmd *cmd, char *s, t_env_list *lst) {
   if (i > 0) {
     cmd = NULL;
     parse_pipe(cmds, &cmd, s);
-    recursive_parser(cmds, cmd, &s[1], lst);
+    return recursive_parser(cmds, cmd, &s[1], lst);
   }
   i = parse_semicolon(cmds, &cmd, s);
   if (i > 0) {
     cmd = NULL;
     parse_semicolon(cmds, &cmd, s);
-    recursive_parser(cmds, cmd, &s[1], lst);
+    return recursive_parser(cmds, cmd, &s[1], lst);
   }
   i = parse_and(cmds, &cmd, s);
   if (i > 0) {
     cmd = NULL;
     parse_and(cmds, &cmd, s);
-    recursive_parser(cmds, cmd, &s[2], lst);
+    return recursive_parser(cmds, cmd, &s[2], lst);
   }
   i = parse_or(cmds, &cmd, s);
   if (i > 0) {
     cmd = NULL;
     parse_or(cmds, &cmd, s);
-    recursive_parser(cmds, cmd, &s[2], lst);
+    return recursive_parser(cmds, cmd, &s[2], lst);
   }
 }
 

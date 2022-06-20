@@ -39,13 +39,14 @@ size_t get_input_redir(t_cmd *cmd, const char *s) {
     cmd->in_redir = SINGLE;
     i = 1;
   }
-  while (ft_isspace(s[i]))
-    i++;
-  j = i;
-  while (!ft_isspace(s[j]) && !is_spicial(s[j]))
-    j++;
-  if (cmd->in)
-    free(cmd->in);
-  cmd->in = ft_substr(s, i, j - i);
+  // while (ft_isspace(s[i]))
+  //   i++;
+  // j = i;
+  // while (!ft_isspace(s[j]) && !is_spicial(s[j]))
+  //   j++;
+  // if (cmd->in)
+  //   free(cmd->in);
+  cmd->in = extract_word(s, &j);
+  // cmd->in = ft_substr(s, i, j - i);
   return (j);
 }
