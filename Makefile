@@ -33,17 +33,12 @@ UTILS_INS = env_array_to_list.c env_list_to_array.c \
 			env_list_get.c ft_strcmp.c includes.c validate.c is_special.c \
 			env_list_clean.c
 
-GET_NEXT_LINE_INT_DIR = $(UTILS_DIR)get_next_line/
-GET_NEXT_LINE_INS = get_next_line.c get_next_line_utils.c
-
 CFILES = $(addprefix $(SRC_DIR), $(SRC_FILES))
 CFILES += $(addprefix $(BUILT_INT_DIR), $(BUILT_INS))
 CFILES += $(addprefix $(UTILS_INT_DIR), $(UTILS_INS))
 CFILES += $(addprefix $(PARSER_IN_DIR), $(PARSER_INS))
 CFILES += $(addprefix $(GENERATOR_DIR), $(GENERATOR))
 CFILES += $(addprefix $(EXECUTER_IN_DIR), $(EXECUTER_INS))
-CFILES += $(addprefix $(GET_NEXT_LINE_INT_DIR), $(GET_NEXT_LINE_INS))
-
 
 OFILES_ = $(patsubst %.c, %.o, $(CFILES))
 OFILES = $(addprefix $(OBJS_DIR), $(OFILES_))

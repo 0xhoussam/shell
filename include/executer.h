@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 14:02:11 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/20 19:50:29 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/21 15:31:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define EXECUTER_H
 
 #include "types.h"
-#include "../utils/get_next_line/get_next_line.h"
 
 int		ft_exec(t_params *params);
 char	*get_cmd_path(t_params *params);
