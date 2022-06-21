@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/20 20:03:30 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/21 15:55:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,21 @@ int main(int ac, char **av, char **env)
     env = (char **)env;
     t_env_list *lst;
 
-    t_list *commands = parser("echo hello world", lst);
-	// evaluate_str_and_var(commands, lst);
-	t_list *cmds = commands;
-	while (cmds)
+	while (1)
 	{
-		t_cmd *cmd = (t_cmd *)cmds->content;
-		ft_lstadd_front(&cmd->args, ft_lstnew(cmd->cmd_name));
-		cmds = cmds->next;
+		char *line = readline(PROMPT);
+		t_list *commands = parser(line, lst);
+		evaluate_str_and_var(commands, lst);
+		t_list *cmds = commands;
+		while (cmds)
+		{
+			t_cmd *cmd = (t_cmd *)cmds->content;
+			ft_lstadd_front(&cmd->args, ft_lstnew(cmd->cmd_name));
+			cmds = cmds->next;
+		}
+		print_cmds(commands);
+		executer(commands, env);
 	}
-    print_cmds(commands);
-    executer(commands, env);
     return (WEXITSTATUS(g_exit_code));
 }
 

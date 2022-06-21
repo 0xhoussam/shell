@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 17:45:04 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/20 18:03:39 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/21 17:05:46 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # define PROGRAM_NAME "minishell"
 # define BUILTINS "echo cd pwd export unset env exit"
-# define ECHO_N_FLAG 0x01
+
+// getcwd path max length
 # define MAX_BUF 100
 
 // ERRORS
@@ -26,5 +27,17 @@
 # define EXECVE_FAILED_ERRNO 3
 # define PIPE_ERROR "pipe error"
 # define USE_ERRNO ""
+
+// PROMPT
+#define PROMPT  BOLD BLUE "minishell-1.0$" RESET " "
+
+// colors
+# define RESET "\x1B[0m"
+# define RED "\x1B[31m"
+# define GREEN "\x1B[32m"
+# define YELLOW "\x1B[33m"
+# define BLUE "\x1B[36m"
+// typography
+#define BOLD "\x1B[1m"
 
 #endif
