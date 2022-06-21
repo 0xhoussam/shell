@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:26:15 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/20 19:38:15 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/21 16:51:44 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,26 @@ void	print_error(const char *cmd, char *error)
 		exit(CMD_NOT_FOUND_ERRNO);
 	free(error_str);
 	exit (1);
+}
+
+void	print_error_no_exit(const char *cmd, char *error)
+{
+	char *error_str;
+
+	error_str = generate_error_string(cmd, error);
+	if (!ft_strcmp(error, USE_ERRNO))
+	{
+		perror(error_str);
+		if (errno == 13)
+			g_exit_code =  PERMISSION_DENIED_ERRNO;
+		g_exit_code = 1;
+	}
+	else
+		ft_putendl_fd(error_str, 2);
+	if (!ft_strcmp(error, CMD_NOT_FOUND))
+		g_exit_code = CMD_NOT_FOUND_ERRNO;
+	free(error_str);
+	g_exit_code = 1;
 }
 
 char	*generate_error_string(const char *cmd, char *error)

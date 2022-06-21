@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:49:53 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/20 15:11:48 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/21 16:06:02 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	builtins_handler(t_params *params, t_list *list, int id)
 	if (!ft_strcmp(cmd_name, "cd"))
 		cd(params);
 	if (!ft_strcmp(cmd_name, "pwd"))
-		pwd(params);
+		pwd(params, 1);
 	if (!ft_strcmp(cmd_name, "export"))
 		export(params);
 	if (!ft_strcmp(cmd_name, "unset"))

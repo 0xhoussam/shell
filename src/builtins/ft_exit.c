@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 18:02:15 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/21 13:01:49 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/21 17:09:40 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_exit(t_params *params)
 	cmd = params->cmd;
 	exit_code = 0;
 	if (ft_lstsize(cmd->args) > 2)
-		return (print_error("exit", "too many arguments"));
+		return (print_error_no_exit("exit", "too many arguments"));
 	if (cmd->args->next)
 	{
 		if (!is_number(cmd->args->next->content))

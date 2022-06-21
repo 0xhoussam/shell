@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:49:56 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/20 19:56:11 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/21 16:05:36 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "types.h"
 
 void	echo(t_params *params);
-void    pwd(t_params *params);
+void    pwd(t_params *params, int print);
 void    cd(t_params *params);
 void    export(t_params *params);
 void	unset(t_params *params);
