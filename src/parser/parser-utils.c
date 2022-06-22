@@ -1,13 +1,13 @@
 #include "parser.h"
 
-char	*extract_word(const char *s, size_t *k)
+char	*extract_word(const char *s, size_t *k, int start)
 {
 	size_t	j;
 	size_t	i;
 	char	c;
 
-	j = 1;
-	while (ft_isspace(s[j]))
+	j = start;
+	while (s[j] && ft_isspace(s[j]))
 		j++;
 	i = j;
 	if (s[j] == '"')
@@ -16,14 +16,20 @@ char	*extract_word(const char *s, size_t *k)
 		c = '\'';
 	else
 	{
-		while (!ft_isspace(s[j]))
+		while (s[j] && !ft_isspace(s[j]))
 			j++;
-		*k = j + 1;
+		if (s[j])
+			*k = j + 1;
+		else
+			*k = j;
 		return (ft_substr(s, i, j - i + 1));
 	}
 	j++;
 	while (s[j] && s[j] != c)
 		j++;
-	*k = j + 1;
+	if (s[j])
+			*k = j + 1;
+		else
+			*k = j;
 	return (ft_substr(s, i, j - i + 1));
 }

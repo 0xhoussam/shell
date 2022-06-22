@@ -12,7 +12,7 @@
 
 #include "parser.h"
 
-size_t	get_output_redir(t_cmd *cmd, const char *s)
+int	get_output_redir(t_list **cmds, t_cmd *cmd, char *s, t_env_list *env)
 {
 	size_t	s_len;
 	size_t	i;
@@ -35,14 +35,7 @@ size_t	get_output_redir(t_cmd *cmd, const char *s)
 		cmd->out_redir = SINGLE;
 		i = 1;
 	}
-	// while (ft_isspace(s[i]))
-	// 	i++;
-	// j = i;
-	// while (!ft_isspace(s[j]) && !is_spicial(s[j]))
-	// 	j++;
-	// if (cmd->out)
-	// 	free(cmd->out);
-	cmd->out = extract_word(s, &j);
-	//cmd->out = ft_substr(s, i, j - i);
-	return (j);
+	cmd->out = extract_word(s, &j, 1);
+	recursive_parser(cmds, cmd, &s[j], env);
+	return (1);
 }

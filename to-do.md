@@ -14,12 +14,13 @@
 - [x] parse or ( || )
 - [x] make cmd name expand variables
 - [x] make args parse double quotes
-- [*] parse wildcard \*
-- [ ] expand $
-- [ ] expand \*
-- [ ] remove ''
-- [ ] remove ""
-- [ ] $gg -> input splited. "$gg" input is not splited
+- [x] parse wildcard \*
+- [x] expand $
+- [x] expand \*
+- [x] remove ''
+- [x] remove ""
+- [x] $gg -> input splited. "$gg" input is not splited
+- [ ] handle the global buffer overflow
 
 ## Execution
 

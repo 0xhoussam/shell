@@ -19,9 +19,10 @@
 // int prev_exit_code;
 
 t_list	*parser(char *line, t_env_list *lst);
-size_t	get_cmd_name(t_cmd *cmd, char const *s, t_env_list *lst);
-size_t	get_input_redir(t_cmd *cmd, const char *s);
-size_t	get_output_redir(t_cmd *cmd, const char *s);
+void	recursive_parser(t_list **cmds, t_cmd *cmd, char *s, t_env_list *lst);
+int		get_cmd_name(t_list **cmds, t_cmd *cmd, char *s, t_env_list *lst);
+int		get_input_redir(t_list **cmds, t_cmd *cmd, char *s, t_env_list *env);
+int		get_output_redir(t_list **cmds, t_cmd *cmd, char *s, t_env_list *env);
 size_t	get_args(t_cmd *cmd, const char *s);
 size_t	parse_pipe(t_list **cmds, t_cmd **cmd, const char *s);
 void	init_cmd(t_cmd *cmd);
@@ -36,6 +37,6 @@ void	evaluate_str_and_var(t_list *cmds, t_env_list *env);
 char	*remove_last_and_first(char *s);
 void	remove_single_quotes(char **s);
 void	remove_double_quotes(char **s, t_env_list *env);
-char	*extract_word(const char *s, size_t *k);
+char	*extract_word(const char *s, size_t *k, int start);
 void	delete_commands(t_list **cmds);
 #endif
