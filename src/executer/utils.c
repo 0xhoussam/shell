@@ -6,13 +6,13 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 21:51:35 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/20 19:50:11 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/23 22:43:09 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void close_pipe(int *pipe)
+void	close_pipe(int *pipe)
 {
 	if (close(pipe[1]) < 0)
 		print_error("close pipe", USE_ERRNO);
@@ -45,8 +45,8 @@ char	**join_args(t_list *list)
 
 int	wait_for_processes(int change_exit_code)
 {
-	int i;
-	int ret;
+	int	i;
+	int	ret;
 
 	i = 0;
 	ret = 1;
@@ -59,4 +59,18 @@ int	wait_for_processes(int change_exit_code)
 		i++;
 	}
 	return (0);
+}
+
+void	close_pipes(t_params *params)
+{
+	int	i;
+	int	**pipes;
+
+	i = 0;
+	pipes = params->pipes;
+	while (i < params->cmds_list_size + 1)
+	{
+		close_pipe(pipes[i]);
+		i++;
+	}
 }

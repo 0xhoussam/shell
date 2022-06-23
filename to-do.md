@@ -30,11 +30,13 @@
 - [ ] free pipes after execution of each process
 - [ ] free params after execution of each process
 - [ ] exit with valid exit value
-- [ ] replace get_next_line with readline in heredoc handler
+- [x] replace get_next_line with readline in heredoc handler
 - [x] change inputs priority in redir_handler
-- [ ] rewrite builtins
-- [ ] handle executing relative files (check a file contain . or ..)
+- [x] rewrite builtins
+- [x] handle executing relative files (check a file contain . or ..)
 - [x] execute heredocs first
 - [x] wait for all prev processes on case of && or ||
-- [ ] do not exit from main process
+- [x] do not exit from main process
 - [ ] serialize command arguments (might be added in the parser)
+- [ ] handle echo $?
+- [ ] fix builtins writing to pipes

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 17:45:04 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/21 17:05:46 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/23 16:25:24 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 
 # define PROGRAM_NAME "minishell"
 # define BUILTINS "echo cd pwd export unset env exit"
-
-// getcwd path max length
-# define MAX_BUF 100
 
 // ERRORS
 # define CMD_NOT_FOUND "command not found"

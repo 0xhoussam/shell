@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_list_delete.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 17:02:36 by habouiba          #+#    #+#             */
-/*   Updated: 2022/05/31 17:16:37 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/23 22:42:31 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	free_env_list_node(t_env_list *node);
 
-void    env_list_delete(t_env_list **list, char *key)
+void	env_list_delete(t_env_list **list, char *key)
 {
-	t_env_list  *temp;
-	t_env_list  *prev;
+	t_env_list	*temp;
+	t_env_list	*prev;
 	size_t		max_key_len;
 
 	if (!list || !*list || !key)
@@ -32,9 +32,12 @@ void    env_list_delete(t_env_list **list, char *key)
 			if (!prev)
 				*list = temp->next;
 			else
+			{
 				prev->next = temp->next;
-			temp->next = NULL;
+				temp->next = NULL;
+			}
 			free_env_list_node(temp);
+			return ;
 		}
 		prev = temp;
 		temp = temp->next;
@@ -50,7 +53,8 @@ void	free_env_list_node(t_env_list *node)
 
 size_t	max_strs_len(char *s1, char *s2)
 {
-	size_t	l1, l2;
+	size_t	l1;
+	size_t	l2;
 
 	if (!s2 || !s2)
 		return (0);

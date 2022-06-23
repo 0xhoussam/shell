@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:00:49 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/20 17:35:25 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/21 18:04:45 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include "builtins.h"
 # include "utils.h"
 # include "readline/readline.h"
-
+# include "readline/history.h"
 
 extern int	g_exit_code;
 

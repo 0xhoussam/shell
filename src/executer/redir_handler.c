@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:04:05 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/19 15:56:46 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/23 15:17:49 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	dup_std(t_cmd *cmd, char *file, int std, int mode);
 static void	pipe_handler(t_params *params);
-static void	close_pipes(t_params *params);
 
 void redir_handler(t_params *params)
 {
@@ -46,6 +45,7 @@ static void dup_std(t_cmd *cmd, char *file, int std, int mode)
 		cmd->left_delimiter = NONE;
 	if (std == STDOUT_FILENO && cmd->right_delimiter == PIPE)
 		cmd->right_delimiter = NONE;
+	close(fd);
 }
 
 static void pipe_handler(t_params *params)
@@ -64,22 +64,8 @@ static void pipe_handler(t_params *params)
 	}
 	if (cmd->right_delimiter == PIPE)
 	{
-		if (dup2(pipes[i + 1][1], STDOUT_FILENO) < 0)
+		if (dup2(pipes[i + 1][1], STDOUT_FILENO) < 0)			
 			print_error("dup2", USE_ERRNO);
 	}
 	close_pipes(params);
-}
-
-static void close_pipes(t_params *params)
-{
-	int i;
-	int **pipes;
-
-	i = params->index;
-	pipes = params->pipes;
-	while (i < params->cmds_list_size + 1)
-	{
-		close_pipe(pipes[i]);
-		i++;
-	}
 }

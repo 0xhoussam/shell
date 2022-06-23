@@ -6,13 +6,13 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:00:38 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/20 20:01:44 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/23 15:51:39 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void    print_2d_array(char **str);
+static void    print_2d_array_to_pipe(char **str, int std);
 
 void    echo(t_params *params)
 {
@@ -20,9 +20,10 @@ void    echo(t_params *params)
     t_cmd   *cmd;
     t_list  *args;
     int     i;
+    int     write_end;
 
     cmd = params->cmd;
-
+    write_end = get_redir_fd(params);
     args = cmd->args->next;
     str = join_args(args);
     g_exit_code = 0;
@@ -30,25 +31,25 @@ void    echo(t_params *params)
     {
         args = args->next;
         str = join_args(args);
-        print_2d_array(str);
+        print_2d_array_to_pipe(str, write_end);
         free_2d_array(str);
         return ;
     }
-    print_2d_array(str);
-    printf("\n");
+    print_2d_array_to_pipe(str, write_end);
+    write(write_end, "\n", 1);
     free_2d_array(str);
 }
 
-void    print_2d_array(char **str)
+static void    print_2d_array_to_pipe(char **str, int std)
 {
     int i;
 
     i = 0;
     while (str[i])
     {
-        printf("%s", str[i]);
+        write(std, str[i], ft_strlen(str[i]));
         i++;
         if (str[i])
-            printf(" ");
+           write(1, " ", 1);
     }
 }

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:49:53 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/21 16:06:02 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/23 18:28:36 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	builtins_handler(t_params *params, t_list *list, int id);
 void	binary_handler(t_params *params, t_list *list, int id);
 void	and_or_handler(t_params *params);
 
-int	executer(t_list *list, char **env)
+char	**executer(t_list *list, char **env)
 {
 	t_params	params;
 	char		*cmd_name;
@@ -35,14 +35,13 @@ int	executer(t_list *list, char **env)
 			builtins_handler(&params, list, i);
 		else
 			binary_handler(&params, list, i);
-		close_pipe(params.pipes[i]);
 		and_or_handler(&params);
 		list = list->next;
 		i++;
 	}
-	close_pipe(params.pipes[i]);
+	close_pipes(&params);
 	wait_for_processes(1);
-	return (0);
+	return (params.env);
 }
 
 void	init_params(t_params *params, char **env, int list_size)
