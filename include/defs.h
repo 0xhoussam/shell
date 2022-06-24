@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defs.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 17:45:04 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/23 16:25:24 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 19:13:12 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define USE_ERRNO ""
 
 // PROMPT
-#define PROMPT  BOLD BLUE "minishell-1.0$" RESET " "
+# define PROMPT "\x1B[1m\x1B[36mminishell-1.0$ \x1B[0m"
 
 // colors
 # define RESET "\x1B[0m"
@@ -35,6 +35,6 @@
 # define YELLOW "\x1B[33m"
 # define BLUE "\x1B[36m"
 // typography
-#define BOLD "\x1B[1m"
+# define BOLD "\x1B[1m"
 
 #endif

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:57:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/24 14:29:01 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 19:13:01 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void unset(t_params *params)
+void	unset(t_params *params)
 {
 	t_env_list	*list;
 	t_cmd		*cmd;
@@ -27,7 +27,7 @@ void unset(t_params *params)
 	while (args)
 	{
 		key = args->content;
-		env_list_delete(&list, key);		
+		env_list_delete(&list, key);
 		args = args->next;
 	}
 	params->env = env_list_to_array(list);

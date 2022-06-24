@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 10:59:50 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/01 10:59:50 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/24 19:15:23 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	replacing_underscore(char **strs);
 static void	replacing_underscore2(char **strs);
 
-void    sort_strs(char **strs)
+void	sort_strs(char **strs)
 {
 	int		i;
 	int		j;

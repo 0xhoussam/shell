@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:26:15 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/24 14:19:19 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 19:12:28 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ void	print_error(const char *cmd, char *error)
 
 void	print_error_no_exit(const char *cmd, char *error)
 {
-	char *error_str;
+	char	*error_str;
 
 	error_str = generate_error_string(cmd, error);
 	if (!ft_strcmp(error, USE_ERRNO))
 	{
 		perror(error_str);
 		if (errno == 13)
-			g_exit_code =  PERMISSION_DENIED_ERRNO;
+			g_exit_code = PERMISSION_DENIED_ERRNO;
 		g_exit_code = 1;
 	}
 	else

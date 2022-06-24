@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   env_array_to_list.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:33:41 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/23 22:41:31 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 19:14:01 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_env_list *new_node();
-t_env_list *add_node(t_env_list **head, char *str);
+t_env_list	*new_node(void);
+t_env_list	*add_node(t_env_list **head, char *str);
 
-t_env_list *env_array_to_list(char **env)
+t_env_list	*env_array_to_list(char **env)
 {
-	int i;
-	t_env_list *list;
+	int			i;
+	t_env_list	*list;
 
 	list = NULL;
 	i = 0;
@@ -30,16 +30,16 @@ t_env_list *env_array_to_list(char **env)
 	return (list);
 }
 
-t_env_list *new_node()
+t_env_list	*new_node(void)
 {
-	t_env_list *new;
+	t_env_list	*new;
 
 	new = malloc(sizeof(t_env_list));
 	new->next = NULL;
 	return (new);
 }
 
-t_env_list *add_node(t_env_list **head, char *str)
+t_env_list	*add_node(t_env_list **head, char *str)
 {
 	t_env_list	*new;
 	char		**key_value;

@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   get_command_path.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:53:19 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/20 20:02:24 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 19:12:33 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "minishell.h"
 
@@ -41,6 +40,7 @@ char	*get_cmd_path(t_params *params)
 	free_2d_array(paths);
 	return (command_path);
 }
+
 static char	*check_command(char *command, char **paths)
 {
 	char	*path;
@@ -90,4 +90,3 @@ static char	*search_for_cmd(char *command, char **paths)
 	}
 	return (NULL);
 }
-

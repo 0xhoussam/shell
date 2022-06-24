@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_special.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 09:52:12 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/18 09:52:41 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/24 19:15:00 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,3 @@ int	is_spicial(char c)
 		return (1);
 	return (0);
 }
-

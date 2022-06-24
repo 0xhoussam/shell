@@ -6,16 +6,16 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:56:50 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/13 14:57:17 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/24 19:12:39 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int **init_pipes(int size)
+int	**init_pipes(int size)
 {
-	int **pipes;
-	int i;
+	int	**pipes;
+	int	i;
 
 	pipes = malloc(sizeof(int *) * size);
 	if (!pipes)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_list_delete.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 17:02:36 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/23 22:42:31 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 19:14:18 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,14 @@ void	env_list_delete(t_env_list **list, char *key)
 {
 	t_env_list	*temp;
 	t_env_list	*prev;
-	size_t		max_key_len;
 
 	if (!list || !*list || !key)
 		return ;
 	temp = *list;
 	prev = NULL;
-	max_key_len = max_strs_len(key, temp->key);
 	while (temp)
 	{
-		if (!ft_strncmp(temp->key, key, max_key_len))
+		if (!ft_strncmp(temp->key, key, max_strs_len(key, temp->key)))
 		{
 			if (!prev)
 				*list = temp->next;

@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   env_list_to_array.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:20:02 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/23 22:40:55 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 19:14:26 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-int list_length(t_env_list *list);
 
-char **env_list_to_array(t_env_list *list)
+int	list_length(t_env_list *list);
+
+char	**env_list_to_array(t_env_list *list)
 {
-	char **env;
-	char *helper;
-	int i;
+	char	**env;
+	char	*helper;
+	int		i;
 
 	env = malloc(sizeof(char *) * (list_length(list) + 1));
 	i = 0;
@@ -33,9 +34,9 @@ char **env_list_to_array(t_env_list *list)
 	return (env);
 }
 
-int list_length(t_env_list *list)
+int	list_length(t_env_list *list)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (list)

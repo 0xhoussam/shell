@@ -16,12 +16,9 @@ BUILT_INT_DIR = $(SRC_DIR)builtins/
 BUILT_INS = echo.c pwd.c cd.c export.c ft_exit.c unset.c env.c utils.c
 
 PARSER_IN_DIR = $(SRC_DIR)parser/
-PARSER_INS =	parser.c get-cmd-name.c get-input-redir.c get-output-redir.c \
-				get-args.c parse-semicolon.c parse-pipe.c parse-and.c parse-or.c \
-				expand-string.c expand-asterisk.c parser-utils.c delete-commands.c
-
-GENERATOR_DIR = generator/
-GENERATOR =	index.c
+PARSER_INS = parser.c get-cmd-name.c get-input-redir.c get-output-redir.c \
+			get-args.c parse-semicolon.c parse-pipe.c parse-and.c parse-or.c \
+			expand-string.c expand-asterisk.c parser-utils.c delete-commands.c
 
 EXECUTER_IN_DIR = $(SRC_DIR)executer/
 EXECUTER_INS =	errors.c executer.c get_command_path.c utils.c \

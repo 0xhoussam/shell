@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 13:13:49 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/20 20:02:38 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 19:12:31 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int ft_exec(t_params *params)
+int	ft_exec(t_params *params)
 {
-	char *cmd;
-	char **args;
+	char	*cmd;
+	char	**args;
 
 	cmd = get_cmd_path(params);
 	args = join_args(params->cmd->args);

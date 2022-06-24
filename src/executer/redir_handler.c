@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:04:05 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/23 15:17:49 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 19:12:41 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	dup_std(t_cmd *cmd, char *file, int std, int mode);
 static void	pipe_handler(t_params *params);
 
-void redir_handler(t_params *params)
+void	redir_handler(t_params *params)
 {
 	t_cmd	*cmd;
 
@@ -31,9 +31,9 @@ void redir_handler(t_params *params)
 	pipe_handler(params);
 }
 
-static void dup_std(t_cmd *cmd, char *file, int std, int mode)
+static void	dup_std(t_cmd *cmd, char *file, int std, int mode)
 {
-	int fd;
+	int	fd;
 
 	fd = open(file, mode, 0644);
 	if (fd < 0)
@@ -48,7 +48,7 @@ static void dup_std(t_cmd *cmd, char *file, int std, int mode)
 	close(fd);
 }
 
-static void pipe_handler(t_params *params)
+static void	pipe_handler(t_params *params)
 {
 	t_cmd	*cmd;
 	int		**pipes;
@@ -64,7 +64,7 @@ static void pipe_handler(t_params *params)
 	}
 	if (cmd->right_delimiter == PIPE)
 	{
-		if (dup2(pipes[i + 1][1], STDOUT_FILENO) < 0)			
+		if (dup2(pipes[i + 1][1], STDOUT_FILENO) < 0)
 			print_error("dup2", USE_ERRNO);
 	}
 	close_pipes(params);

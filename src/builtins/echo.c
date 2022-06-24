@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:00:38 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/24 15:18:57 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 19:12:49 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	echo(t_params *params)
 		str = join_args(args);
 		print_2d_array_to_pipe(str, write_end);
 		free_2d_array(str);
-		return;
+		return ;
 	}
 	print_2d_array_to_pipe(str, write_end);
 	write(write_end, "\n", 1);

@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/24 18:27:09 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 19:17:18 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "tests.h"
 
-int g_exit_code = 0;
+int	g_exit_code = 0;
 // const char *__asan_default_options() { return "detect_leaks=0"; }
 
 void print_cmds(t_list *cmds);
@@ -35,7 +34,7 @@ int main(int ac, char **av, char **env)
 		t_list *commands = parser(line, lst);
 		evaluate_str_and_var(commands, lst);
 		print_cmds(commands);
-		env_ = executer(commands, env_);
+		env_ = executer(commands, env_);	
 		lst = env_array_to_list(env_);
 	}
 	return (g_exit_code);

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   includes.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 11:11:54 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/24 14:40:39 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 19:16:20 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-int ft_includes(const char *s, int c)
+int	ft_includes(const char *s, int c)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (s[++i])
@@ -29,7 +29,7 @@ int ft_includes(const char *s, int c)
 
 int	ft_includes_str(char *haystack, char *needle)
 {
-	int 	i;
+	int		i;
 	char	**strs;
 
 	i = 0;

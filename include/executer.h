@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   executer.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 14:02:11 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/23 18:29:42 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 19:13:15 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXECUTER_H
-#define EXECUTER_H
+# define EXECUTER_H
 
-#include "types.h"
+# include "types.h"
 
 int		ft_exec(t_params *params);
 char	*get_cmd_path(t_params *params);
@@ -27,6 +27,6 @@ char	**executer(t_list *list, char **env);
 // utils
 void	close_pipe(int *pipe);
 char	**join_args(t_list *list);
-int 	wait_for_processes(int change_exit_code);
+int		wait_for_processes(int change_exit_code);
 void	close_pipes(t_params *params);
 #endif

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   heredocs_handler.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 14:52:05 by marvin            #+#    #+#             */
-/*   Updated: 2022/06/19 15:58:55 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 19:12:36 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void heredoc_handler(t_params *params);
+static void	heredoc_handler(t_params *params);
 
-void heredocs_handler(t_list *list, t_params *params)
+void	heredocs_handler(t_list *list, t_params *params)
 {
 	int	i;
 
@@ -45,7 +45,7 @@ static void	heredoc_handler(t_params *params)
 			if (line && !ft_strcmp(args->content, line))
 			{
 				free(line);
-				break;
+				break ;
 			}
 			if (line)
 				write(params->pipes[params->index][1], line, ft_strlen(line));
