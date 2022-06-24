@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:24:05 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/20 19:58:05 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 14:40:54 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,5 @@ int 		is_valid(const char *s, int c);
 int 		ft_includes(const char *s, int c);
 int 		is_valid(const char *s, int c);
 int			is_spicial(char c);
+int			ft_includes_str(char *haystack, char *needle);
 #endif

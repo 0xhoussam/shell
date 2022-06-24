@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:37:39 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/21 16:54:17 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 16:34:09 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,14 @@ void	cd(t_params *params)
 	dir = opendir(dir_name);
 	if (!dir)
 	{
-		error = ft_strjoin(dir_name, ": no such file or directory");
-		print_error_no_exit("cd", error);
+		error = ft_strjoin("cd: ", dir_name);
+		print_error_no_exit(error, USE_ERRNO);
+		return (free(error));
 	}
 	chdir(dir_name);
 	closedir(dir);
 	pwd(params, 0);
+	g_exit_code = 0;
 }
 
 void	open_home_dir(t_params *params)
@@ -53,9 +55,9 @@ void	open_home_dir(t_params *params)
 	dir = opendir(home);
 	if (!dir)
 	{
-		error = ft_strjoin(home, ": no such file or directory");
-		print_error_no_exit("cd", error);
-		return ;
+		error = ft_strjoin("cd: ", home);
+		print_error_no_exit(error, USE_ERRNO);
+		return (free(error));
 	}
 	chdir(home);
 	closedir(dir);
@@ -73,9 +75,9 @@ void	open_prev_dir(t_params *params)
 	dir = opendir(old_pwd);
 	if (!dir)
 	{
-		error = ft_strjoin(old_pwd, ": no such file or directory");
-		print_error_no_exit("cd", error);
-		return ;
+		error = ft_strjoin("cd: ", old_pwd);
+		print_error_no_exit(error, USE_ERRNO);
+		return (free(error));
 	}
 	chdir(old_pwd);
 	closedir(dir);

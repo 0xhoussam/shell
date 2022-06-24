@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:44:43 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/23 17:00:35 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 14:28:28 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_cwd(char *cwd, int std);
 
-void pwd(t_params *params, int print)
+void	pwd(t_params *params, int print)
 {
 	char		*cwd;
 	static char	*old_pwd = NULL;
@@ -35,7 +35,10 @@ void pwd(t_params *params, int print)
 	else {
 		old_pwd = ft_strdup(cwd);
 		if (print)
+		{
 			print_cwd(cwd, write_end);
+			g_exit_code = 0;
+		}
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 21:51:35 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/23 22:43:09 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 15:16:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,11 @@ int	wait_for_processes(int change_exit_code)
 	while (ret > 0)
 	{	
 		if (change_exit_code)
+		{
 			ret = waitpid(-1, &g_exit_code, 0);
+			if (errno != ECHILD)
+				g_exit_code = WEXITSTATUS(g_exit_code);
+		}
 		else
 			ret = waitpid(-1, NULL, 0);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:57:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/21 13:15:48 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 14:29:01 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,5 @@ void unset(t_params *params)
 		args = args->next;
 	}
 	params->env = env_list_to_array(list);
+	g_exit_code = 0;
 }

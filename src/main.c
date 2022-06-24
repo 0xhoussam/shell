@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/23 22:37:50 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 18:27:09 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,10 @@
 #include "tests.h"
 
 int g_exit_code = 0;
-const char *__asan_default_options() { return "detect_leaks=0"; }
+// const char *__asan_default_options() { return "detect_leaks=0"; }
 
 void print_cmds(t_list *cmds);
 void printc(t_list *cmds);
-
-// int main(int ac, char **av, char **env)
-// {
-// 	ac = (int)ac;
-// 	av = (char **)av;
-// 	env = (char **)env;
-// 	t_env_list *lst;
-
-// 	lst = env_array_to_list(env);
-// 	t_list *commands = parser("\"echo\" $USER", lst);
-// 	// t_list *commands = parser("\"cat\" $USER <file >outfile argument && ls
-// -l", lst); 	evaluate_str_and_var(commands, lst);
-// 	// print_cmds(commands);
-// 	printc(commands);
-// 	//executer(commands, env);
-// 	delete_commands(&commands);
-// 	env_list_clean(&lst);
-// 	return (WEXITSTATUS(g_exit_code));
-// }
 
 int main(int ac, char **av, char **env)
 {
@@ -57,7 +38,7 @@ int main(int ac, char **av, char **env)
 		env_ = executer(commands, env_);
 		lst = env_array_to_list(env_);
 	}
-	return (WEXITSTATUS(g_exit_code));
+	return (g_exit_code);
 }
 
 void print_cmds(t_list *cmds)

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:50:05 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/23 15:53:48 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 14:28:45 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	export(t_params *params)
 		value = cmd->args->next->next->content;
 	env_list_insert(&list, key, value);
 	params->env = env_list_to_array(list);
+	g_exit_code = 0;
 }
 
 void	print_env_list(t_env_list *list, int std)

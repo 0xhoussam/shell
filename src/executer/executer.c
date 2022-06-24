@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:49:53 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/23 18:28:36 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 18:33:37 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	**executer(t_list *list, char **env)
 		params.cmd = (t_cmd *)list->content;
 		params.index = i;
 		cmd_name = (char *)params.cmd->cmd_name;
-		if (ft_strnstr(BUILTINS, cmd_name, ft_strlen(BUILTINS)))
+		if (ft_includes_str(BUILTINS, cmd_name))
 			builtins_handler(&params, list, i);
 		else
 			binary_handler(&params, list, i);
@@ -93,7 +93,7 @@ void	and_or_handler(t_params *params)
 	cmd = (t_cmd *)params->cmd;
 	if (cmd->right_delimiter == AND || cmd->right_delimiter == OR)
 	{
-		if (!ft_strnstr(BUILTINS, cmd->cmd_name, ft_strlen(cmd->cmd_name)))
+		if (!ft_includes_str(BUILTINS, cmd->cmd_name))
 		{
 			waitpid(params->pids[params->index], &g_exit_code, 0);
 			wait_for_processes(0);

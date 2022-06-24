@@ -29,7 +29,7 @@
 - [x] update get_command_path.c
 - [ ] free pipes after execution of each process
 - [ ] free params after execution of each process
-- [ ] exit with valid exit value
+- [x] exit with valid exit value
 - [x] replace get_next_line with readline in heredoc handler
 - [x] change inputs priority in redir_handler
 - [x] rewrite builtins
@@ -37,6 +37,8 @@
 - [x] execute heredocs first
 - [x] wait for all prev processes on case of && or ||
 - [x] do not exit from main process
-- [ ] serialize command arguments (might be added in the parser)
+- [x] serialize command arguments (added in the parser phase)
 - [ ] handle echo $?
-- [ ] fix builtins writing to pipes
+- [x] fix builtins writing to pipes
+- [x] cd: handle not directory, invalid folder names
+- [ ] add shell init

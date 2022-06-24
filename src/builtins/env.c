@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 18:01:21 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/23 15:53:42 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/24 14:27:43 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	env(t_params *params)
 	write_end = get_redir_fd(params);
 	if (params->cmd->right_delimiter == PIPE)
 		write_end = params->pipes[params->index + 1][1];
-	g_exit_code = 0;
 	print_env_variables(params->env, write_end);
+	g_exit_code = 0;
 }
 
 static void	print_env_variables(char **env, int std)
