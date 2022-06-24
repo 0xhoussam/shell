@@ -69,7 +69,7 @@ $(LIBFT):
 $(OBJS_DIR)%.o:%.c
 	@echo "$(yellow)Compiling $(reset)$<"
 	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -c $< -o $@ -lreadline
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 re: fclean all
 
