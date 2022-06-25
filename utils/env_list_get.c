@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 06:48:42 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/24 19:14:22 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 20:17:40 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,19 @@ char	*env_list_get(t_env_list *list, const char *key)
 			return (current->value);
 		current = current->next;
 	}
-	return (ft_strdup(""));
+	return (NULL);
 }
 
-char	*get_env_variable(char **env, char *key)
+t_env_list	*env_list_get_node(t_env_list *list, char *key)
 {
-	int	i;
-	int	key_len;
+	t_env_list	*current;
 
-	key_len = ft_strlen(key);
-	i = 0;
-	while (env[i])
+	current = list;
+	while (current)
 	{
-		if (!ft_strncmp(env[i], key, key_len))
-			return (env[i] + key_len + 1);
-		i++;
+		if (!ft_strcmp(current->key, key))
+			return (current);
+		current = current->next;
 	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 22:16:37 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/25 13:19:22 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 20:14:28 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 static void	free_pipes(int **pipes, int size);
 static char	**ft_strdup_tab(char **tab);
 
-void	init_params(t_params *params, char **env, int list_size)
+void	init_params(t_params *params, t_env_list *env, int list_size)
 {
 	params->pipes = init_pipes(list_size + 1);
 	params->pids = malloc(sizeof(int) * (list_size));
 	params->cmds_list_size = list_size;
-	params->env = ft_strdup_tab(env);
+	params->env = env;
 }
 
 void	free_params(t_params *params)

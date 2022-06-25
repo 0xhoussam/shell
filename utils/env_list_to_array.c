@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:20:02 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/24 19:14:26 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 19:33:44 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ char	**env_list_to_array(t_env_list *list)
 	while (list)
 	{
 		helper = ft_strjoin(list->key, "=");
-		env[i] = ft_strjoin(helper, list->value);
+		if (list->value)
+			env[i] = ft_strjoin(helper, list->value);
+		else
+			i--;
 		free(helper);
 		i++;
 		list = list->next;

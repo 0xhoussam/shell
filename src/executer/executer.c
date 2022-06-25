@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:49:53 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/25 15:35:11 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 20:14:01 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	builtins_handler(t_params *params, t_list *list, int id);
 static void	binary_handler(t_params *params, t_list *list, int id);
 static int	and_or_handler(t_params *params);
 
-char	**executer(t_list *list, char **env)
+t_env_list	*executer(t_list *list, t_env_list *env)
 {
 	t_params	params;
 	char		*cmd_name;

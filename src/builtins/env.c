@@ -6,13 +6,13 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 18:01:21 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/25 16:22:54 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 19:46:34 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	print_env_variables(char **env, int std);
+static void	print_env_variables(t_env_list *env, int fd);
 
 void	env(t_params *params)
 {
@@ -25,15 +25,17 @@ void	env(t_params *params)
 	g_exit_code = 0;
 }
 
-static void	print_env_variables(char **env, int std)
+static void	print_env_variables(t_env_list *env, int fd)
 {
-	int		i;
-
-	i = 0;
-	while (env[i])
+	while (env)
 	{
-		write(std, env[i], ft_strlen(env[i]));
-		write(std, "\n", 1);
-		i++;
+		if (env->value)
+		{
+			write(fd, env->key, ft_strlen(env->key));
+			write(fd, "=", 1);
+			write(fd, env->value, ft_strlen(env->value));
+			write(fd, "\n", 1);
+		}
+		env = env->next;
 	}
 }

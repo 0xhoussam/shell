@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:53:19 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/24 19:12:33 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 19:50:17 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,9 @@ char	*get_cmd_path(t_params *params)
 	char	*command_path;
 	char	**paths;
 	char	*command;
-	char	**env;
 
 	command = (char *) params->cmd->cmd_name;
-	env = params->env;
-	path = get_env_variable(params->env, "PATH");
+	path = env_list_get(params->env, "PATH");
 	if (path == NULL)
 		return (NULL);
 	paths = ft_split(path, ':');

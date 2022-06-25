@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/25 14:16:13 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 20:15:49 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,16 @@ int main(int ac, char **av, char **env)
 	ac = (int)ac;
 	av = (char **)av;
 	env = (char **)env;
-	char		**env_;
-	t_env_list	*lst;
+	t_env_list	*env_list;
 
-	lst = env_array_to_list(env);
-	env_ = env;
+	env_list = env_array_to_list(env);
 	while (1)
 	{
 		char *line = readline(PROMPT);
-		t_list *commands = parser(line, lst);
-		evaluate_str_and_var(commands, lst);
+		t_list *commands = parser(line, env_list);
+		evaluate_str_and_var(commands, env_list);
 		print_cmds(commands);
-		env_ = executer(commands, env_);
-		env_list_clean(&lst);
+		env_list = executer(commands, env_list);
 		free(line);
 	}
 	return (g_exit_code);

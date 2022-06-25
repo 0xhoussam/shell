@@ -6,14 +6,14 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 10:59:50 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/24 19:15:23 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 21:03:36 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	replacing_underscore(char **strs);
-static void	replacing_underscore2(char **strs);
+// static void	replacing_underscore(char **strs);
+// static void	replacing_underscore2(char **strs);
 
 void	sort_strs(char **strs)
 {

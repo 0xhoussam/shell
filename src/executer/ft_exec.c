@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 13:13:49 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/25 13:19:14 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 19:48:57 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_exec(t_params *params)
 	args = join_args(params->cmd->args);
 	if (!cmd)
 		print_error(params->cmd->cmd_name, CMD_NOT_FOUND);
-	if (execve(cmd, args, params->env) < 0)
+	if (execve(cmd, args, env_list_to_array(params->env)) < 0)
 	{
 		free_2d_array(args);
 		if (errno != ENOEXEC)

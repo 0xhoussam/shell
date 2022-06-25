@@ -43,3 +43,7 @@
 - [x] cd: handle not directory, invalid folder names
 - [ ] add shell init
 - [ ] update export sort
+- [ ] split export argument
+- [ ] handle export existing variable
+- [ ] export sort list before printing
+

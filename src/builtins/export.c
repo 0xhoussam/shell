@@ -6,55 +6,44 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:50:05 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/25 16:23:03 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 21:02:12 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_env_list(t_env_list *list, int std);
+static void	print_env_list(t_env_list *list, int fd);
 
 void	export(t_params *params)
 {
-	t_env_list	*list;
 	t_cmd		*cmd;
-	char		*key;
-	char		*value;
+	char		**key_value;
 	int			fd;
 
 	cmd = params->cmd;
 	fd = get_redir_fd(params);
 	if (cmd->right_delimiter == PIPE)
 		fd = params->pipes[params->index + 1][1];
-	list = env_array_to_list(params->env);
 	if (ft_lstsize(cmd->args) <= 1)
-		return (print_env_list(list, fd));
-	key = NULL;
-	value = NULL;
-	if (cmd->args->next)
-		key = cmd->args->next->content;
-	if (cmd->args->next && cmd->args->next->next)
-		value = cmd->args->next->next->content;
-	env_list_insert(&list, key, value);
-	free_2d_array(params->env);
-	params->env = env_list_to_array(list);
-	env_list_clean(&list);
+		return (print_env_list(params->env, fd));
+	key_value = ft_split(cmd->args->next->content, '=');
+	env_list_insert(&params->env, key_value[0], key_value[1]);
+	free(key_value);
 	g_exit_code = 0;
 }
 
-void	print_env_list(t_env_list *list, int std)
+static void	print_env_list(t_env_list *env, int fd)
 {
-	char	**env;
-	int		i;
-
-	env = env_list_to_array(list);
-	sort_strs(env);
-	i = 0;
-	while (env[i])
+	// sort list first
+	while (env)
 	{
-		write(std, env[i], ft_strlen(env[i]));
-		write(std, "\n", 1);
-		i++;
+		write(fd, env->key, ft_strlen(env->key));
+		write(fd, "=", 1);
+		if (!env->value)
+			write(fd, "", 0);
+		else
+			write(fd, env->value, ft_strlen(env->value));
+		write(fd, "\n", 1);
+		env = env->next;
 	}
-	free_2d_array(env);
 }

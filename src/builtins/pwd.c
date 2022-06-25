@@ -6,13 +6,13 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:44:43 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/25 16:23:10 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 21:03:12 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_cwd(char *cwd, int std);
+static void	print_cwd(char *cwd, int std);
 
 void	pwd(t_params *params, int print)
 {
@@ -41,7 +41,7 @@ void	pwd(t_params *params, int print)
 	free(cwd);
 }
 
-void	print_cwd(char *cwd, int std)
+static void	print_cwd(char *cwd, int std)
 {
 	write(std, cwd, ft_strlen(cwd));
 	write(std, "\n", 1);

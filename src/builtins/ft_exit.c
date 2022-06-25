@@ -6,13 +6,13 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 18:02:15 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/24 19:12:56 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 21:02:59 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	is_number(char *str);
+static int	is_number(char *str);
 
 void	ft_exit(t_params *params)
 {
@@ -37,7 +37,7 @@ void	ft_exit(t_params *params)
 	exit(exit_code);
 }
 
-int	is_number(char *str)
+static int	is_number(char *str)
 {
 	int		i;
 

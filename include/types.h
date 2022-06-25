@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 17:38:54 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/24 19:13:29 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 19:52:51 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,20 @@ typedef struct s_cmd {
 
 }	t_cmd;
 
-typedef struct s_params {
-	t_cmd	*cmd;
-	char	**env;
-	int		**pipes;
-	int		*pids;
-	int		cmds_list_size;
-	int		index;
-}	t_params;
-
-typedef struct s_env_list {
-	char				*key;
-	char				*value;
-	struct s_env_list	*next;
+typedef struct s_env_list
+{
+	char *key;
+	char *value;
+	struct s_env_list *next;
 }	t_env_list;
+
+typedef struct s_params {
+	t_cmd		*cmd;
+	t_env_list	*env;
+	int			**pipes;
+	int			*pids;
+	int			cmds_list_size;
+	int			index;
+}	t_params;
 
 #endif
