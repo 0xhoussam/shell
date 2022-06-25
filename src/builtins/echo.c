@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:00:38 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/25 16:26:28 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 21:39:17 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	echo(t_params *params)
 		free_2d_array(str);
 		return ;
 	}
+	str = join_args(args);
 	print_2d_array_to_fd(str, fd);
 	write(fd, "\n", fd);
 	free_2d_array(str);
