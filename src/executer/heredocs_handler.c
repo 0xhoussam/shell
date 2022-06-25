@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 14:52:05 by marvin            #+#    #+#             */
-/*   Updated: 2022/06/24 19:12:36 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 21:28:38 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 static void	heredoc_handler(t_params *params);
 
-void	heredocs_handler(t_list *list, t_params *params)
+void	heredocs_handler(t_list *commands, t_params *params)
 {
 	int	i;
 
 	i = 0;
 	while (i < params->cmds_list_size)
 	{
-		params->cmd = (t_cmd *)list->content;
+		params->cmd = (t_cmd *)commands->content;
 		params->index = i;
 		heredoc_handler(params);
-		list = list->next;
+		commands = commands->next;
 		i++;
 	}
 }

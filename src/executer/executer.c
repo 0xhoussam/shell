@@ -6,37 +6,37 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:49:53 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/25 20:14:01 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 21:27:55 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	builtins_handler(t_params *params, t_list *list, int id);
-static void	binary_handler(t_params *params, t_list *list, int id);
+static void	builtins_handler(t_params *params, int id);
+static void	binary_handler(t_params *params, int id);
 static int	and_or_handler(t_params *params);
 
-t_env_list	*executer(t_list *list, t_env_list *env)
+t_env_list	*executer(t_list *commands, t_env_list *env)
 {
 	t_params	params;
 	char		*cmd_name;
 	int			i;
 
-	init_params(&params, env, ft_lstsize(list));
-	heredocs_handler(list, &params);
+	init_params(&params, env, ft_lstsize(commands));
+	heredocs_handler(commands, &params);
 	i = 0;
 	while (i < params.cmds_list_size)
 	{
-		params.cmd = (t_cmd *)list->content;
+		params.cmd = (t_cmd *)commands->content;
 		params.index = i;
 		cmd_name = (char *)params.cmd->cmd_name;
 		if (ft_includes_str(BUILTINS, cmd_name))
-			builtins_handler(&params, list, i);
+			builtins_handler(&params, i);
 		else
-			binary_handler(&params, list, i);
+			binary_handler(&params, i);
 		if (!and_or_handler(&params))
 			break ;
-		list = list->next;
+		commands = commands->next;
 		i++;
 	}
 	close_pipes(&params);
@@ -45,7 +45,7 @@ t_env_list	*executer(t_list *list, t_env_list *env)
 	return (params.env);
 }
 
-static void	builtins_handler(t_params *params, t_list *list, int id)
+static void	builtins_handler(t_params *params, int id)
 {
 	char	*cmd_name;
 
@@ -66,7 +66,7 @@ static void	builtins_handler(t_params *params, t_list *list, int id)
 		ft_exit(params);
 }
 
-static void	binary_handler(t_params *params, t_list *list, int id)
+static void	binary_handler(t_params *params, int id)
 {
 	params->pids[id] = fork();
 	if (params->pids[id] < 0)

@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/25 20:15:49 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 21:44:05 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,26 @@
 int	g_exit_code = 0;
 // const char *__asan_default_options() { return "detect_leaks=0"; }
 
-void print_cmds(t_list *cmds);
-void printc(t_list *cmds);
+void	print_cmds(t_list *cmds);
+void	printc(t_list *cmds);
 
-int main(int ac, char **av, char **env)
+int	main(int ac, char **av, char **env)
 {
-	ac = (int)ac;
-	av = (char **)av;
-	env = (char **)env;
 	t_env_list	*env_list;
+	char		*line;
+	t_list		*commands;
 
-	env_list = env_array_to_list(env);
 	while (1)
 	{
-		char *line = readline(PROMPT);
-		t_list *commands = parser(line, env_list);
+		env_list = env_array_to_list(env);
+		line = readline(PROMPT);
+		commands = parser(line, env_list);
 		evaluate_str_and_var(commands, env_list);
 		print_cmds(commands);
 		env_list = executer(commands, env_list);
 		free(line);
+		env_list_clean(&env_list);
+		delete_commands(&commands);
 	}
 	return (g_exit_code);
 }
