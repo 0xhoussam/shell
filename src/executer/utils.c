@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 21:51:35 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/24 19:22:00 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 21:47:46 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	**join_args(t_list *list)
 	i = 0;
 	while (list)
 	{
-		args[i] = (char *)list->content;
+		args[i] = ft_strdup(list->content);
 		list = list->next;
 		i++;
 	}
