@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:00:38 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/25 16:25:58 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 16:26:28 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,21 @@ void	echo(t_params *params)
 	char	**str;
 	t_cmd	*cmd;
 	t_list	*args;
-	int		write_end;
+	int		fd;
 
 	cmd = params->cmd;
-	write_end = get_redir_fd(params);
+	fd = get_redir_fd(params);
 	args = cmd->args->next;
 	if (args && !ft_strcmp(args->content, "-n"))
 	{
 		args = args->next;
 		str = join_args(args);
-		print_2d_array_to_fd(str, write_end);
+		print_2d_array_to_fd(str, fd);
 		free_2d_array(str);
 		return ;
 	}
-	print_2d_array_to_fd(str, write_end);
-	write(write_end, "\n", write_end);
+	print_2d_array_to_fd(str, fd);
+	write(fd, "\n", fd);
 	free_2d_array(str);
 	g_exit_code = 0;
 }

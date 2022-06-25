@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:50:05 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/25 13:19:56 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 16:23:03 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ void	export(t_params *params)
 	t_cmd		*cmd;
 	char		*key;
 	char		*value;
-	int			write_end;
+	int			fd;
 
 	cmd = params->cmd;
-	write_end = get_redir_fd(params);
+	fd = get_redir_fd(params);
 	if (cmd->right_delimiter == PIPE)
-		write_end = params->pipes[params->index + 1][1];
+		fd = params->pipes[params->index + 1][1];
 	list = env_array_to_list(params->env);
 	if (ft_lstsize(cmd->args) <= 1)
-		return (print_env_list(list, write_end));
+		return (print_env_list(list, fd));
 	key = NULL;
 	value = NULL;
 	if (cmd->args->next)

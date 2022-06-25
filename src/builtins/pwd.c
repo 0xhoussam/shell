@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:44:43 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/24 20:48:07 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 16:23:10 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	pwd(t_params *params, int print)
 {
 	char		*cwd;
 	static char	*old_pwd = NULL;
-	int			write_end;
+	int			fd;
 
-	write_end = get_redir_fd(params);
+	fd = get_redir_fd(params);
 	cwd = getcwd(NULL, 0);
 	if (!cwd && print)
 	{
@@ -30,11 +30,11 @@ void	pwd(t_params *params, int print)
 			return (free(cwd));
 		}
 		else
-			print_cwd(old_pwd, write_end);
+			print_cwd(old_pwd, fd);
 	}
 	else if (cwd && print)
 	{
-		print_cwd(cwd, write_end);
+		print_cwd(cwd, fd);
 		g_exit_code = 0;
 	}
 	old_pwd = ft_strdup(cwd);
