@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:49:53 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/25 13:19:08 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 15:35:11 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	builtins_handler(t_params *params, t_list *list, int id);
 static void	binary_handler(t_params *params, t_list *list, int id);
-static void	and_or_handler(t_params *params);
+static int	and_or_handler(t_params *params);
 
 char	**executer(t_list *list, char **env)
 {
@@ -34,7 +34,8 @@ char	**executer(t_list *list, char **env)
 			builtins_handler(&params, list, i);
 		else
 			binary_handler(&params, list, i);
-		and_or_handler(&params);
+		if (!and_or_handler(&params))
+			break ;
 		list = list->next;
 		i++;
 	}
@@ -78,7 +79,7 @@ static void	binary_handler(t_params *params, t_list *list, int id)
 	}
 }
 
-static void	and_or_handler(t_params *params)
+static int	and_or_handler(t_params *params)
 {	
 	t_cmd	*cmd;
 
@@ -88,17 +89,13 @@ static void	and_or_handler(t_params *params)
 		if (!ft_includes_str(BUILTINS, cmd->cmd_name))
 		{
 			waitpid(params->pids[params->index], &g_exit_code, 0);
-			wait_for_processes(0);
+			g_exit_code = WEXITSTATUS(g_exit_code);
 		}
-		if (WEXITSTATUS(g_exit_code) != 0 && cmd->right_delimiter == AND)
-		{
-			wait_for_processes(0);
-			exit(WEXITSTATUS(g_exit_code));
-		}
-		if (WEXITSTATUS(g_exit_code) == 0 && cmd->right_delimiter == OR)
-		{
-			wait_for_processes(0);
-			exit(EXIT_SUCCESS);
-		}
+		wait_for_processes(0);
+		if (g_exit_code != 0 && cmd->right_delimiter == AND)
+			return (0);
+		if (g_exit_code == 0 && cmd->right_delimiter == OR)
+			return (0);
 	}
+	return (1);
 }
