@@ -6,16 +6,15 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:49:53 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/24 19:12:26 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:19:08 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	init_params(t_params *params, char **env, int list_size);
-void	builtins_handler(t_params *params, t_list *list, int id);
-void	binary_handler(t_params *params, t_list *list, int id);
-void	and_or_handler(t_params *params);
+static void	builtins_handler(t_params *params, t_list *list, int id);
+static void	binary_handler(t_params *params, t_list *list, int id);
+static void	and_or_handler(t_params *params);
 
 char	**executer(t_list *list, char **env)
 {
@@ -41,18 +40,11 @@ char	**executer(t_list *list, char **env)
 	}
 	close_pipes(&params);
 	wait_for_processes(1);
+	free_params(&params);
 	return (params.env);
 }
 
-void	init_params(t_params *params, char **env, int list_size)
-{
-	params->pipes = init_pipes(list_size + 1);
-	params->pids = malloc(sizeof(int) * (list_size));
-	params->cmds_list_size = list_size;
-	params->env = env;
-}
-
-void	builtins_handler(t_params *params, t_list *list, int id)
+static void	builtins_handler(t_params *params, t_list *list, int id)
 {
 	char	*cmd_name;
 
@@ -73,7 +65,7 @@ void	builtins_handler(t_params *params, t_list *list, int id)
 		ft_exit(params);
 }
 
-void	binary_handler(t_params *params, t_list *list, int id)
+static void	binary_handler(t_params *params, t_list *list, int id)
 {
 	params->pids[id] = fork();
 	if (params->pids[id] < 0)
@@ -86,7 +78,7 @@ void	binary_handler(t_params *params, t_list *list, int id)
 	}
 }
 
-void	and_or_handler(t_params *params)
+static void	and_or_handler(t_params *params)
 {	
 	t_cmd	*cmd;
 

@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:33:41 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/24 19:14:01 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:41:44 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ t_env_list	*add_node(t_env_list **head, char *str)
 {
 	t_env_list	*new;
 	char		**key_value;
+	int			i;
 
 	new = new_node();
 	key_value = ft_split(str, '=');
@@ -51,6 +52,9 @@ t_env_list	*add_node(t_env_list **head, char *str)
 		new->value = ft_strdup("");
 	else
 		new->value = key_value[1];
+	i = 2;
+	while (key_value[1] && key_value[i])
+		free(key_value[i++]);
 	free(key_value);
 	new->next = *head;
 	*head = new;

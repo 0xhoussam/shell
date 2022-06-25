@@ -27,8 +27,8 @@
 - [x] handle multiple heredoc
 - [x] handle exit value of a process
 - [x] update get_command_path.c
-- [ ] free pipes after execution of each process
-- [ ] free params after execution of each process
+- [x] free pipes after execution of each process
+- [x] free params after execution of each process
 - [x] exit with valid exit value
 - [x] replace get_next_line with readline in heredoc handler
 - [x] change inputs priority in redir_handler
@@ -42,3 +42,4 @@
 - [x] fix builtins writing to pipes
 - [x] cd: handle not directory, invalid folder names
 - [ ] add shell init
+- [ ] update export sort

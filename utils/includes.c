@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 11:11:54 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/24 19:16:20 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:38:11 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ int	ft_includes_str(char *haystack, char *needle)
 	while (strs[i])
 	{
 		if (!ft_strcmp(strs[i], needle))
+		{
+			free_2d_array(strs);
 			return (1);
+		}
 		i++;
 	}
 	free_2d_array(strs);

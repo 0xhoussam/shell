@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 14:02:11 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/24 19:13:15 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:19:50 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	print_error(const char *cmd, char *error);
 void	print_error_no_exit(const char *cmd, char *error);
 int		**init_pipes(int size);
 char	**executer(t_list *list, char **env);
+void	init_params(t_params *params, char **env, int list_size);
+void	free_params(t_params *params);
 
 // utils
 void	close_pipe(int *pipe);

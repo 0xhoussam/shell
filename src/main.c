@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/24 19:17:18 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 14:16:13 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ int main(int ac, char **av, char **env)
 		t_list *commands = parser(line, lst);
 		evaluate_str_and_var(commands, lst);
 		print_cmds(commands);
-		env_ = executer(commands, env_);	
-		lst = env_array_to_list(env_);
+		env_ = executer(commands, env_);
+		env_list_clean(&lst);
+		free(line);
 	}
 	return (g_exit_code);
 }

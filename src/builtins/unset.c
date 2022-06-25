@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:57:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/24 19:13:01 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/24 20:52:55 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	unset(t_params *params)
 		env_list_delete(&list, key);
 		args = args->next;
 	}
+	free_2d_array(params->env);
 	params->env = env_list_to_array(list);
+	env_list_clean(&list);
 	g_exit_code = 0;
 }

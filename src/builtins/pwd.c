@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:44:43 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/24 19:13:00 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/24 20:48:07 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,20 @@ void	pwd(t_params *params, int print)
 	if (!cwd && print)
 	{
 		if (!old_pwd)
-			return (print_error_no_exit("pwd", "no such file or directory"));
+		{
+			print_error_no_exit("pwd", "no such file or directory");
+			return (free(cwd));
+		}
 		else
 			print_cwd(old_pwd, write_end);
 	}
-	else
+	else if (cwd && print)
 	{
-		old_pwd = ft_strdup(cwd);
-		if (print)
-		{
-			print_cwd(cwd, write_end);
-			g_exit_code = 0;
-		}
+		print_cwd(cwd, write_end);
+		g_exit_code = 0;
 	}
+	old_pwd = ft_strdup(cwd);
+	free(cwd);
 }
 
 void	print_cwd(char *cwd, int std)

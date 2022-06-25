@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:50:05 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/24 19:12:54 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:19:56 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ void	export(t_params *params)
 	if (cmd->args->next && cmd->args->next->next)
 		value = cmd->args->next->next->content;
 	env_list_insert(&list, key, value);
+	free_2d_array(params->env);
 	params->env = env_list_to_array(list);
+	env_list_clean(&list);
 	g_exit_code = 0;
 }
 
@@ -54,4 +56,5 @@ void	print_env_list(t_env_list *list, int std)
 		write(std, "\n", 1);
 		i++;
 	}
+	free_2d_array(env);
 }

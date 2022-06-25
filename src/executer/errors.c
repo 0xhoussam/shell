@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:26:15 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/24 19:12:28 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:37:03 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ char	*generate_error_string(const char *cmd, char *error)
 		tmp = ft_strjoin(error_str, ": ");
 		free(error_str);
 		error_str = ft_strjoin(tmp, error);
+		free(tmp);
 	}
 	return (error_str);
 }
