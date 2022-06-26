@@ -46,8 +46,9 @@
 - [x] fix builtins writing to pipes
 - [x] cd: handle not directory, invalid folder names
 - [ ] add shell init
-- [ ] update export sort
-- [ ] split export argument
-- [ ] handle export existing variable
-- [ ] export sort list before printing
+- [x] update export sort
+- [x] split export argument
+- [x] handle export existing variable
+- [x] export sort list before printing
+- [x] fix pwd old_pwd leak
 
