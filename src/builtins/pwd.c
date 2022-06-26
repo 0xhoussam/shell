@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:44:43 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/25 21:03:12 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/26 21:35:32 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#define MAX_BUFF_SIZE 4096
 
 static void	print_cwd(char *cwd, int std);
 
 void	pwd(t_params *params, int print)
 {
 	char		*cwd;
-	static char	*old_pwd = NULL;
+	static char	old_pwd[MAX_BUFF_SIZE];
 	int			fd;
 
 	fd = get_redir_fd(params);
@@ -31,13 +32,14 @@ void	pwd(t_params *params, int print)
 		}
 		else
 			print_cwd(old_pwd, fd);
+		return ;
 	}
 	else if (cwd && print)
 	{
 		print_cwd(cwd, fd);
 		g_exit_code = 0;
 	}
-	old_pwd = ft_strdup(cwd);
+	ft_strlcpy(old_pwd, cwd, MAX_BUFF_SIZE);
 	free(cwd);
 }
 
