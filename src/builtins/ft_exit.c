@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 18:02:15 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/25 21:02:59 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/26 19:04:38 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ void	ft_exit(t_params *params)
 		if (!is_number(cmd->args->next->content))
 		{
 			error = ft_strjoin("exit: ", cmd->args->next->content);
-			g_exit_code = 2;
 			print_error(error, "numeric argument required");
+			g_exit_code = 2;
 		}
-		exit_code = ft_atoi(cmd->args->next->content);
+		else
+			exit_code = ft_atoi(cmd->args->next->content);
 	}
 	exit(exit_code);
 }
