@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:00:38 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/25 21:39:17 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/26 15:49:34 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,14 @@ static void	print_2d_array_to_fd(char **str, int std)
 	i = 0;
 	while (str[i])
 	{
-		if (!ft_strncmp(str[i], "eg", 3))
-			ft_putnbr_fd(g_exit_code, std);
+		if (!ft_strcmp(str[i], "$"))
+			write(std, str[i], ft_strlen(str[i]));
+		else if (str[i][0] == '$')
+		{
+			if (str[i][1] == '?')
+				ft_putnbr_fd(g_exit_code, std);
+			write(std, str[i] + 2, ft_strlen(str[i]) - 2);
+		}
 		else
 			write(std, str[i], ft_strlen(str[i]));
 		i++;
