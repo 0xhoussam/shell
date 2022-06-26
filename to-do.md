@@ -20,7 +20,11 @@
 - [x] remove ''
 - [x] remove ""
 - [x] $gg -> input splited. "$gg" input is not splited
-- [ ] handle the global buffer overflow
+- [x] handle the global buffer overflow
+- [ ] handle input errors
+- [ ] handle redireciton errors
+- [ ] handle quotes error
+- [ ] handle pipe errors
 
 ## Execution
 

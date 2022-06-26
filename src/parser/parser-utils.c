@@ -31,5 +31,5 @@ char *extract_word(const char *s, size_t *k, int start)
         *k = j + 1;
     else
         *k = j;
-    return (ft_substr(s, i, j - i));
+    return (ft_substr(s, i, j - i + 1));
 }
