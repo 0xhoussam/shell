@@ -3,106 +3,107 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/26 08:49:02 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/26 15:37:49 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int  g_exit_code = 0;
+int g_exit_code = 0;
 // const char *__asan_default_options() { return "detect_leaks=0"; }
 
-void print_cmds(t_list *cmds);
-void printc(t_list *cmds);
+void	print_cmds(t_list *cmds);
+void	printc(t_list *cmds);
 
-int  main(int ac, char **av, char **env)
+int	main(int ac, char **av, char **env)
 {
-    t_env_list *env_list;
-    char       *line;
-    t_list     *commands;
+	t_env_list	*env_list;
+	char		*line;
+	t_list		*commands;
 
-    while (1)
-    {
-        env_list = env_array_to_list(env);
-        line = readline(PROMPT);
-        if (check_pipe(line) || check_redirection(line) || check_quotes(line))
-        {
-            free(line);
-            continue;
-        }
-        commands = parser(line, env_list);
-        evaluate_str_and_var(commands, env_list);
-        print_cmds(commands);
-        env_list = executer(commands, env_list);
-        free(line);
-        env_list_clean(&env_list);
-        delete_commands(&commands);
-    }
-    return (g_exit_code);
+	sort_strs(env);
+	env_list = env_array_to_list(env);
+	while (1)
+	{
+		line = readline(PROMPT);
+		if (check_pipe(line) || check_redirection(line) || check_quotes(line))
+		{
+			free(line);
+			continue ;
+		}
+		commands = parser(line, env_list);
+		evaluate_str_and_var(commands, env_list);
+		print_cmds(commands);
+		env_list = executer(commands, env_list);
+		free(line);
+		delete_commands(&commands);
+	}
+	env_list_clean(&env_list);
+	return (g_exit_code);
 }
 void print_cmds(t_list *cmds)
 {
-    while (cmds)
-    {
-        t_cmd *cmd = (t_cmd *)cmds->content;
-        printf("'%s' ", (char *)cmd->cmd_name);
-        t_list *args = cmd->args;
-        t_list *heredocs = cmd->heredoc_del;
-        while (heredocs)
-        {
-            printf("<<'%s' ", (char *)heredocs->content);
-            heredocs = heredocs->next;
-        }
-        if (cmd->in)
-            printf("<'%s' ", (char *)cmd->in);
-        if (cmd->out)
-            printf(">'%s' ", (char *)cmd->out);
-        while (args->next)
-        {
+	while (cmds)
+	{
+		t_cmd *cmd = (t_cmd *)cmds->content;
+		printf("'%s' ", (char *)cmd->cmd_name);
+		t_list *args = cmd->args;
+		t_list *heredocs = cmd->heredoc_del;
+		while (heredocs)
+		{
+			printf("<<'%s' ", (char *)heredocs->content);
+			heredocs = heredocs->next;
+		}
+		if (cmd->in)
+			printf("<'%s' ", (char *)cmd->in);
+		if (cmd->out)
+			printf(">'%s' ", (char *)cmd->out);
+		while (args->next)
+		{
 
-            printf("'%s' ", (char *)args->next->content);
-            args = args->next;
-        }
-        if (cmds->next)
-        {
-            if (cmd->right_delimiter == PIPE)
-                printf(" | ");
-            else if (cmd->right_delimiter == AND)
-                printf(" && ");
-            else if (cmd->right_delimiter == OR)
-                printf(" || ");
-        }
-        cmds = cmds->next;
-    }
-    printf("\n");
+			printf("'%s' ", (char *)args->next->content);
+			args = args->next;
+		}
+		if (cmds->next)
+		{
+			if (cmd->right_delimiter == PIPE)
+				printf(" | ");
+			else if (cmd->right_delimiter == AND)
+				printf(" && ");
+			else if (cmd->right_delimiter == OR)
+				printf(" || ");
+		}
+		cmds = cmds->next;
+	}
+	printf("\n");
 }
 
 void printc(t_list *cmds)
 {
-    char *a[] = {"NONE", "AND", "OR", "SEMICOLON", "PIPE"};
-    char *b[] = {"NIL", "SINGLE", "DOUBLE", "HEREDOC"};
-    for (t_list *node = cmds; node; node = node->next)
-    {
-        printf("\n------------------------------------------------\n");
-        t_cmd *cmd = node->content;
-        printf("cmd_name: %s\n", cmd->cmd_name);
-        printf("args: ");
-        for (t_list *arg = cmd->args; arg; arg = arg->next)
-        {
-            printf("'%s' ", (char *)arg->content);
-        }
-        printf("\n");
-        printf("in: %s type: %s\n", cmd->in, b[cmd->in_redir]);
-        printf("out: %s type: %s\n", cmd->out, b[cmd->out_redir]);
-        printf("left: %s\n", a[cmd->left_delimiter]);
-        printf("right: %s\n", a[cmd->right_delimiter]);
-        for (t_list *hered = cmd->heredoc_del; hered; hered = hered->next)
-        {
-            printf("'%s' ", (char *)hered->content);
-        }
-        printf("\n\n");
-    }
+	char *a[] = {"NONE", "AND", "OR", "SEMICOLON", "PIPE"};
+	char *b[] = {"NIL", "SINGLE", "DOUBLE", "HEREDOC"};
+	for (t_list *node = cmds; node; node = node->next)
+	{
+		printf("\n------------------------------------------------\n");
+		t_cmd *cmd = node->content;
+		printf("cmd_name: %s\n", cmd->cmd_name);
+		printf("args: ");
+		for (t_list *arg = cmd->args; arg; arg = arg->next)
+		{
+			printf("'%s' ", (char *)arg->content);
+		}
+		printf("\n");
+		printf("in: %s type: %s\n", cmd->in, b[cmd->in_redir]);
+		printf("out: %s type: %s\n", cmd->out, b[cmd->out_redir]);
+		printf("left: %s\n", a[cmd->left_delimiter]);
+		printf("right: %s\n", a[cmd->right_delimiter]);
+		for (t_list *hered = cmd->heredoc_del; hered; hered = hered->next)
+		{
+			printf("'%s' ", (char *)hered->content);
+		}
+		printf("\n\n");
+	}
 }
