@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/26 06:48:31 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/26 08:49:02 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ int  main(int ac, char **av, char **env)
     {
         env_list = env_array_to_list(env);
         line = readline(PROMPT);
+        if (check_pipe(line) || check_redirection(line) || check_quotes(line))
+        {
+            free(line);
+            continue;
+        }
         commands = parser(line, env_list);
         evaluate_str_and_var(commands, env_list);
         print_cmds(commands);

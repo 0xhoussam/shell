@@ -6,7 +6,7 @@
 /*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:11:15 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/23 16:35:55 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/26 09:06:55 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int check_quotes(char *s)
     }
     if (j % 2 != 0 || k % 2 != 0)
     {
-        perror("unclosed quotes");
+        log_error("unclosed quotes\n");
         return (1);
     }
     return (0);

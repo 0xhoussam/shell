@@ -6,7 +6,7 @@
 /*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 10:05:34 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/24 15:30:54 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/26 09:07:00 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int check_redirection(char *s)
                 i++;
             if (!ft_isalpha(s[i]))
             {
-                perror("error: unexpected token");
+                log_error("error: unexpected token\n");
                 return (1);
             }
         }

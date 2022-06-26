@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 12:14:08 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/25 15:28:30 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/26 09:23:51 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void    recursive_parser(t_list **cmds, t_cmd *cmd, char *s, t_env_list *lst);
 int     get_cmd_name(t_list **cmds, t_cmd *cmd, char *s, t_env_list *lst);
 int     get_input_redir(t_list **cmds, t_cmd *cmd, char *s, t_env_list *env);
 int     get_output_redir(t_list **cmds, t_cmd *cmd, char *s, t_env_list *env);
-size_t  get_args(t_cmd *cmd, const char *s);
+int     get_args(t_list **cmds, t_cmd *cmd, char *s, t_env_list *lst);
+int     expand_asterisk(t_list **cmds, t_cmd *cmd, char *s, t_env_list *lst);
 size_t  parse_pipe(t_list **cmds, t_cmd **cmd, const char *s);
 void    init_cmd(t_cmd *cmd);
 size_t  parse_semicolon(t_list **cmds, t_cmd **cmd, const char *s);
@@ -33,7 +34,6 @@ size_t  parse_or(t_list **cmds, t_cmd **cmd, const char *s);
 int     is_inside_single_quotes(char *s, size_t idx);
 void    expand(char **str, t_env_list *env);
 char   *_expand(const char *s, t_env_list *env);
-size_t  expand_asterisk(t_cmd *cmd, const char *s);
 void    evaluate_str_and_var(t_list *cmds, t_env_list *env);
 char   *remove_last_and_first(char *s);
 void    remove_single_quotes(char **s);
@@ -43,4 +43,5 @@ void    delete_commands(t_list **cmds);
 int     check_quotes(char *s);
 int     check_pipe(char *s);
 int     check_redirection(char *s);
+void    log_error(const char *msg);
 #endif
