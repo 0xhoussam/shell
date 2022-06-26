@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:00:38 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/26 15:49:34 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/26 19:13:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	echo(t_params *params)
 	}
 	str = join_args(args);
 	print_2d_array_to_fd(str, fd);
-	write(fd, "\n", fd);
+	write(fd, "\n", 1);
 	free_2d_array(str);
 	g_exit_code = 0;
 }
