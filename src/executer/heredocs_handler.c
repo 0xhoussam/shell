@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 14:52:05 by marvin            #+#    #+#             */
-/*   Updated: 2022/06/25 21:28:38 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/27 15:47:35 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ static void	heredoc_handler(t_params *params)
 				break ;
 			}
 			if (line)
+			{
 				write(params->pipes[params->index][1], line, ft_strlen(line));
+				write(params->pipes[params->index][1], "\n", 1);
+			}
 			free(line);
 		}
 		args = args->next;
