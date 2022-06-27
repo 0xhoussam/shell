@@ -22,8 +22,8 @@ PARSER_INS = parser.c get-cmd-name.c get-input-redir.c get-output-redir.c \
 			errors/pipe.c errors/quotes.c errors/redirection.c errors/print-error.c
 
 EXECUTER_IN_DIR = $(SRC_DIR)executer/
-EXECUTER_INS =	errors.c executer.c get_command_path.c utils.c params.c \
-				pipes.c redir_handler.c ft_exec.c heredocs_handler.c
+EXECUTER_INS =	errors.c executer.c get_cmd_path.c utils.c params.c \
+				pipes.c redir_handler.c ft_exec.c heredocs_handler.c and_or_handler.c
 
 PROMPT_IN_DIR = $(SRC_DIR)prompt/
 PROMPT_INS = prompt.c

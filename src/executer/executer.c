@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:49:53 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/27 15:35:42 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/27 17:05:35 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	builtins_handler(t_params *params, int id);
 static void	binary_handler(t_params *params, int id);
-static int	and_or_handler(t_params *params);
 
 void	executer(t_params *params, t_list *cmds)
 {
@@ -75,25 +74,4 @@ static void	binary_handler(t_params *params, int id)
 		ft_exec(params);
 		exit(0);
 	}
-}
-
-static int	and_or_handler(t_params *params)
-{	
-	t_cmd	*cmd;
-
-	cmd = (t_cmd *)params->cmd;
-	if (cmd->right_delimiter == AND || cmd->right_delimiter == OR)
-	{
-		if (!ft_includes_str(BUILTINS, cmd->cmd_name))
-		{
-			waitpid(params->pids[params->index], &g_exit_code, 0);
-			g_exit_code = WEXITSTATUS(g_exit_code);
-		}
-		wait_for_processes(0);
-		if (g_exit_code != 0 && cmd->right_delimiter == AND)
-			return (0);
-		if (g_exit_code == 0 && cmd->right_delimiter == OR)
-			return (0);
-	}
-	return (1);
 }
