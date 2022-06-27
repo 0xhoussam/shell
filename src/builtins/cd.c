@@ -6,14 +6,17 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:37:39 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/27 15:36:11 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/27 23:03:07 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#define VERY_LONG_ERROR "cd: error retrieving current directory: \
+getcwd: cannot access parent directories"
 
 static void	open_home_dir(t_params *params);
 static void	open_prev_dir(t_params *params);
+static void	update_deps(t_params *params);
 
 void	cd(t_params *params)
 {
@@ -39,8 +42,7 @@ void	cd(t_params *params)
 	}
 	chdir(dir_name);
 	closedir(dir);
-	free(params->cwd);
-	params->cwd = getcwd(NULL, 0);
+	update_deps(params);
 	g_exit_code = 0;
 }
 
@@ -82,4 +84,26 @@ static void	open_prev_dir(t_params *params)
 	}
 	chdir(old_pwd);
 	closedir(dir);
+}
+
+static void	update_deps(t_params *params)
+{
+	char		*new_cwd;
+	t_env_list	*env_pwd;
+	t_env_list	*env_old_pwd;
+
+	new_cwd = getcwd(NULL, 0);
+	if (!new_cwd)
+	{
+		perror(VERY_LONG_ERROR);
+		return ;
+	}
+	env_pwd = env_list_get_node(params->env, "PWD");
+	env_old_pwd = env_list_get_node(params->env, "OLDPWD");
+	free(env_pwd->value);
+	free(env_old_pwd->value);
+	env_old_pwd->value = ft_strdup(params->cwd);
+	env_pwd->value = ft_strdup(new_cwd);
+	free(params->cwd);
+	params->cwd = new_cwd;
 }

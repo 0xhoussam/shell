@@ -6,19 +6,17 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:44:43 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/27 15:36:23 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/27 22:50:51 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#define MAX_BUFF_SIZE 4096
 
 static void	print_cwd(char *cwd, int std);
 
 void	pwd(t_params *params)
 {
 	char		*cwd;
-	static char	old_pwd[MAX_BUFF_SIZE];
 	int			fd;
 
 	fd = get_redir_fd(params);
@@ -31,8 +29,7 @@ void	pwd(t_params *params)
 			return (print_cwd(params->cwd, fd));
 	}
 	print_cwd(cwd, fd);
-	free(params->cwd);
-	params->cwd = cwd;
+	free(cwd);
 }
 
 static void	print_cwd(char *cwd, int std)
