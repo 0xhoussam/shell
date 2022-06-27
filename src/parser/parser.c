@@ -54,8 +54,8 @@ void recursive_parser(t_list **cmds, t_cmd *cmd, char *s, t_env_list *lst)
         return;
     if (get_args(cmds, cmd, s, lst))
         return;
-    if (expand_asterisk(cmds, cmd, s, lst))
-        return;
+    // if (expand_asterisk(cmds, cmd, s, lst))
+    //     return;
     /*------------------------------------------------*/
     i = parse_pipe(cmds, &cmd, s);
     if (i > 0)
@@ -92,6 +92,9 @@ t_list *parser(char *line, t_env_list *lst)
     t_list *cmds;
 
     cmds = NULL;
+    if (check_pipe(line) || check_redirection(line) || check_quotes(line))
+        return (NULL);
     recursive_parser(&cmds, NULL, line, lst);
+    expand_asterisk(cmds, lst);
     return (cmds);
 }

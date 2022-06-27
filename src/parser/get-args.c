@@ -20,8 +20,7 @@ int get_args(t_list **cmds, t_cmd *cmd, char *s, t_env_list *lst)
     i = 0;
     if (!cmd || !cmd->cmd_name || !s || !*s)
         return (0);
-    if (s[0] == '<' || s[0] == '>' || s[0] == '&' || s[0] == '|' ||
-        s[0] == '*' || s[0] == ';')
+    if (s[0] == '<' || s[0] == '>' || s[0] == '&' || s[0] == '|' || s[0] == ';')
         return (0);
     str = extract_word(s, &i, 0);
     if (!*str)

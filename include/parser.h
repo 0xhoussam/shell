@@ -25,7 +25,7 @@ int     get_cmd_name(t_list **cmds, t_cmd *cmd, char *s, t_env_list *lst);
 int     get_input_redir(t_list **cmds, t_cmd *cmd, char *s, t_env_list *env);
 int     get_output_redir(t_list **cmds, t_cmd *cmd, char *s, t_env_list *env);
 int     get_args(t_list **cmds, t_cmd *cmd, char *s, t_env_list *lst);
-int     expand_asterisk(t_list **cmds, t_cmd *cmd, char *s, t_env_list *lst);
+void    expand_asterisk(t_list *cmds, t_env_list *lst);
 size_t  parse_pipe(t_list **cmds, t_cmd **cmd, const char *s);
 void    init_cmd(t_cmd *cmd);
 size_t  parse_semicolon(t_list **cmds, t_cmd **cmd, const char *s);
@@ -44,4 +44,5 @@ int     check_quotes(char *s);
 int     check_pipe(char *s);
 int     check_redirection(char *s);
 void    log_error(const char *msg);
+int     is_matched(char *s_wildcard, char *filename);
 #endif
