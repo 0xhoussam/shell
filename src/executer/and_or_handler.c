@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 17:05:04 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/27 17:06:08 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/27 18:45:30 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ int and_or_handler(t_params *params)
 		if (!ft_includes_str(BUILTINS, cmd->cmd_name))
 		{
 			waitpid(params->pids[params->index], &g_exit_code, 0);
-			g_exit_code = WEXITSTATUS(g_exit_code);
+			if (WIFSIGNALED(g_exit_code)) 
+					g_exit_code = 128 + WTERMSIG(g_exit_code);
+			else
+				g_exit_code = WEXITSTATUS(g_exit_code);
 		}
 		wait_for_processes(0);
 		if (g_exit_code != 0 && cmd->right_delimiter == AND)
