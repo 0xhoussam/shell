@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:00:49 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/24 19:13:19 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/27 15:40:56 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include "parser.h"
 # include "executer.h"
 # include "builtins.h"
+# include "prompt.h"
 # include "utils.h"
 # include "readline/readline.h"
 # include "readline/history.h"

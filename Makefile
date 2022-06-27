@@ -25,6 +25,9 @@ EXECUTER_IN_DIR = $(SRC_DIR)executer/
 EXECUTER_INS =	errors.c executer.c get_command_path.c utils.c params.c \
 				pipes.c redir_handler.c ft_exec.c heredocs_handler.c
 
+PROMPT_IN_DIR = $(SRC_DIR)prompt/
+PROMPT_INS = prompt.c
+
 UTILS_INT_DIR = $(UTILS_DIR)
 UTILS_INS = env_array_to_list.c env_list_to_array.c \
 			env_list_delete.c sort.c env_list_insert.c free_2d_array.c \
@@ -37,6 +40,7 @@ CFILES += $(addprefix $(UTILS_INT_DIR), $(UTILS_INS))
 CFILES += $(addprefix $(PARSER_IN_DIR), $(PARSER_INS))
 CFILES += $(addprefix $(GENERATOR_DIR), $(GENERATOR))
 CFILES += $(addprefix $(EXECUTER_IN_DIR), $(EXECUTER_INS))
+CFILES += $(addprefix $(PROMPT_IN_DIR), $(PROMPT_INS))
 
 OFILES_ = $(patsubst %.c, %.o, $(CFILES))
 OFILES = $(addprefix $(OBJS_DIR), $(OFILES_))

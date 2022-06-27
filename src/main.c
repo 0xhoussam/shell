@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/27 15:36:05 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/27 15:41:17 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int ac, char **av, char **env)
 	shell_init(&params, env);
 	while (1)
 	{
-		line = readline(PROMPT);
+		line = prompt();
 		if (check_pipe(line) || check_redirection(line) || check_quotes(line))
 		{
 			free(line);
