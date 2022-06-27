@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:49:53 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/25 21:27:55 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/27 12:56:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,33 +16,31 @@ static void	builtins_handler(t_params *params, int id);
 static void	binary_handler(t_params *params, int id);
 static int	and_or_handler(t_params *params);
 
-t_env_list	*executer(t_list *commands, t_env_list *env)
+void	executer(t_params *params, t_list *cmds)
 {
-	t_params	params;
 	char		*cmd_name;
 	int			i;
 
-	init_params(&params, env, ft_lstsize(commands));
-	heredocs_handler(commands, &params);
+	init_params(params, ft_lstsize(cmds));
+	heredocs_handler(cmds, params);
 	i = 0;
-	while (i < params.cmds_list_size)
+	while (i < params->cmds_list_size)
 	{
-		params.cmd = (t_cmd *)commands->content;
-		params.index = i;
-		cmd_name = (char *)params.cmd->cmd_name;
+		params->cmd = (t_cmd *)cmds->content;
+		params->index = i;
+		cmd_name = (char *)params->cmd->cmd_name;
 		if (ft_includes_str(BUILTINS, cmd_name))
-			builtins_handler(&params, i);
+			builtins_handler(params, i);
 		else
-			binary_handler(&params, i);
-		if (!and_or_handler(&params))
+			binary_handler(params, i);
+		if (!and_or_handler(params))
 			break ;
-		commands = commands->next;
+		cmds = cmds->next;
 		i++;
 	}
-	close_pipes(&params);
+	close_pipes(params);
 	wait_for_processes(1);
-	free_params(&params);
-	return (params.env);
+	free_params(params);
 }
 
 static void	builtins_handler(t_params *params, int id)
@@ -55,7 +53,7 @@ static void	builtins_handler(t_params *params, int id)
 	if (!ft_strcmp(cmd_name, "cd"))
 		cd(params);
 	if (!ft_strcmp(cmd_name, "pwd"))
-		pwd(params, 1);
+		pwd(params);
 	if (!ft_strcmp(cmd_name, "export"))
 		export(params);
 	if (!ft_strcmp(cmd_name, "unset"))

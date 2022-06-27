@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:37:39 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/25 21:02:39 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/27 12:51:17 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	cd(t_params *params)
 	}
 	chdir(dir_name);
 	closedir(dir);
-	pwd(params, 0);
+	free(params->cwd);
+	params->cwd = getcwd(NULL, 0);
 	g_exit_code = 0;
 }
 

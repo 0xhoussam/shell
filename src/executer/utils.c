@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 21:51:35 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/25 21:47:46 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/27 15:04:17 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	close_pipe(int *pipe)
-{
-	if (close(pipe[1]) < 0)
-		print_error("close pipe", USE_ERRNO);
-	if (close(pipe[0]))
-		print_error("close pipe", USE_ERRNO);
-}
 
 char	**join_args(t_list *list)
 {
@@ -63,18 +55,4 @@ int	wait_for_processes(int change_exit_code)
 		i++;
 	}
 	return (0);
-}
-
-void	close_pipes(t_params *params)
-{
-	int	i;
-	int	**pipes;
-
-	i = 0;
-	pipes = params->pipes;
-	while (i < params->cmds_list_size + 1)
-	{
-		close_pipe(pipes[i]);
-		i++;
-	}
 }

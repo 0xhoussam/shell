@@ -23,7 +23,7 @@ PARSER_INS = parser.c get-cmd-name.c get-input-redir.c get-output-redir.c \
 
 EXECUTER_IN_DIR = $(SRC_DIR)executer/
 EXECUTER_INS =	errors.c executer.c get_command_path.c utils.c params.c \
-				init_pipes.c redir_handler.c ft_exec.c heredocs_handler.c
+				pipes.c redir_handler.c ft_exec.c heredocs_handler.c
 
 UTILS_INT_DIR = $(UTILS_DIR)
 UTILS_INS = env_array_to_list.c env_list_to_array.c \

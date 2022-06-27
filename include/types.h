@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 17:38:54 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/25 19:52:51 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/27 15:10:22 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ typedef struct s_cmd {
 
 typedef struct s_env_list
 {
-	char *key;
-	char *value;
-	struct s_env_list *next;
+	char				*key;
+	char				*value;
+	struct s_env_list	*next;
 }	t_env_list;
 
 typedef struct s_params {
@@ -56,6 +56,7 @@ typedef struct s_params {
 	t_env_list	*env;
 	int			**pipes;
 	int			*pids;
+	char		*cwd;
 	int			cmds_list_size;
 	int			index;
 }	t_params;

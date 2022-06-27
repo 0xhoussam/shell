@@ -3,28 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/26 17:49:15 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/27 15:11:21 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int g_exit_code = 0;
+void	shell_init(t_params *params, char **env);
+void	shell_destroy(t_params *params);
+
+int	g_exit_code = 0;
 
 void	print_cmds(t_list *cmds);
 void	printc(t_list *cmds);
 
 int	main(int ac, char **av, char **env)
 {
-	t_env_list	*env_list;
+	t_params	params;
 	char		*line;
-	t_list		*commands;
+	t_list		*cmds;
 
-	sort_strs(env);
-	env_list = env_array_to_list(env);
+	shell_init(&params, env);
 	while (1)
 	{
 		line = readline(PROMPT);
@@ -33,16 +35,17 @@ int	main(int ac, char **av, char **env)
 			free(line);
 			continue ;
 		}
-		commands = parser(line, env_list);
-		evaluate_str_and_var(commands, env_list);
-		print_cmds(commands);
-		env_list = executer(commands, env_list);
+		cmds = parser(line, params.env);
+		evaluate_str_and_var(cmds, params.env);
+		print_cmds(cmds);
+		executer(&params, cmds);
 		free(line);
-		delete_commands(&commands);
+		delete_commands(&cmds);
 	}
-	env_list_clean(&env_list);
+	shell_destroy(&params);
 	return (g_exit_code);
 }
+
 void print_cmds(t_list *cmds)
 {
 	while (cmds)
@@ -105,4 +108,27 @@ void printc(t_list *cmds)
 		}
 		printf("\n\n");
 	}
+}
+
+void	shell_init(t_params *params, char **env)
+{
+	char	*error;
+	char	*shell_init_error;
+	char 	*get_cwd_error;
+	params->cwd = getcwd(NULL, 0);
+	if (!params->cwd)
+	{
+		shell_init_error = "shell-init: error retrieving current directory:";
+		get_cwd_error = "getcwd: cannot access parent directories";
+		error = ft_strjoin(shell_init_error, get_cwd_error);
+		print_error_no_exit(error, USE_ERRNO);
+		free(error);
+	}
+	params->env = env_array_to_list(env);
+}
+
+void	shell_destroy(t_params *params)
+{
+	free(params->cwd);
+	env_list_clean(&params->env);
 }

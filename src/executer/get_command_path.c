@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_command_path.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:53:19 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/25 19:50:17 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/27 15:02:41 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+int			check_access(char *path);
 static char	*search_for_cmd(char *command, char **paths);
 static char	*check_command(char *command, char **paths);
 
@@ -45,21 +46,15 @@ static char	*check_command(char *command, char **paths)
 
 	if (command[0] == '.')
 	{
-		if (access(command, F_OK) < 0)
-		{
+		if (!check_access(command))
 			print_error(command, USE_ERRNO);
-			return (NULL);
-		}	
-		if (access(command, X_OK) < 0)
-		{
-			print_error(command, USE_ERRNO);
-			return (NULL);
-		}
 		return (ft_strdup(command));
 	}
 	path = search_for_cmd(command, paths);
 	if (path)
 		return (path);
+	if (check_access(command))
+		return (ft_strdup(command));
 	return (NULL);
 }
 
@@ -73,18 +68,19 @@ static char	*search_for_cmd(char *command, char **paths)
 		tmp = ft_strjoin(*paths, "/");
 		path = ft_strjoin(tmp, command);
 		free(tmp);
-		if (access(path, F_OK) == 0)
-		{
-			if (access(path, X_OK) < 0)
-			{
-				print_error(command, USE_ERRNO);
-				return (NULL);
-			}
-			else
-				return (path);
-		}
+		if (check_access(path))
+			return (path);
 		free(path);
 		paths++;
 	}
 	return (NULL);
+}
+
+int	check_access(char *path)
+{
+	if (access(path, F_OK) < 0)
+		return (0);
+	if (access(path, X_OK) < 0)
+		return (0);
+	return (1);
 }
