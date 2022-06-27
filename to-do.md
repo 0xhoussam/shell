@@ -25,6 +25,7 @@
 - [ ] handle redireciton errors
 - [ ] handle quotes error
 - [ ] handle pipe errors
+- [ ] fix asterisk segfults
 
 ## Execution
 

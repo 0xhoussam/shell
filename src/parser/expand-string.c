@@ -69,16 +69,17 @@ char *join_3_strings(char *s1, char *s2, char *s3)
     size_t len;
     char  *str;
 
-    len = ft_strlen(s1) + ft_strlen(s2) + ft_strlen(s3);
+    len = ft_strlen(s1) + ft_strlen(s3);
+    if (s2)
+        len += ft_strlen(s2);
     str = ft_calloc(len + 1, sizeof(char));
     if (!str)
         return (NULL);
     ft_strlcat(str, s1, len + 1);
-    ft_strlcat(str, s2, len + 1);
+    if (s2)
+        ft_strlcat(str, s2, len + 1);
     ft_strlcat(str, s3, len + 1);
     free(s1);
-    if (!*s2)
-        free(s2);
     free(s3);
     return (str);
 }
@@ -106,12 +107,14 @@ char *_expand(const char *s, t_env_list *env)
             continue;
         }
         j = 0;
+        i++;
         while (joined[i + j] && !ft_isspace(joined[i + j]) &&
-               joined[i + j] != '"')
+               joined[i + j] != '$' && joined[i + j] != '"')
             j++;
-        key = ft_substr(joined, i + 1, j - 1);
-        tmp = join_3_strings(ft_substr(joined, 0, i), env_list_get(env, key),
-                             ft_substr(joined, i + j, -1));
+        key = ft_substr(joined, i, j);
+        tmp =
+            join_3_strings(ft_substr(joined, 0, i - 1), env_list_get(env, key),
+                           ft_substr(joined, i + j, -1));
         free(joined);
         free(key);
         joined = tmp;
