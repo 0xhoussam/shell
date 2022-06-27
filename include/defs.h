@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 17:45:04 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/24 19:13:12 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/27 22:43:41 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,8 @@
 # define BLUE "\x1B[36m"
 // typography
 # define BOLD "\x1B[1m"
+
+#define GET_CWD_ERROR "shell-init: error retrieving current directory: \
+getcwd: cannot access parent directories"
 
 #endif

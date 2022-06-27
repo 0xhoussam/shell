@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/27 15:41:17 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/27 22:52:29 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,19 +112,12 @@ void printc(t_list *cmds)
 
 void shell_init(t_params *params, char **env)
 {
-    char *error;
-    char *shell_init_error;
-    char *get_cwd_error;
+    char    *error;
+
+    params->env = env_array_to_list(env);
     params->cwd = getcwd(NULL, 0);
     if (!params->cwd)
-    {
-        shell_init_error = "shell-init: error retrieving current directory:";
-        get_cwd_error = "getcwd: cannot access parent directories";
-        error = ft_strjoin(shell_init_error, get_cwd_error);
-        print_error_no_exit(error, USE_ERRNO);
-        free(error);
-    }
-    params->env = env_array_to_list(env);
+        perror(GET_CWD_ERROR);
 }
 
 void shell_destroy(t_params *params)
