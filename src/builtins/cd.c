@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:37:39 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/27 23:03:07 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/27 23:12:53 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ static void	open_home_dir(t_params *params)
 	}
 	chdir(home);
 	closedir(dir);
+	update_deps(params);
+	g_exit_code = 0;
 }
 
 static void	open_prev_dir(t_params *params)
@@ -84,6 +86,8 @@ static void	open_prev_dir(t_params *params)
 	}
 	chdir(old_pwd);
 	closedir(dir);
+	update_deps(params);
+	g_exit_code = 0;
 }
 
 static void	update_deps(t_params *params)
