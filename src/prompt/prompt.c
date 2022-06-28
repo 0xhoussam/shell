@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 15:33:54 by marvin            #+#    #+#             */
-/*   Updated: 2022/06/28 13:05:59 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/28 15:51:51 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ static void int_handler(int sig)
 			rl_replace_line("", 0);
 			rl_redisplay();
 		}
+		g_exit_code = 130;
 	}
 }
