@@ -6,20 +6,21 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 14:52:05 by marvin            #+#    #+#             */
-/*   Updated: 2022/06/28 15:34:37 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/28 17:57:51 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 static void	heredoc_handler(t_params *params);
+static void	heredocs(t_list *cmds, t_params *params);
 static void	int_handler(int sig);
 static int	is_heredoc(t_list *cmds);
 
 int	heredocs_handler(t_list *commands, t_params *params)
 {
 	int	i;
-	int pid;
+	int	pid;
 
 	if (!is_heredoc(commands))
 		return (1);
@@ -28,19 +29,12 @@ int	heredocs_handler(t_list *commands, t_params *params)
 	{
 		signal(SIGINT, int_handler);
 		signal(SIGQUIT, SIG_IGN);
-		i = 0;
-		while (i < params->cmds_list_size)
-		{
-			params->cmd = (t_cmd *)commands->content;
-			params->index = i;
-			heredoc_handler(params);
-			commands = commands->next;
-			i++;
-		}
+		heredocs(commands, params);
 		close_pipes(params);
 		exit (0);
 	}
-	else {
+	else
+	{
 		waitpid(pid, &g_exit_code, 0);
 		if (WEXITSTATUS(g_exit_code) != 0)
 		{
@@ -48,6 +42,21 @@ int	heredocs_handler(t_list *commands, t_params *params)
 			return (0);
 		}
 		return (1);
+	}
+}
+
+static void	heredocs(t_list *cmds, t_params *params)
+{
+	int	i;
+
+	i = 0;
+	while (i < params->cmds_list_size)
+	{
+		params->cmd = (t_cmd *)cmds->content;
+		params->index = i;
+		heredoc_handler(params);
+		cmds = cmds->next;
+		i++;
 	}
 }
 
@@ -94,7 +103,7 @@ static int	is_heredoc(t_list *commands)
 	return (0);
 }
 
-static void int_handler(int sig)
+static void	int_handler(int sig)
 {
 	exit(130);
 }

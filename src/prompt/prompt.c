@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 15:33:54 by marvin            #+#    #+#             */
-/*   Updated: 2022/06/28 16:18:44 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/28 18:00:12 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	int_handler(int sig);
 
-char *prompt(void)
+char	*prompt(void)
 {
 	char	*line;
 
@@ -27,7 +27,7 @@ char *prompt(void)
 	return (line);
 }
 
-static void int_handler(int sig)
+static void	int_handler(int sig)
 {
 	if (sig == SIGINT)
 	{
