@@ -21,11 +21,12 @@
 - [x] remove ""
 - [x] $gg -> input splited. "$gg" input is not splited
 - [x] handle the global buffer overflow
-- [ ] handle input errors
-- [ ] handle redireciton errors
-- [ ] handle quotes error
-- [ ] handle pipe errors
-- [ ] fix asterisk segfults
+- [x] handle input errors
+- [x] handle redireciton errors
+- [x] handle quotes error
+- [x] handle pipe errors
+- [x] fix asterisk segfults
+- [ ] fix export expanding error
 
 ## Execution
 

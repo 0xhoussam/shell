@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include <readline/history.h>
 
 void shell_init(t_params *params, char **env);
 void shell_destroy(t_params *params);

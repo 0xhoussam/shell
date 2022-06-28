@@ -67,6 +67,11 @@ void _expand_asterisk(void *_cmd)
             !ft_includes(curr->content, '\''))
         {
             expanded_arg = read_dir_and_match_name(curr->content);
+            if (!expanded_arg)
+            {
+                curr = curr->next;
+                continue;
+            }
             if (!prev)
             {
                 ft_lstlast(expanded_arg)->next = curr->next;

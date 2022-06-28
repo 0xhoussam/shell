@@ -46,13 +46,17 @@ int is_matched(char *s_wildcard, char *filename)
         if (s_wildcard[i] == '*')
         {
             i++;
-            while (filename[j] && filename[j] != s_wildcard[i])
+            while (filename[j] && filename[j] != s_wildcard[i] &&
+                   filename[j] != '.')
                 j++;
+        }
+        else
+        {
+            i++;
+            j++;
         }
         if (s_wildcard[i] != filename[j])
             break;
-        i++;
-        j++;
     }
     if (s_wildcard[i] == filename[j])
         return (1);
