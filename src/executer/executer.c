@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:49:53 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/27 17:05:35 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/28 15:13:35 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	executer(t_params *params, t_list *cmds)
 	int			i;
 
 	init_params(params, ft_lstsize(cmds));
-	heredocs_handler(cmds, params);
+	if (!heredocs_handler(cmds, params))
+		return ;
 	i = 0;
 	while (i < params->cmds_list_size)
 	{

@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 14:02:11 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/27 17:05:51 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/28 14:57:20 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 void		ft_exec(t_params *params);
 char		*get_cmd_path(t_params *params);
-void		heredocs_handler(t_list *commands, t_params *params);
+int			heredocs_handler(t_list *commands, t_params *params);
 void		redir_handler(t_params *params);
 int			and_or_handler(t_params *params);
 void		print_error(const char *cmd, char *error);
