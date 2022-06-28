@@ -125,4 +125,5 @@ void shell_destroy(t_params *params)
 {
     free(params->cwd);
     env_list_clean(&params->env);
+    rl_clear_history();
 }
