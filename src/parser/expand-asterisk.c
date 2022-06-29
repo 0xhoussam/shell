@@ -46,6 +46,7 @@ t_list *read_dir_and_match_name(char *pattern)
     while ((dir = readdir(d)) != NULL)
         if (dir->d_type == DT_REG && is_matched(pattern, dir->d_name))
             ft_lstadd_back(&filenames, ft_lstnew(ft_strdup(dir->d_name)));
+    closedir(d);
     return (filenames);
 }
 

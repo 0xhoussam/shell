@@ -149,7 +149,6 @@ char *expand(char *s, t_env_list *env)
     t_list *splits;
 
     i = 0;
-    // expanded = ft_strdup("");
     if (!s)
         return (NULL);
     splits = NULL;
