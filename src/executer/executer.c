@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:49:53 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/28 15:13:35 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/29 17:17:33 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	executer(t_params *params, t_list *cmds)
 	if (!heredocs_handler(cmds, params))
 		return ;
 	i = 0;
-	while (i < params->cmds_list_size)
+	while (i < params->cmds_list_size && cmds)
 	{
 		params->cmd = (t_cmd *)cmds->content;
 		params->index = i;
@@ -34,8 +34,9 @@ void	executer(t_params *params, t_list *cmds)
 		else
 			binary_handler(params, i);
 		if (!and_or_handler(params))
-			break ;
-		cmds = cmds->next;
+			cmds = cmds->next;
+		if (cmds)
+			cmds = cmds->next;
 		i++;
 	}
 	close_pipes(params);
