@@ -31,14 +31,9 @@ int  main(int ac, char **av, char **env)
     while (1)
     {
         line = prompt();
-        if (check_pipe(line) || check_redirection(line) || check_quotes(line))
-        {
-            free(line);
-            continue;
-        }
         cmds = parser(line, params.env);
         evaluate_str_and_var(cmds, params.env);
-        print_cmds(cmds);
+        printc(cmds);
         executer(&params, cmds);
         free(line);
         delete_commands(&cmds);
@@ -113,7 +108,7 @@ void printc(t_list *cmds)
 
 void shell_init(t_params *params, char **env)
 {
-    char    *error;
+    char *error;
 
     params->env = env_array_to_list(env);
     params->cwd = getcwd(NULL, 0);

@@ -27,11 +27,13 @@ char *extract_word(const char *s, size_t *k, int start)
     j++;
     while (s[j] && s[j] != c)
         j++;
+    while (s[j] && !ft_isspace(s[j]))
+        j++;
     if (s[j])
         *k = j + 1;
     else
         *k = j;
-    return (ft_substr(s, i, j - i + 1));
+    return (ft_substr(s, i, j - i));
 }
 
 int is_matched(char *s_wildcard, char *filename)

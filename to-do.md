@@ -26,7 +26,7 @@
 - [x] handle quotes error
 - [x] handle pipe errors
 - [x] fix asterisk segfults
-- [ ] fix export expanding error
+- [x] fix export expanding error
 
 ## Execution
 

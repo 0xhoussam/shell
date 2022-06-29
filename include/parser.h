@@ -32,7 +32,7 @@ size_t  parse_semicolon(t_list **cmds, t_cmd **cmd, const char *s);
 size_t  parse_and(t_list **cmds, t_cmd **cmd, const char *s);
 size_t  parse_or(t_list **cmds, t_cmd **cmd, const char *s);
 int     is_inside_single_quotes(char *s, size_t idx);
-void    expand(char **str, t_env_list *env);
+char   *expand(char *str, t_env_list *env);
 char   *_expand(const char *s, t_env_list *env);
 void    evaluate_str_and_var(t_list *cmds, t_env_list *env);
 char   *remove_last_and_first(char *s);
@@ -45,4 +45,5 @@ int     check_pipe(char *s);
 int     check_redirection(char *s);
 void    log_error(const char *msg);
 int     is_matched(char *s_wildcard, char *filename);
+char   *get_var_key(char *s);
 #endif
