@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 21:51:35 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/27 15:36:00 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/29 22:01:19 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,13 @@ int	wait_for_processes(int change_exit_code)
 		if (change_exit_code)
 		{
 			ret = waitpid(-1, &g_exit_code, 0);
-			if (errno != ECHILD)
+			if (WIFSIGNALED(g_exit_code) && ret > 0)
+			{
+				if (128 + WTERMSIG(g_exit_code) == 131)
+					ft_putstr_fd("Quit (core dumped) \n", STDOUT_FILENO);
+				g_exit_code = 128 + WTERMSIG(g_exit_code);
+			}
+			if (errno != ECHILD && !WIFSIGNALED(g_exit_code))
 				g_exit_code = WEXITSTATUS(g_exit_code);
 		}
 		else

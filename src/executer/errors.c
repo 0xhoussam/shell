@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:26:15 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/25 13:37:03 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/29 20:31:39 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_error(const char *cmd, char *error)
 		exit(1);
 	}
 	else
-		ft_putendl_fd(error_str, 2);
+		ft_putendl_fd(error_str, STDERR_FILENO);
 	if (!ft_strcmp(error, CMD_NOT_FOUND))
 		exit(CMD_NOT_FOUND_ERRNO);
 	free(error_str);
@@ -47,7 +47,7 @@ void	print_error_no_exit(const char *cmd, char *error)
 		g_exit_code = 1;
 	}
 	else
-		ft_putendl_fd(error_str, 2);
+		ft_putendl_fd(error_str, STDERR_FILENO);
 	if (!ft_strcmp(error, CMD_NOT_FOUND))
 		g_exit_code = CMD_NOT_FOUND_ERRNO;
 	free(error_str);

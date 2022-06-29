@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:49:53 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/29 17:17:33 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/29 18:20:20 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ static void	binary_handler(t_params *params, int id)
 		print_error("fork", USE_ERRNO);
 	if (!params->pids[id])
 	{
+		signal(SIGINT, SIG_DFL);
+		signal(SIGQUIT, SIG_DFL);
 		redir_handler(params);
 		ft_exec(params);
 		exit(0);

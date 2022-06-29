@@ -44,14 +44,14 @@
 - [x] wait for all prev processes on case of && or ||
 - [x] do not exit from main process
 - [x] serialize command arguments (added in the parser phase)
-- [ ] handle echo $?
+- [x] handle echo $?
 - [x] fix builtins writing to pipes
 - [x] cd: handle not directory, invalid folder names
-- [ ] add shell init
+- [x] add shell init
 - [x] update export sort
 - [x] split export argument
 - [x] handle export existing variable
 - [x] export sort list before printing
 - [x] fix pwd old_pwd leak
 - [x] remove empty lines from history
-- [ ] handle ctrl+\ signal (ex: sleep 10 and press ctrl+\)
+- [x] handle ctrl+\ signal (ex: sleep 10 and press ctrl+\)
