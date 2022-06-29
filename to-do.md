@@ -53,4 +53,5 @@
 - [x] handle export existing variable
 - [x] export sort list before printing
 - [x] fix pwd old_pwd leak
-
+- [x] remove empty lines from history
+- [ ] handle ctrl+\ signal (ex: sleep 10 and press ctrl+\)

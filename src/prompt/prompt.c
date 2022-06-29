@@ -6,13 +6,14 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 15:33:54 by marvin            #+#    #+#             */
-/*   Updated: 2022/06/28 18:00:12 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/29 17:51:01 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 static void	int_handler(int sig);
+static int	is_spaces(char *line);
 
 char	*prompt(void)
 {
@@ -23,7 +24,8 @@ char	*prompt(void)
 	line = readline(PROMPT);
 	if (!line)
 		exit(g_exit_code);
-	add_history(line);
+	if (!is_spaces(line))
+		add_history(line);
 	return (line);
 }
 
@@ -41,4 +43,18 @@ static void	int_handler(int sig)
 		}
 		g_exit_code = 130;
 	}
+}
+
+static int	is_spaces(char *line)
+{
+	int i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (!ft_isspace(line[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
