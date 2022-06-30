@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:00:38 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/27 15:36:13 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/30 16:42:42 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,8 @@ static void	print_2d_array_to_fd(char **str, int std)
 	i = 0;
 	while (str[i])
 	{
-		if (!ft_strcmp(str[i], "$"))
-			write(std, str[i], ft_strlen(str[i]));
-		else if (str[i][0] == '$')
-		{
-			if (str[i][1] == '?')
-				ft_putnbr_fd(g_exit_code, std);
-			write(std, str[i] + 2, ft_strlen(str[i]) - 2);
-		}
+		if (!ft_strcmp(str[i], "$?"))
+			ft_putnbr_fd(g_exit_code, std);
 		else
 			write(std, str[i], ft_strlen(str[i]));
 		i++;
