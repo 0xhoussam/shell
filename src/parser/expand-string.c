@@ -86,10 +86,10 @@ char *expand_string(char *s, t_env_list *env)
         {
             key = get_var_key(&s[i + 1]);
             if (env_list_get(env, key))
-            {
                 ft_lstadd_back(&lst,
                                ft_lstnew(ft_strdup(env_list_get(env, key))));
-            }
+            else
+                ft_lstadd_back(&lst, ft_lstnew(ft_strdup(key)));
             i += ft_strlen(key) + 1;
             free(key);
         }

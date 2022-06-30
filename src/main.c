@@ -32,8 +32,9 @@ int  main(int ac, char **av, char **env)
     {
         line = prompt();
         cmds = parser(line, params.env);
-        evaluate_str_and_var(cmds, params.env);
         printc(cmds);
+        evaluate_str_and_var(cmds, params.env);
+        // printc(cmds);
         executer(&params, cmds);
         free(line);
         delete_commands(&cmds);

@@ -63,7 +63,8 @@ void _expand_asterisk(void *_cmd)
     curr = cmd->args;
     while (curr)
     {
-        if (ft_includes(curr->content, '*') &&
+        if ((ft_includes(curr->content, '*') ||
+             ft_includes(curr->content, '?')) &&
             !ft_includes(curr->content, '"') &&
             !ft_includes(curr->content, '\''))
         {

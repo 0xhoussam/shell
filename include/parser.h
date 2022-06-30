@@ -51,4 +51,5 @@ char   *remove_consecutive_asterisks(char *pattern);
 char  **create_matching_matrix(size_t pattern_len, size_t filename_len);
 void    setup_matrix(char **matrix, char *pattern, char *filename);
 void    remove_matrix(char **matrix, size_t height);
+void    printc(t_list *cmds);
 #endif
