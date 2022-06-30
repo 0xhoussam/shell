@@ -46,4 +46,9 @@ int     check_redirection(char *s);
 void    log_error(const char *msg);
 int     is_matched(char *s_wildcard, char *filename);
 char   *get_var_key(char *s);
+char   *joined_linked_list_of_strings(t_list *lst);
+char   *remove_consecutive_asterisks(char *pattern);
+char  **create_matching_matrix(size_t pattern_len, size_t filename_len);
+void    setup_matrix(char **matrix, char *pattern, char *filename);
+void    remove_matrix(char **matrix, size_t height);
 #endif

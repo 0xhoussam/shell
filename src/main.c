@@ -47,7 +47,7 @@ void print_cmds(t_list *cmds)
     while (cmds)
     {
         t_cmd *cmd = (t_cmd *)cmds->content;
-        printf("'%s' ", (char *)cmd->cmd_name);
+        printf("'%s'", (char *)cmd->cmd_name);
         t_list *args = cmd->args;
         t_list *heredocs = cmd->heredoc_del;
         while (heredocs)
@@ -87,23 +87,23 @@ void printc(t_list *cmds)
     {
         printf("\n------------------------------------------------\n");
         t_cmd *cmd = node->content;
-        printf("cmd_name: %s\n", cmd->cmd_name);
+        printf("cmd_name: {%s}\n", cmd->cmd_name);
         printf("args: ");
         for (t_list *arg = cmd->args; arg; arg = arg->next)
         {
-            printf("'%s' ", (char *)arg->content);
+            printf("{%s} ", (char *)arg->content);
         }
         printf("\n");
-        printf("in: %s type: %s\n", cmd->in, b[cmd->in_redir]);
-        printf("out: %s type: %s\n", cmd->out, b[cmd->out_redir]);
-        printf("left: %s\n", a[cmd->left_delimiter]);
-        printf("right: %s\n", a[cmd->right_delimiter]);
+        printf("in: {%s} type: {%s}\n", cmd->in, b[cmd->in_redir]);
+        printf("out: {%s} type: {%s}\n", cmd->out, b[cmd->out_redir]);
+        printf("left: {%s}\n", a[cmd->left_delimiter]);
+        printf("right: {%s}\n", a[cmd->right_delimiter]);
         for (t_list *hered = cmd->heredoc_del; hered; hered = hered->next)
         {
-            printf("'%s' ", (char *)hered->content);
+            printf("{%s} ", (char *)hered->content);
         }
-        printf("\n\n");
     }
+    printf("\n------------------------------------------------\n");
 }
 
 void shell_init(t_params *params, char **env)
