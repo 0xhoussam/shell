@@ -6,13 +6,13 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 09:52:12 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/30 15:01:57 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/30 19:26:48 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-int	is_spicial(char c)
+int	is_special(char c)
 {
 	if (ft_includes("<>|&()", c))
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:00:38 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/30 17:12:04 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/30 19:26:10 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ void	echo(t_params *params)
 	g_exit_code = 0;
 }
 
-static void print_2d_array_to_fd(char **str, int std)
+static void	print_2d_array_to_fd(char **str, int std)
 {
-	int i;
+	int	i;
 
 	if (!str)
-		return;
+		return ;
 	i = 0;
 	while (str[i])
 	{

@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_chardup.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/30 19:27:11 by habouiba          #+#    #+#             */
+/*   Updated: 2022/06/30 19:28:10 by aoumouss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "utils.h"
 
-char *ft_chardup(char c)
+char	*ft_chardup(char c)
 {
-    char *str;
+	char	*str;
 
-    str = ft_calloc(2, sizeof(char));
-    str[0] = c;
-    str[1] = '\0';
-    return (str);
+	str = ft_calloc(2, sizeof(char));
+	str[0] = c;
+	str[1] = '\0';
+	return (str);
 }

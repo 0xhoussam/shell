@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:24:05 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/30 16:08:59 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/30 19:26:48 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int				ft_includes(const char *s, int c);
 int				is_valid(const char *s, int c);
 int				ft_includes(const char *s, int c);
 int				is_valid(const char *s, int c);
-int				is_spicial(char c);
+int				is_special(char c);
 int				ft_includes_str(char *haystack, char *needle);
 char			*ft_chardup(char c);
 #endif

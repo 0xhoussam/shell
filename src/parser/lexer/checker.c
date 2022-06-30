@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 11:51:39 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/30 15:29:57 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/30 19:26:48 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	check_word(t_list **tokens, char *line, int *index)
 
 	i = *index;
 	word_len = 0;
-	while (!is_spicial(line[i]) && !ft_isspace(line[i]) && line[i])
+	while (!is_special(line[i]) && !ft_isspace(line[i]) && line[i])
 	{
 		i++;
 		word_len++;
