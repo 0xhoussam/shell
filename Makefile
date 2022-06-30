@@ -19,7 +19,7 @@ LEXER_IN_DIR = $(SRC_DIR)parser/lexer/
 LEXER_INS = lexer.c token.c checker.c
 
 SYNTAX_ANALYSIS_IN_DIR = $(SRC_DIR)parser/syntax_analysis/
-SYNTAX_ANALYSIS_INS = syntax_analysis.c syntax_logger.c
+SYNTAX_ANALYSIS_INS = syntax_analysis.c utils.c
 
 PARSER_IN_DIR = $(SRC_DIR)parser/
 PARSER_INS = parser.c get-cmd-name.c get-input-redir.c get-output-redir.c \

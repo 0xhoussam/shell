@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 12:14:08 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/30 16:06:04 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/30 18:53:38 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	printc(t_list *cmds);
 
 // syntax analysis
 int		syntax_analysis(t_list *tokens);
-void	syntax_logger(char *token);
+int		syntax_error_logger(char *token);
+int		is_binary_operator(t_token *token);
 
 #endif
