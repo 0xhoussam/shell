@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 17:05:04 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/28 17:52:39 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/30 17:52:31 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	and_or_handler(t_params *params)
 			if (WIFSIGNALED(g_exit_code))
 			{
 				g_exit_code = 128 + WTERMSIG(g_exit_code);
+				if (g_exit_code == 130)
+					ft_putstr_fd("\n", STDOUT_FILENO);
 				return (0);
 			}
 			else

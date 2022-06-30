@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 14:52:05 by marvin            #+#    #+#             */
-/*   Updated: 2022/06/28 17:57:51 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/30 18:01:43 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	heredoc_handler(t_params *params);
 static void	heredocs(t_list *cmds, t_params *params);
-static void	int_handler(int sig);
+static int	signal_handler(int sig);
 static int	is_heredoc(t_list *cmds);
 
 int	heredocs_handler(t_list *commands, t_params *params)
@@ -27,22 +27,14 @@ int	heredocs_handler(t_list *commands, t_params *params)
 	pid = fork();
 	if (pid == 0)
 	{
-		signal(SIGINT, int_handler);
+		signal(SIGINT, SIG_DFL);
 		signal(SIGQUIT, SIG_IGN);
 		heredocs(commands, params);
 		close_pipes(params);
 		exit (0);
 	}
 	else
-	{
-		waitpid(pid, &g_exit_code, 0);
-		if (WEXITSTATUS(g_exit_code) != 0)
-		{
-			g_exit_code = WEXITSTATUS(g_exit_code);
-			return (0);
-		}
-		return (1);
-	}
+		return (signal_handler(pid));
 }
 
 static void	heredocs(t_list *cmds, t_params *params)
@@ -103,7 +95,20 @@ static int	is_heredoc(t_list *commands)
 	return (0);
 }
 
-static void	int_handler(int sig)
+static int	signal_handler(int pid)
 {
-	exit(130);
+	waitpid(pid, &g_exit_code, 0);
+	if (WIFSIGNALED(g_exit_code))
+	{
+		if (128 + WTERMSIG(g_exit_code) == 130)
+			ft_putstr_fd("\n", STDOUT_FILENO);
+		g_exit_code = 128 + WTERMSIG(g_exit_code);
+		return (0);
+	}
+	if (WEXITSTATUS(g_exit_code) != 0)
+	{
+		g_exit_code = WEXITSTATUS(g_exit_code);
+		return (0);
+	}
+	return (1);
 }

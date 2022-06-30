@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 15:33:54 by marvin            #+#    #+#             */
-/*   Updated: 2022/06/29 18:22:31 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/30 18:05:22 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ static void	int_handler(int sig)
 	if (sig == SIGINT)
 	{
 		kill(0, SIGQUIT);
-		ft_putchar_fd('\n', STDOUT_FILENO);
 		if (errno == EINTR)
 		{
+			ft_putchar_fd('\n', STDOUT_FILENO);
 			rl_on_new_line();
 			rl_replace_line("", 0);
 			rl_redisplay();
@@ -47,7 +47,7 @@ static void	int_handler(int sig)
 
 static int	is_spaces(char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i])
