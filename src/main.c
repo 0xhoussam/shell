@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/30 16:11:34 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/30 16:18:20 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main(int ac, char **av, char **env)
     {
         line = prompt();
         cmds = parser(line, params.env);
-        print_cmds(cmds);
+        // print_cmds(cmds);
         executer(&params, cmds);
         free(line);
         delete_commands(&cmds);
