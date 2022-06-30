@@ -15,11 +15,16 @@ UTILS_DIR = utils/
 BUILT_INT_DIR = $(SRC_DIR)builtins/
 BUILT_INS = echo.c pwd.c cd.c export.c ft_exit.c unset.c env.c utils.c
 
+LEXER_IN_DIR = $(SRC_DIR)parser/lexer/
+LEXER_INS = lexer.c token.c checker.c
+
+SYNTAX_ANALYSIS_IN_DIR = $(SRC_DIR)parser/syntax_analysis/
+SYNTAX_ANALYSIS_INS = syntax_analysis.c syntax_logger.c
+
 PARSER_IN_DIR = $(SRC_DIR)parser/
 PARSER_INS = parser.c get-cmd-name.c get-input-redir.c get-output-redir.c \
 			get-args.c parse-semicolon.c parse-pipe.c parse-and.c parse-or.c \
 			expand-string.c expand-asterisk.c parser-utils.c delete-commands.c \
-			errors/pipe.c errors/quotes.c errors/redirection.c errors/print-error.c
 
 EXECUTER_IN_DIR = $(SRC_DIR)executer/
 EXECUTER_INS =	errors.c executer.c get_cmd_path.c utils.c params.c \
@@ -38,6 +43,8 @@ CFILES = $(addprefix $(SRC_DIR), $(SRC_FILES))
 CFILES += $(addprefix $(BUILT_INT_DIR), $(BUILT_INS))
 CFILES += $(addprefix $(UTILS_INT_DIR), $(UTILS_INS))
 CFILES += $(addprefix $(PARSER_IN_DIR), $(PARSER_INS))
+CFILES += $(addprefix $(LEXER_IN_DIR), $(LEXER_INS))
+CFILES += $(addprefix $(SYNTAX_ANALYSIS_IN_DIR), $(SYNTAX_ANALYSIS_INS))
 CFILES += $(addprefix $(GENERATOR_DIR), $(GENERATOR))
 CFILES += $(addprefix $(EXECUTER_IN_DIR), $(EXECUTER_INS))
 CFILES += $(addprefix $(PROMPT_IN_DIR), $(PROMPT_INS))

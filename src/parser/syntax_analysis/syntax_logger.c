@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipe.c                                             :+:      :+:    :+:   */
+/*   syntax_logger.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:17:41 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/26 09:06:07 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/06/30 15:43:17 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "minishell.h"
 
-int check_pipe(char *s)
+void	syntax_logger(char *token)
 {
-    size_t len;
-
-    len = ft_strlen(s);
-    if (s[0] == '|' || s[len - 1] == '|')
-    {
-        log_error("Error: Unclosed pipeline\n");
-        return (1);
-    }
-    return (0);
+	ft_putstr_fd(PROGRAM_NAME, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putstr_fd("syntax error near unexpected token `", STDERR_FILENO);
+	ft_putstr_fd(token, STDERR_FILENO);
+	ft_putstr_fd("'\n", STDERR_FILENO);
+	g_exit_code = 2;
 }

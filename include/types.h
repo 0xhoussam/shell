@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 17:38:54 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/27 15:36:42 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/06/30 12:32:40 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,17 @@ typedef enum e_redir_type
 	HEREDOC
 }	t_redir_type;
 
+typedef enum e_token_type
+{
+	LEX_WORD,
+	LEX_PIPE,
+	LEX_AND,
+	LEX_OR,
+	LEX_REDIR,
+	OPEN_PARENTHESIS,
+	CLOSE_PARENTHESIS,
+}	t_token_type;
+
 typedef enum e_delimiter {
 	NONE,
 	AND,
@@ -30,6 +41,11 @@ typedef enum e_delimiter {
 	SEMICOLON,
 	PIPE
 }	t_delimiter;
+
+typedef struct s_token {
+	char			*value;
+	t_token_type	type;
+}				t_token;
 
 typedef struct s_cmd {
 	char			*cmd_name;
