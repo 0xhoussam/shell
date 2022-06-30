@@ -16,23 +16,23 @@
 void shell_init(t_params *params, char **env);
 void shell_destroy(t_params *params);
 
-int g_exit_code = 0;
+int  g_exit_code = 0;
 
 void print_cmds(t_list *cmds);
 void printc(t_list *cmds);
 
-int main(int ac, char **av, char **env)
+int  main(int ac, char **av, char **env)
 {
     t_params params;
-    char *line;
-    t_list *cmds;
+    char    *line;
+    t_list  *cmds;
 
     shell_init(&params, env);
     while (1)
     {
         line = prompt();
         cmds = parser(line, params.env);
-        // print_cmds(cmds);
+        print_cmds(cmds);
         executer(&params, cmds);
         free(line);
         delete_commands(&cmds);

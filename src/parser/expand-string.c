@@ -71,6 +71,26 @@ char *joined_linked_list_of_strings(t_list *lst)
     return (joined);
 }
 
+void add_appropriate_val(char *key, t_env_list *env, t_list **lst)
+{
+    char *tmp;
+
+    if (ft_isalpha(key[0]) || key[0] == '_')
+    {
+
+        if (env_list_get(env, key))
+            ft_lstadd_back(lst, ft_lstnew(ft_strdup(env_list_get(env, key))));
+        else
+        {
+            ft_lstadd_back(lst, ft_lstnew(ft_strdup("")));
+        }
+    }
+    else
+    {
+        ft_lstadd_back(lst, ft_lstnew(ft_strjoin("$", key)));
+    }
+}
+
 char *expand_string(char *s, t_env_list *env)
 {
     char   *key;
@@ -85,11 +105,7 @@ char *expand_string(char *s, t_env_list *env)
         if (s[i] == '$')
         {
             key = get_var_key(&s[i + 1]);
-            if (env_list_get(env, key))
-                ft_lstadd_back(&lst,
-                               ft_lstnew(ft_strdup(env_list_get(env, key))));
-            else
-                ft_lstadd_back(&lst, ft_lstnew(ft_strdup(key)));
+            add_appropriate_val(key, env, &lst);
             i += ft_strlen(key) + 1;
             free(key);
         }
@@ -157,13 +173,9 @@ char *expand(char *s, t_env_list *env)
         if (s[i] == '$')
         {
             key = get_var_key(&s[i + 1]);
-            if (env_list_get(env, key))
-            {
-                ft_lstadd_back(&splits,
-                               ft_lstnew(ft_strdup(env_list_get(env, key))));
-            }
+            add_appropriate_val(key, env, &splits);
+            i += ft_strlen(key) + 1;
             free(key);
-            i += ft_strlen(key);
         }
         else if (s[i] == '"')
         {
@@ -183,7 +195,6 @@ char *expand(char *s, t_env_list *env)
                 i++;
             if (s[i] == '\'')
                 i++;
-            printf("'%c'\n", s[i]);
         }
         else
         {
@@ -192,5 +203,6 @@ char *expand(char *s, t_env_list *env)
         }
     }
     expanded = joined_linked_list_of_strings(splits);
+    ft_lstclear(&splits, free);
     return (expanded);
 }

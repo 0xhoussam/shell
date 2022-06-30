@@ -13,26 +13,6 @@
 #include "parser.h"
 #include "utils.h"
 
-// int expand_asterisk(t_list **cmds, t_cmd *cmd, char *s, t_env_list *lst)
-// {
-//     DIR           *d;
-//     struct dirent *dir;
-
-//     if (!s || *s != '*')
-//         return (0);
-//     d = opendir(".");
-//     if (!d)
-//         return (0);
-//     while ((dir = readdir(d)) != NULL)
-//     {
-//         if (dir->d_type == DT_REG)
-//             ft_lstadd_back(&cmd->args, ft_lstnew(ft_strdup(dir->d_name)));
-//     }
-//     closedir(d);
-//     recursive_parser(cmds, cmd, &s[1], lst);
-//     return (1);
-// }
-
 t_list *read_dir_and_match_name(char *pattern)
 {
     t_list        *filenames;
@@ -44,7 +24,7 @@ t_list *read_dir_and_match_name(char *pattern)
     if (!d)
         return (NULL);
     while ((dir = readdir(d)) != NULL)
-        if (dir->d_type == DT_REG && is_matched(pattern, dir->d_name))
+        if (is_matched(pattern, dir->d_name))
             ft_lstadd_back(&filenames, ft_lstnew(ft_strdup(dir->d_name)));
     closedir(d);
     return (filenames);
