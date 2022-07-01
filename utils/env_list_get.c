@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 06:48:42 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/25 20:17:40 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/01 11:57:47 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ t_env_list	*env_list_get_node(t_env_list *list, char *key)
 {
 	t_env_list	*current;
 
+	if (!key)
+		return (NULL);
 	current = list;
 	while (current)
 	{

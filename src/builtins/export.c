@@ -6,12 +6,13 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:50:05 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/27 15:36:17 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/01 13:54:29 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+static void	print_env_value(char *str, int fd);
 static void	print_env_list(t_env_list *list, int fd);
 
 void	export(t_params *params)
@@ -31,6 +32,8 @@ void	export(t_params *params)
 
 static void	print_env_list(t_env_list *env, int fd)
 {
+	int	i;
+
 	while (env)
 	{
 		write(fd, "declare -x ", 11);
@@ -41,10 +44,25 @@ static void	print_env_list(t_env_list *env, int fd)
 		else
 		{
 			write(fd, "\"", 1);
-			write(fd, env->value, ft_strlen(env->value));
+			print_env_value(env->value, fd);
 			write(fd, "\"", 1);
 		}
 		write(fd, "\n", 1);
 		env = env->next;
+	}
+}
+
+static void	print_env_value(char *str, int fd)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '"')
+			write(fd, "\\\"", 2);
+		else
+			ft_putchar_fd(str[i], fd);
+		i++;
 	}
 }
