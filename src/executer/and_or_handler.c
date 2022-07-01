@@ -6,11 +6,13 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 17:05:04 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/30 17:52:31 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/01 13:56:54 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static int	is_signaled(void);
 
 int	and_or_handler(t_params *params)
 {
@@ -22,13 +24,8 @@ int	and_or_handler(t_params *params)
 		if (!ft_includes_str(BUILTINS, cmd->cmd_name))
 		{
 			waitpid(params->pids[params->index], &g_exit_code, 0);
-			if (WIFSIGNALED(g_exit_code))
-			{
-				g_exit_code = 128 + WTERMSIG(g_exit_code);
-				if (g_exit_code == 130)
-					ft_putstr_fd("\n", STDOUT_FILENO);
+			if (is_signaled())
 				return (0);
-			}
 			else
 				g_exit_code = WEXITSTATUS(g_exit_code);
 		}
@@ -39,4 +36,18 @@ int	and_or_handler(t_params *params)
 			return (0);
 	}
 	return (1);
+}
+
+static int	is_signaled(void)
+{
+	if (WIFSIGNALED(g_exit_code))
+	{
+		g_exit_code = 128 + WTERMSIG(g_exit_code);
+		if (g_exit_code == 130)
+			ft_putstr_fd("\n", STDOUT_FILENO);
+		if (g_exit_code == 131)
+			ft_putstr_fd("Quit (core dumped) \n", STDOUT_FILENO);
+		return (1);
+	}
+	return (0);
 }
