@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 12:14:57 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/07/01 19:19:20 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/01 19:57:28 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	env_list_insert(t_env_list **head, t_list *args)
 			else
 				ft_putstr_fd(key, STDERR_FILENO);
 			ft_putstr_fd("': is not a valid identifier\n", STDERR_FILENO);
+			free(key);
 			return ;
 		}
 		value = get_value(args->content, key);
