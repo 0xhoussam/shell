@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 14:02:11 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/07/01 14:09:13 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/01 19:15:39 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,5 @@ void		free_pipes(int **pipes, int size);
 // utils
 char		**join_args(t_list *list);
 int			wait_for_processes(int change_exit_code);
-void		print_export_error(char **key_value, char *arg, int ret);
 
 #endif

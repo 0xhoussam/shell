@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:26:15 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/07/01 14:09:10 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/01 19:15:32 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,26 +52,6 @@ void	print_error_no_exit(const char *cmd, char *error)
 		g_exit_code = CMD_NOT_FOUND_ERRNO;
 	free(error_str);
 	g_exit_code = 1;
-}
-
-void	print_export_error(char **key_value, char *arg, int ret)
-{
-	char	*key;
-
-	if (!key_value[0])
-		key = "";
-	else
-	{
-		if (ret == 2)
-			key = arg;
-		else
-			key = key_value[0];
-	}
-	ft_putstr_fd(PROGRAM_NAME, STDERR_FILENO);
-	ft_putstr_fd(": export: ", STDERR_FILENO);
-	ft_putstr_fd("`", STDERR_FILENO);
-	ft_putstr_fd(key, STDERR_FILENO);
-	ft_putstr_fd("' is not a valid identifier\n", STDERR_FILENO);
 }
 
 char	*generate_error_string(const char *cmd, char *error)

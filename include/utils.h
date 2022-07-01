@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:24:05 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/30 19:26:48 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/01 18:35:19 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,6 @@ int				is_valid(const char *s, int c);
 int				is_special(char c);
 int				ft_includes_str(char *haystack, char *needle);
 char			*ft_chardup(char c);
+t_env_list		*env_list_new(char *key, char *value);
+
 #endif

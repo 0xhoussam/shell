@@ -6,49 +6,61 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 12:14:57 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/07/01 14:08:38 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/01 19:19:20 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int			is_valid_key(char*arg, char **key);
-static t_env_list	*env_list_new(char *arg, char **key_value);
-static void			update_env_var(t_env_list *tmp, char *arg, char **key);
-static void			env_list_insert_one(t_env_list **h, char *arg, char **key);
+static int	is_valid_key(char *key);
+static void	env_list_insert_one(t_env_list **h, char *key, char *value);
+static char	*get_value(char *arg, char *key);
+static char	*get_key(char *arg);
 
 void	env_list_insert(t_env_list **head, t_list *args)
 {
-	char	**key_value;
 	char	*key;
-	int		ret;
+	char	*value;
 
 	while (args)
 	{
-		key_value = ft_split(args->content, '=');
-		ret = is_valid_key(args->content, key_value);
-		if (!ret || ret == 2)
+		key = get_key(args->content);
+		if (!is_valid_key(key))
 		{
-			print_export_error(key_value, args->content, ret);
-			g_exit_code = 1;
-			free_2d_array(key_value);
+			ft_putstr_fd(PROGRAM_NAME, STDERR_FILENO);
+			ft_putstr_fd(": export: ", STDERR_FILENO);
+			ft_putstr_fd("`", STDERR_FILENO);
+			if (!*key)
+				ft_putstr_fd(args->content, STDERR_FILENO);
+			else
+				ft_putstr_fd(key, STDERR_FILENO);
+			ft_putstr_fd("': is not a valid identifier\n", STDERR_FILENO);
 			return ;
 		}
-		env_list_insert_one(head, args->content, key_value);
-		free_2d_array(key_value);
+		value = get_value(args->content, key);
+		env_list_insert_one(head, key, value);
+		free(key);
+		free(value);
 		args = args->next;
 	}
 }
 
-static void	env_list_insert_one(t_env_list **head, char *arg, char **key_value)
+static void	env_list_insert_one(t_env_list **head, char *key, char *value)
 {
 	t_env_list	*new;
 	t_env_list	*tmp;
 
-	tmp = env_list_get_node(*head, key_value[0]);
+	tmp = env_list_get_node(*head, key);
 	if (tmp)
-		return (update_env_var(tmp, arg, key_value));
-	new = env_list_new(arg, key_value);
+	{
+		if (value)
+		{
+			free(tmp->value);
+			tmp->value = ft_strdup(value);
+		}
+		return ;
+	}
+	new = env_list_new(key, value);
 	if (!new)
 		return ;
 	if (!*head)
@@ -62,55 +74,44 @@ static void	env_list_insert_one(t_env_list **head, char *arg, char **key_value)
 	}
 }
 
-static void	update_env_var(t_env_list *tmp, char *arg, char **key_value)
+static char	*get_key(char *arg)
 {
-	if (key_value[1])
-	{
-		free(tmp->value);
-		tmp->value = ft_strdup(key_value[1]);
-	}
-	if (!key_value[1] && arg[ft_strlen(key_value[0])] == '=')
-	{
-		free(tmp->value);
-		tmp->value = ft_strdup("");
-	}
+	char	*key;
+	int		i;
+	int		j;
+
+	i = 0;
+	while (arg[i] && arg[i] != '=')
+		i++;
+	key = ft_substr(arg, 0, i);
+	return (key);
 }
 
-static t_env_list	*env_list_new(char *arg, char **key_value)
+static char	*get_value(char *arg, char *key)
 {
-	t_env_list	*new;
+	char	*value;
+	int		i;
 
-	new = malloc(sizeof(t_env_list));
-	if (!new)
-		return (NULL);
-	new->key = ft_strdup(key_value[0]);
-	new->value = ft_strdup(key_value[1]);
-	if (!key_value[1] && arg[ft_strlen(key_value[0])] == '=')
-	{
-		free(new->value);
-		new->value = ft_strdup("");
-	}
-	new->next = NULL;
-	return (new);
+	if (ft_strlen(key) == ft_strlen(arg))
+		value = NULL;
+	else
+		value = ft_substr(arg, ft_strlen(key) + 1, ft_strlen(arg));
+	return (value);
 }
 
-static int	is_valid_key(char *arg, char **key)
+static int	is_valid_key(char *key)
 {
 	int	i;
 
-	if (!key || !arg || !key[0])
-		return (0);
 	i = 0;
-	while (ft_isspace(arg[i]))
-		i++;
-	if (arg[i] == '=')
-		return (2);
-	if (!ft_isalpha(key[0][0]) && key[0][0] != '_')
+	if (!*key || !key)
+		return (0);
+	if (!ft_isalpha(key[0]) && key[0] != '_')
 		return (0);
 	i = 1;
-	while (key[0][i])
+	while (key[i])
 	{
-		if (!ft_isalnum(key[0][i]) && key[0][i] != '_')
+		if (!ft_isalnum(key[i]) && key[i] != '_')
 			return (0);
 		i++;
 	}

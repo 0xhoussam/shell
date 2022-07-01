@@ -55,3 +55,5 @@
 - [x] fix pwd old_pwd leak
 - [x] remove empty lines from history
 - [x] handle ctrl+\ signal (ex: sleep 10 and press ctrl+\)
+- [ ] remove prompt colors
+- [x] fix export (do not split with "=")

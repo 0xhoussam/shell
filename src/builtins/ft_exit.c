@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 18:02:15 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/27 15:36:20 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/01 16:56:19 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	ft_exit(t_params *params)
 		if (!is_number(cmd->args->next->content))
 		{
 			error = ft_strjoin("exit: ", cmd->args->next->content);
-			print_error(error, "numeric argument required");
-			g_exit_code = 2;
+			print_error_no_exit(error, "numeric argument required");
+			exit (2);
 		}
 		else
 			exit_code = ft_atoi(cmd->args->next->content);
