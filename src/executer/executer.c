@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:49:53 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/07/02 17:24:44 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/02 20:59:22 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	builtins_handler(t_params *params, int id);
 static void	binary_handler(t_params *params, int id);
+static void	wait_helper(t_params *params);
 
 void	executer(t_params *params, t_list *cmds)
 {
@@ -40,7 +41,7 @@ void	executer(t_params *params, t_list *cmds)
 			cmds = cmds->next;
 	}
 	close_pipes(params);
-	wait_for_processes(1);
+	wait_helper(params);
 	free_params(params);
 }
 
@@ -78,4 +79,16 @@ static void	binary_handler(t_params *params, int id)
 		ft_exec(params);
 		exit(0);
 	}
+}
+
+static void	wait_helper(t_params *params)
+{
+	int		i;
+	t_cmd	*cmd;
+
+	cmd = params->cmd;
+	if (ft_includes_str(BUILTINS, cmd->cmd_name))
+		wait_for_processes(0);
+	else
+		wait_for_processes(1);
 }

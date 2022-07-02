@@ -55,5 +55,7 @@
 - [x] fix pwd old_pwd leak
 - [x] remove empty lines from history
 - [x] handle ctrl+\ signal (ex: sleep 10 and press ctrl+\)
-- [ ] remove prompt colors
+- [x] remove prompt colors
 - [x] fix export (do not split with "=")
+- [ ] fix case of $ only
+- [x] fix case `cat Makefile | grep pr | cd file_not_exit` (exit: 1)
