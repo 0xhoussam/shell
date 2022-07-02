@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:37:39 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/27 23:12:53 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/02 15:20:34 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ static void	open_home_dir(t_params *params)
 	DIR		*dir;
 
 	home = env_list_get(params->env, "HOME");
+	if (!*home)
+	{
+		g_exit_code = 0;
+		return ;
+	}
 	if (!home)
 		return (print_error_no_exit("cd", "HOME not set"));
 	dir = opendir(home);
@@ -75,6 +80,12 @@ static void	open_prev_dir(t_params *params)
 	DIR		*dir;
 
 	old_pwd = env_list_get(params->env, "OLDPWD");
+	if (!*old_pwd)
+	{
+		ft_putchar_fd('\n', get_redir_fd(params));
+		g_exit_code = 0;
+		return ;
+	}
 	if (!old_pwd)
 		return (print_error_no_exit("cd", "OLDPWD not set"));
 	dir = opendir(old_pwd);
