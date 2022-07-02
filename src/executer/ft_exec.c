@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 13:13:49 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/07/02 20:01:02 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/02 22:20:39 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static int	is_dir(t_params *params)
 {
 	DIR	*dir;
 
+	if (!params->cmd->cmd_name)
+		return (1);
 	if (!ft_strcmp(params->cmd->cmd_name, ".."))
 		return (0);
 	if (!ft_strcmp(params->cmd->cmd_name, "."))
