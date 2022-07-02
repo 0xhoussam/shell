@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 17:45:04 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/07/02 14:57:45 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/02 20:34:16 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define USE_ERRNO ""
 
 // PROMPT
-#define PROMPT "minishell-1.0$ "
+# define PROMPT "minishell-1.0$ "
 
 # define GET_CWD_ERROR "shell-init: error retrieving current directory: \
 getcwd: cannot access parent directories"

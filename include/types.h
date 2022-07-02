@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 17:38:54 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/30 12:32:40 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/02 20:28:45 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ typedef enum e_token_type
 	OPEN_PARENTHESIS,
 	CLOSE_PARENTHESIS,
 }	t_token_type;
+
+typedef struct s_analysis
+{
+	int	open_parentheses;
+	int	s_quotes;
+	int	d_quotes;
+}	t_analysis;
 
 typedef enum e_delimiter {
 	NONE,
