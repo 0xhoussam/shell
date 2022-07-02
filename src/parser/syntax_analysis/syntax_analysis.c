@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:33:20 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/07/01 20:23:19 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/02 17:23:14 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static int	valid_token(t_list *prev_node, t_list *node)
 		ret = check_unary_operators(node);
 	if (token->type == CLOSE_PARENTHESIS || token->type == OPEN_PARENTHESIS)
 		ret = check_parentheses_syntax(prev_node, node);
-	ret = check_word_syntax(node);
+	if (token->type == LEX_WORD)
+		ret = check_word_syntax(node);
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:53:19 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/07/02 16:35:13 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/02 16:45:11 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static char	*check_command(char *command, char **paths)
 {
 	char	*path;
 
-	if (!*command)
+	if (!command || !*command)
 		return (NULL);
 	if (command[0] == '.')
 	{

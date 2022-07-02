@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 19:21:51 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/07/01 20:22:55 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/02 17:23:53 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,13 @@ int	check_word_syntax(t_list *node)
 	static int	d_quoted = 0;
 
 	token = node->content;
-	if (token->type == LEX_WORD)
+	i = -1;
+	while (token->value[++i])
 	{
-		i = -1;
-		while (token->value[++i])
-		{
-			if (token->value[i] == '\'')
-				s_quoted++;
-			if (token->value[i] == '"')
-				d_quoted++;
-		}
+		if (token->value[i] == '\'')
+			s_quoted++;
+		if (token->value[i] == '"')
+			d_quoted++;
 	}
 	if (!node->next && (s_quoted % 2 != 0 || d_quoted % 2 != 0))
 	{
