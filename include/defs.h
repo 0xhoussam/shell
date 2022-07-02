@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 17:45:04 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/28 18:00:49 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/02 14:57:45 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,7 @@
 # define USE_ERRNO ""
 
 // PROMPT
-# define PROMPT "\x1B[1m\x1B[36mminishell-1.0$ \x1B[0m"
-
-// colors
-# define RESET "\x1B[0m"
-# define RED "\x1B[31m"
-# define GREEN "\x1B[32m"
-# define YELLOW "\x1B[33m"
-# define BLUE "\x1B[36m"
-// typography
-# define BOLD "\x1B[1m"
+#define PROMPT "minishell-1.0$ "
 
 # define GET_CWD_ERROR "shell-init: error retrieving current directory: \
 getcwd: cannot access parent directories"
