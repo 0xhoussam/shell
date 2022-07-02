@@ -6,13 +6,14 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:00:38 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/30 19:26:10 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/02 16:10:43 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 static void	print_2d_array_to_fd(char **str, int std);
+static int	is_flag(char *str);
 
 void	echo(t_params *params)
 {
@@ -24,9 +25,10 @@ void	echo(t_params *params)
 	cmd = params->cmd;
 	fd = get_redir_fd(params);
 	args = cmd->args->next;
-	if (args && !ft_strcmp(args->content, "-n"))
+	if (args && is_flag(args->content))
 	{
-		args = args->next;
+		while (args && is_flag(args->content))
+			args = args->next;
 		str = join_args(args);
 		print_2d_array_to_fd(str, fd);
 		free_2d_array(str);
@@ -62,4 +64,25 @@ static void	print_2d_array_to_fd(char **str, int std)
 		if (str[i])
 			write(std, " ", 1);
 	}
+}
+
+static int	is_flag(char *str)
+{
+	int	i;
+
+	if (!str)
+		return (0);
+	if (str[0] != '-')
+		return (0);
+	else
+	{
+		i = 1;
+		while (str[i])
+		{
+			if (str[i] == '-' || str[i] != 'n')
+				return (0);
+			i++;
+		}
+	}
+	return (1);
 }
