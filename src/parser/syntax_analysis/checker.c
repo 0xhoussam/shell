@@ -6,11 +6,13 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 19:21:51 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/07/02 17:23:53 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/02 18:02:42 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static int	reset_and_return(int *val, char *err);
 
 int	check_binary_operators(t_list *prev_node, t_list *node)
 {
@@ -57,21 +59,21 @@ int	check_parentheses_syntax(t_list *prev_node, t_list *node)
 	{
 		open_parentheses++;
 		if (!node->next)
-			return (syntax_error_logger("newline"));
+			return (reset_and_return(&open_parentheses, "newline"));
 		next_token = node->next->content;
 		if (is_binary_operator(next_token))
-			return (syntax_error_logger(next_token->value));
+			return (reset_and_return(&open_parentheses, next_token->value));
 	}
 	if (token->type == CLOSE_PARENTHESIS)
 	{
 		open_parentheses--;
 		if (!prev_node)
-			return (syntax_error_logger(token->value));
+			return (reset_and_return(&open_parentheses, token->value));
 	}
 	if (!node->next && open_parentheses)
-		return (syntax_error_logger("newline"));
+		return (reset_and_return(&open_parentheses, "newline"));
 	if (open_parentheses < 0)
-		return (syntax_error_logger(token->value));
+		return (reset_and_return(&open_parentheses, "newline"));
 	return (1);
 }
 
@@ -91,11 +93,18 @@ int	check_word_syntax(t_list *node)
 		if (token->value[i] == '"')
 			d_quoted++;
 	}
-	if (!node->next && (s_quoted % 2 != 0 || d_quoted % 2 != 0))
+	if (!node->next)
 	{
 		s_quoted = 0;
 		d_quoted = 0;
-		return (syntax_error_logger("newline"));
+		if (s_quoted % 2 != 0 || d_quoted % 2 != 0)
+			return (syntax_error_logger("newline"));
 	}
 	return (1);
+}
+
+static int	reset_and_return(int *val, char *err)
+{
+	*val = 0;
+	return (syntax_error_logger(err));
 }
