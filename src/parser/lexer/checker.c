@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 11:51:39 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/30 19:26:48 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/02 18:41:05 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,20 +57,26 @@ void	check_word(t_list **tokens, char *line, int *index)
 {
 	t_token		*token;
 	int			i;
-	int			word_len;
+	int			wl;
 
 	i = *index;
-	word_len = 0;
-	while (!is_special(line[i]) && !ft_isspace(line[i]) && line[i])
+	wl = 0;
+	while (line[i + wl] && !is_special(line[i + wl])
+		&& !ft_isspace(line[i + wl]))
+			wl++;
+	if (line[i] == '"')
 	{
-		i++;
-		word_len++;
+		wl = 1;
+		while (line[i + wl] && line[i + wl] != '"')
+			wl++;
+		if (line[i + wl] == '"')
+			wl++;
 	}
-	if (!word_len)
+	if (!wl)
 		return ;
-	token = create_token(LEX_WORD, ft_substr(line, *index, word_len));
+	token = create_token(LEX_WORD, ft_substr(line, *index, wl));
 	ft_lstadd_back(tokens, ft_lstnew(token));
-	*index = *index + word_len;
+	*index = *index + wl;
 }
 
 void	check_and_or(t_list **tokens, char *line, int *index)
