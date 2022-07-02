@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 14:02:11 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/07/01 19:15:39 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/02 16:22:21 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void		redir_handler(t_params *params);
 int			and_or_handler(t_params *params);
 void		print_error(const char *cmd, char *error);
 void		print_error_no_exit(const char *cmd, char *error);
+void		print_export_error(char *key, char *arg);
 int			**init_pipes(int size);
 void		executer(t_params *params, t_list *cmds);
 void		init_params(t_params *params, int list_size);

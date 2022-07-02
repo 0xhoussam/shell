@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:26:15 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/07/01 19:15:32 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/02 16:21:52 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,16 @@ char	*generate_error_string(const char *cmd, char *error)
 		free(tmp);
 	}
 	return (error_str);
+}
+
+void	print_export_error(char *key, char *arg)
+{
+	ft_putstr_fd(PROGRAM_NAME, STDERR_FILENO);
+	ft_putstr_fd(": export: ", STDERR_FILENO);
+	ft_putstr_fd("`", STDERR_FILENO);
+	if (!*key)
+		ft_putstr_fd(arg, STDERR_FILENO);
+	else
+		ft_putstr_fd(key, STDERR_FILENO);
+	ft_putstr_fd("': is not a valid identifier\n", STDERR_FILENO);
 }

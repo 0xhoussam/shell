@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:50:05 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/07/01 13:54:29 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/02 16:27:09 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ void	export(t_params *params)
 	if (ft_lstsize(cmd->args) <= 1)
 		return (print_env_list(params->env, fd));
 	env_list_insert(&params->env, cmd->args->next);
-	g_exit_code = 0;
+	if (g_exit_code == -1)
+		g_exit_code = 1;
+	else
+		g_exit_code = 0;
 }
 
 static void	print_env_list(t_env_list *env, int fd)
@@ -50,6 +53,7 @@ static void	print_env_list(t_env_list *env, int fd)
 		write(fd, "\n", 1);
 		env = env->next;
 	}
+	g_exit_code = 0;
 }
 
 static void	print_env_value(char *str, int fd)

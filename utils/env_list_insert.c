@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 12:14:57 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/07/01 19:57:28 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/02 16:22:42 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,11 @@ void	env_list_insert(t_env_list **head, t_list *args)
 		key = get_key(args->content);
 		if (!is_valid_key(key))
 		{
-			ft_putstr_fd(PROGRAM_NAME, STDERR_FILENO);
-			ft_putstr_fd(": export: ", STDERR_FILENO);
-			ft_putstr_fd("`", STDERR_FILENO);
-			if (!*key)
-				ft_putstr_fd(args->content, STDERR_FILENO);
-			else
-				ft_putstr_fd(key, STDERR_FILENO);
-			ft_putstr_fd("': is not a valid identifier\n", STDERR_FILENO);
+			print_export_error(key, args->content);
 			free(key);
-			return ;
+			g_exit_code = -1;
+			args = args->next;
+			continue ;
 		}
 		value = get_value(args->content, key);
 		env_list_insert_one(head, key, value);
