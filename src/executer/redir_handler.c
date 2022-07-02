@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:04:05 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/24 19:12:41 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/02 22:32:08 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void	redir_handler(t_params *params)
 	cmd = params->cmd;
 	if (cmd->in_redir == SINGLE)
 		dup_std(cmd, cmd->in, STDIN_FILENO, O_RDONLY);
-	else if (cmd->in_redir == DOUBLE)
+	if (cmd->in_redir == DOUBLE)
 		dup_std(cmd, cmd->in, STDIN_FILENO, O_RDONLY);
-	else if (cmd->out_redir == SINGLE)
+	if (cmd->out_redir == SINGLE)
 		dup_std(cmd, cmd->out, STDOUT_FILENO, O_CREAT | O_WRONLY | O_TRUNC);
-	else if (cmd->out_redir == DOUBLE)
+	if (cmd->out_redir == DOUBLE)
 		dup_std(cmd, cmd->out, STDOUT_FILENO, O_CREAT | O_WRONLY | O_APPEND);
 	pipe_handler(params);
 }
