@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/30 16:18:20 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/02 22:26:10 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ void print_cmds(t_list *cmds)
     while (cmds)
     {
         t_cmd *cmd = (t_cmd *)cmds->content;
-        printf("'%s'", (char *)cmd->cmd_name);
+        if (cmd->cmd_name)
+            printf("'%s'", (char *)cmd->cmd_name);
         t_list *args = cmd->args;
         t_list *heredocs = cmd->heredoc_del;
         while (heredocs)
@@ -58,7 +59,7 @@ void print_cmds(t_list *cmds)
             printf("<'%s' ", (char *)cmd->in);
         if (cmd->out)
             printf(">'%s' ", (char *)cmd->out);
-        while (args->next)
+        while (args && args->next)
         {
 
             printf("'%s' ", (char *)args->next->content);
