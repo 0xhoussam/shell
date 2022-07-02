@@ -12,24 +12,24 @@
 
 #include "minishell.h"
 
-int get_args(t_list **cmds, t_cmd *cmd, char *s, t_env_list *lst)
+int	get_args(t_list **cmds, t_cmd *cmd, char *s, t_env_list *lst)
 {
-    size_t i;
-    char  *str;
+	size_t	i;
+	char	*str;
 
-    i = 0;
-    if (!cmd || !cmd->cmd_name || !s || !*s)
-        return (0);
-    if (s[0] == '<' || s[0] == '>' || s[0] == '&' || s[0] == '|' || s[0] == ';')
-        return (0);
-    str = extract_word(s, &i, 0);
-    if (!*str)
-    {
-        free(str);
-        return (1);
-    }
-    else
-        ft_lstadd_back(&cmd->args, ft_lstnew(str));
-    recursive_parser(cmds, cmd, &s[i], lst);
-    return (1);
+	i = 0;
+	if (!cmd || !cmd->cmd_name || !s || !*s)
+		return (0);
+	if (s[0] == '<' || s[0] == '>' || s[0] == '&' || s[0] == '|' || s[0] == ';')
+		return (0);
+	str = extract_word(s, &i, 0);
+	if (!*str)
+	{
+		free(str);
+		return (1);
+	}
+	else
+		ft_lstadd_back(&cmd->args, ft_lstnew(str));
+	recursive_parser(cmds, cmd, &s[i], lst);
+	return (1);
 }

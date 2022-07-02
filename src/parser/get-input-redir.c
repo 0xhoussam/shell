@@ -14,9 +14,9 @@
 
 int	get_input_redir(t_list **cmds, t_cmd *cmd, char *s, t_env_list *env)
 {
-	size_t s_len;
-	size_t i;
-	size_t j;
+	size_t	s_len;
+	size_t	i;
+	size_t	j;
 
 	if (!cmd || !s || !*s)
 		return (0);
