@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand-asterisk.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habouiba <habouiba@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 07:37:48 by habouiba          #+#    #+#             */
-/*   Updated: 2022/06/26 09:21:35 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/07/03 16:31:53 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,18 @@ t_list	*read_dir_and_match_name(char *pattern)
 	return (filenames);
 }
 
+void	normal_inc(t_list **prev, t_list **curr)
+{
+	*prev = *curr;
+	*curr = (*curr)->next;
+}
+
+void	if_inc(t_list **prev, t_list **curr, t_list *expanded_arg)
+{
+	*prev = expanded_arg;
+	*curr = expanded_arg->next;
+}
+
 void	_expand_asterisk(void *_cmd)
 {
 	t_list	*expanded_arg;
@@ -41,44 +53,24 @@ void	_expand_asterisk(void *_cmd)
 	t_list	*prev;
 	t_cmd	*cmd;
 
-	cmd = (t_cmd *)_cmd;
+	_expand_asterisk_init(&cmd, &_cmd, &curr, &prev);
 	expanded_arg = NULL;
-	prev = NULL;
-	curr = cmd->args;
 	while (curr)
 	{
-		if ((ft_includes(curr->content, '*')
-				|| ft_includes(curr->content, '?'))
-			&& !ft_includes(curr->content, '"')
-			&& !ft_includes(curr->content, '\''))
+		if (check_if_expandable(curr))
 		{
 			expanded_arg = read_dir_and_match_name(curr->content);
 			if (!expanded_arg)
-			{
 				curr = curr->next;
-				continue ;
-			}
-			if (!prev)
-			{
-				ft_lstlast(expanded_arg)->next = curr->next;
-				cmd->args = expanded_arg;
-				free(curr->content);
-				free(curr);
-			}
-			else
-			{
-				prev->next = expanded_arg;
-				if (curr->next)
-					expanded_arg->next = ft_lstlast(curr);
-				free(curr->content);
-				free(curr);
-			}
-			prev = expanded_arg;
-			curr = expanded_arg->next;
-			continue ;
+			if (expanded_arg && !prev)
+				insert_at_front(expanded_arg, curr, cmd);
+			if (expanded_arg && prev)
+				insert_at_any(prev, expanded_arg, curr);
+			if (expanded_arg)
+				if_inc(&prev, &curr, expanded_arg);
 		}
-		prev = curr;
-		curr = curr->next;
+		else
+			normal_inc(&prev, &curr);
 	}
 }
 

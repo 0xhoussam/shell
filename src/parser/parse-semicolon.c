@@ -12,17 +12,21 @@
 
 #include "minishell.h"
 
-size_t parse_semicolon(t_list **cmds, t_cmd **cmd, const char *s) {
-  if (*s != ';')
-    return (0);
-  if (*cmd) {
-    (*cmd)->right_delimiter = SEMICOLON;
-    ft_lstadd_back(cmds, ft_lstnew(*cmd));
-    return (1);
-  } else {
-    *cmd = malloc(sizeof(t_cmd));
-    init_cmd(*cmd);
-    (*cmd)->left_delimiter = SEMICOLON;
-    return (1);
-  }
+size_t	parse_semicolon(t_list **cmds, t_cmd **cmd, char *s, t_env_list *env)
+{
+	if (*s != ';')
+		return (0);
+	if (*cmd)
+	{
+		(*cmd)->right_delimiter = SEMICOLON;
+		ft_lstadd_back(cmds, ft_lstnew(*cmd));
+		*cmd = NULL;
+		parse_semicolon(cmds, cmd, s, env);
+		return (1);
+	}
+	*cmd = malloc(sizeof(t_cmd));
+	init_cmd(*cmd);
+	(*cmd)->left_delimiter = SEMICOLON;
+	recursive_parser(cmds, *cmd, &s[1], env);
+	return (1);
 }

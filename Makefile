@@ -24,7 +24,9 @@ SYNTAX_ANALYSIS_INS = syntax_analysis.c utils.c checker.c
 PARSER_IN_DIR = $(SRC_DIR)parser/
 PARSER_INS = parser.c get-cmd-name.c get-input-redir.c get-output-redir.c \
 			get-args.c parse-semicolon.c parse-pipe.c parse-and.c parse-or.c \
-			expand-string.c expand-asterisk.c parser-utils.c delete-commands.c
+			expand-string.c expand-asterisk.c parser-utils.c delete-commands.c \
+			expand-asterisk-utils.c parser-utils2.c expand-string-utils.c \
+			expand-string-utils2.c
 
 EXECUTER_IN_DIR = $(SRC_DIR)executer/
 EXECUTER_INS =	errors.c executer.c get_cmd_path.c utils.c params.c \

@@ -1,0 +1,179 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/workspaces/minishell'
+echo "`tput setaf 3`Compiling `tput sgr0`src/main.c"
+mkdir -p objs/src/
+gcc -I include -I utils/libft  -c src/main.c -o objs/src/main.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/builtins/echo.c"
+mkdir -p objs/src/builtins/
+gcc -I include -I utils/libft  -c src/builtins/echo.c -o objs/src/builtins/echo.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/builtins/pwd.c"
+mkdir -p objs/src/builtins/
+gcc -I include -I utils/libft  -c src/builtins/pwd.c -o objs/src/builtins/pwd.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/builtins/cd.c"
+mkdir -p objs/src/builtins/
+gcc -I include -I utils/libft  -c src/builtins/cd.c -o objs/src/builtins/cd.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/builtins/export.c"
+mkdir -p objs/src/builtins/
+gcc -I include -I utils/libft  -c src/builtins/export.c -o objs/src/builtins/export.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/builtins/ft_exit.c"
+mkdir -p objs/src/builtins/
+gcc -I include -I utils/libft  -c src/builtins/ft_exit.c -o objs/src/builtins/ft_exit.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/builtins/unset.c"
+mkdir -p objs/src/builtins/
+gcc -I include -I utils/libft  -c src/builtins/unset.c -o objs/src/builtins/unset.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/builtins/env.c"
+mkdir -p objs/src/builtins/
+gcc -I include -I utils/libft  -c src/builtins/env.c -o objs/src/builtins/env.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/builtins/utils.c"
+mkdir -p objs/src/builtins/
+gcc -I include -I utils/libft  -c src/builtins/utils.c -o objs/src/builtins/utils.o
+echo "`tput setaf 3`Compiling `tput sgr0`utils/env_array_to_list.c"
+mkdir -p objs/utils/
+gcc -I include -I utils/libft  -c utils/env_array_to_list.c -o objs/utils/env_array_to_list.o
+echo "`tput setaf 3`Compiling `tput sgr0`utils/env_list_to_array.c"
+mkdir -p objs/utils/
+gcc -I include -I utils/libft  -c utils/env_list_to_array.c -o objs/utils/env_list_to_array.o
+echo "`tput setaf 3`Compiling `tput sgr0`utils/env_list_delete.c"
+mkdir -p objs/utils/
+gcc -I include -I utils/libft  -c utils/env_list_delete.c -o objs/utils/env_list_delete.o
+echo "`tput setaf 3`Compiling `tput sgr0`utils/sort.c"
+mkdir -p objs/utils/
+gcc -I include -I utils/libft  -c utils/sort.c -o objs/utils/sort.o
+echo "`tput setaf 3`Compiling `tput sgr0`utils/env_list_insert.c"
+mkdir -p objs/utils/
+gcc -I include -I utils/libft  -c utils/env_list_insert.c -o objs/utils/env_list_insert.o
+echo "`tput setaf 3`Compiling `tput sgr0`utils/free_2d_array.c"
+mkdir -p objs/utils/
+gcc -I include -I utils/libft  -c utils/free_2d_array.c -o objs/utils/free_2d_array.o
+echo "`tput setaf 3`Compiling `tput sgr0`utils/env_list_get.c"
+mkdir -p objs/utils/
+gcc -I include -I utils/libft  -c utils/env_list_get.c -o objs/utils/env_list_get.o
+echo "`tput setaf 3`Compiling `tput sgr0`utils/ft_strcmp.c"
+mkdir -p objs/utils/
+gcc -I include -I utils/libft  -c utils/ft_strcmp.c -o objs/utils/ft_strcmp.o
+echo "`tput setaf 3`Compiling `tput sgr0`utils/includes.c"
+mkdir -p objs/utils/
+gcc -I include -I utils/libft  -c utils/includes.c -o objs/utils/includes.o
+echo "`tput setaf 3`Compiling `tput sgr0`utils/validate.c"
+mkdir -p objs/utils/
+gcc -I include -I utils/libft  -c utils/validate.c -o objs/utils/validate.o
+echo "`tput setaf 3`Compiling `tput sgr0`utils/is_special.c"
+mkdir -p objs/utils/
+gcc -I include -I utils/libft  -c utils/is_special.c -o objs/utils/is_special.o
+echo "`tput setaf 3`Compiling `tput sgr0`utils/env_list_clean.c"
+mkdir -p objs/utils/
+gcc -I include -I utils/libft  -c utils/env_list_clean.c -o objs/utils/env_list_clean.o
+echo "`tput setaf 3`Compiling `tput sgr0`utils/ft_chardup.c"
+mkdir -p objs/utils/
+gcc -I include -I utils/libft  -c utils/ft_chardup.c -o objs/utils/ft_chardup.o
+echo "`tput setaf 3`Compiling `tput sgr0`utils/env_list_new.c"
+mkdir -p objs/utils/
+gcc -I include -I utils/libft  -c utils/env_list_new.c -o objs/utils/env_list_new.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/parser.c"
+mkdir -p objs/src/parser/
+gcc -I include -I utils/libft  -c src/parser/parser.c -o objs/src/parser/parser.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/get-cmd-name.c"
+mkdir -p objs/src/parser/
+gcc -I include -I utils/libft  -c src/parser/get-cmd-name.c -o objs/src/parser/get-cmd-name.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/get-input-redir.c"
+mkdir -p objs/src/parser/
+gcc -I include -I utils/libft  -c src/parser/get-input-redir.c -o objs/src/parser/get-input-redir.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/get-output-redir.c"
+mkdir -p objs/src/parser/
+gcc -I include -I utils/libft  -c src/parser/get-output-redir.c -o objs/src/parser/get-output-redir.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/get-args.c"
+mkdir -p objs/src/parser/
+gcc -I include -I utils/libft  -c src/parser/get-args.c -o objs/src/parser/get-args.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/parse-semicolon.c"
+mkdir -p objs/src/parser/
+gcc -I include -I utils/libft  -c src/parser/parse-semicolon.c -o objs/src/parser/parse-semicolon.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/parse-pipe.c"
+mkdir -p objs/src/parser/
+gcc -I include -I utils/libft  -c src/parser/parse-pipe.c -o objs/src/parser/parse-pipe.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/parse-and.c"
+mkdir -p objs/src/parser/
+gcc -I include -I utils/libft  -c src/parser/parse-and.c -o objs/src/parser/parse-and.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/parse-or.c"
+mkdir -p objs/src/parser/
+gcc -I include -I utils/libft  -c src/parser/parse-or.c -o objs/src/parser/parse-or.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/expand-string.c"
+mkdir -p objs/src/parser/
+gcc -I include -I utils/libft  -c src/parser/expand-string.c -o objs/src/parser/expand-string.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/expand-asterisk.c"
+mkdir -p objs/src/parser/
+gcc -I include -I utils/libft  -c src/parser/expand-asterisk.c -o objs/src/parser/expand-asterisk.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/parser-utils.c"
+mkdir -p objs/src/parser/
+gcc -I include -I utils/libft  -c src/parser/parser-utils.c -o objs/src/parser/parser-utils.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/delete-commands.c"
+mkdir -p objs/src/parser/
+gcc -I include -I utils/libft  -c src/parser/delete-commands.c -o objs/src/parser/delete-commands.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/expand-asterisk-utils.c"
+mkdir -p objs/src/parser/
+gcc -I include -I utils/libft  -c src/parser/expand-asterisk-utils.c -o objs/src/parser/expand-asterisk-utils.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/parser-utils2.c"
+mkdir -p objs/src/parser/
+gcc -I include -I utils/libft  -c src/parser/parser-utils2.c -o objs/src/parser/parser-utils2.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/expand-string-utils.c"
+mkdir -p objs/src/parser/
+gcc -I include -I utils/libft  -c src/parser/expand-string-utils.c -o objs/src/parser/expand-string-utils.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/expand-string-utils2.c"
+mkdir -p objs/src/parser/
+gcc -I include -I utils/libft  -c src/parser/expand-string-utils2.c -o objs/src/parser/expand-string-utils2.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/lexer/lexer.c"
+mkdir -p objs/src/parser/lexer/
+gcc -I include -I utils/libft  -c src/parser/lexer/lexer.c -o objs/src/parser/lexer/lexer.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/lexer/token.c"
+mkdir -p objs/src/parser/lexer/
+gcc -I include -I utils/libft  -c src/parser/lexer/token.c -o objs/src/parser/lexer/token.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/lexer/checker.c"
+mkdir -p objs/src/parser/lexer/
+gcc -I include -I utils/libft  -c src/parser/lexer/checker.c -o objs/src/parser/lexer/checker.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/syntax_analysis/syntax_analysis.c"
+mkdir -p objs/src/parser/syntax_analysis/
+gcc -I include -I utils/libft  -c src/parser/syntax_analysis/syntax_analysis.c -o objs/src/parser/syntax_analysis/syntax_analysis.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/syntax_analysis/utils.c"
+mkdir -p objs/src/parser/syntax_analysis/
+gcc -I include -I utils/libft  -c src/parser/syntax_analysis/utils.c -o objs/src/parser/syntax_analysis/utils.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/parser/syntax_analysis/checker.c"
+mkdir -p objs/src/parser/syntax_analysis/
+gcc -I include -I utils/libft  -c src/parser/syntax_analysis/checker.c -o objs/src/parser/syntax_analysis/checker.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/executer/errors.c"
+mkdir -p objs/src/executer/
+gcc -I include -I utils/libft  -c src/executer/errors.c -o objs/src/executer/errors.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/executer/executer.c"
+mkdir -p objs/src/executer/
+gcc -I include -I utils/libft  -c src/executer/executer.c -o objs/src/executer/executer.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/executer/get_cmd_path.c"
+mkdir -p objs/src/executer/
+gcc -I include -I utils/libft  -c src/executer/get_cmd_path.c -o objs/src/executer/get_cmd_path.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/executer/utils.c"
+mkdir -p objs/src/executer/
+gcc -I include -I utils/libft  -c src/executer/utils.c -o objs/src/executer/utils.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/executer/params.c"
+mkdir -p objs/src/executer/
+gcc -I include -I utils/libft  -c src/executer/params.c -o objs/src/executer/params.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/executer/pipes.c"
+mkdir -p objs/src/executer/
+gcc -I include -I utils/libft  -c src/executer/pipes.c -o objs/src/executer/pipes.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/executer/redir_handler.c"
+mkdir -p objs/src/executer/
+gcc -I include -I utils/libft  -c src/executer/redir_handler.c -o objs/src/executer/redir_handler.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/executer/ft_exec.c"
+mkdir -p objs/src/executer/
+gcc -I include -I utils/libft  -c src/executer/ft_exec.c -o objs/src/executer/ft_exec.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/executer/heredocs_handler.c"
+mkdir -p objs/src/executer/
+gcc -I include -I utils/libft  -c src/executer/heredocs_handler.c -o objs/src/executer/heredocs_handler.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/executer/and_or_handler.c"
+mkdir -p objs/src/executer/
+gcc -I include -I utils/libft  -c src/executer/and_or_handler.c -o objs/src/executer/and_or_handler.o
+echo "`tput setaf 3`Compiling `tput sgr0`src/prompt/prompt.c"
+mkdir -p objs/src/prompt/
+gcc -I include -I utils/libft  -c src/prompt/prompt.c -o objs/src/prompt/prompt.o
+echo "`tput setaf 2`source files compiled successfully \n `tput sgr0`"
+echo "`tput setaf 3`linking object files.. `tput sgr0`"
+gcc -I include -I utils/libft  objs/src/main.o objs/src/builtins/echo.o objs/src/builtins/pwd.o objs/src/builtins/cd.o objs/src/builtins/export.o objs/src/builtins/ft_exit.o objs/src/builtins/unset.o objs/src/builtins/env.o objs/src/builtins/utils.o objs/utils/env_array_to_list.o objs/utils/env_list_to_array.o objs/utils/env_list_delete.o objs/utils/sort.o objs/utils/env_list_insert.o objs/utils/free_2d_array.o objs/utils/env_list_get.o objs/utils/ft_strcmp.o objs/utils/includes.o objs/utils/validate.o objs/utils/is_special.o objs/utils/env_list_clean.o objs/utils/ft_chardup.o objs/utils/env_list_new.o objs/src/parser/parser.o objs/src/parser/get-cmd-name.o objs/src/parser/get-input-redir.o objs/src/parser/get-output-redir.o objs/src/parser/get-args.o objs/src/parser/parse-semicolon.o objs/src/parser/parse-pipe.o objs/src/parser/parse-and.o objs/src/parser/parse-or.o objs/src/parser/expand-string.o objs/src/parser/expand-asterisk.o objs/src/parser/parser-utils.o objs/src/parser/delete-commands.o objs/src/parser/expand-asterisk-utils.o objs/src/parser/parser-utils2.o objs/src/parser/expand-string-utils.o objs/src/parser/expand-string-utils2.o objs/src/parser/lexer/lexer.o objs/src/parser/lexer/token.o objs/src/parser/lexer/checker.o objs/src/parser/syntax_analysis/syntax_analysis.o objs/src/parser/syntax_analysis/utils.o objs/src/parser/syntax_analysis/checker.o objs/src/executer/errors.o objs/src/executer/executer.o objs/src/executer/get_cmd_path.o objs/src/executer/utils.o objs/src/executer/params.o objs/src/executer/pipes.o objs/src/executer/redir_handler.o objs/src/executer/ft_exec.o objs/src/executer/heredocs_handler.o objs/src/executer/and_or_handler.o objs/src/prompt/prompt.o ./utils/libft/libft.a -o minishell -lreadline
+echo "`tput setaf 2`All done, binary file path: minishell`tput sgr0`"
+make: Leaving directory '/workspaces/minishell'
+ 

@@ -12,6 +12,18 @@
 
 #include "minishell.h"
 
+static void	_get_input_redir(t_cmd *cmd, size_t *i)
+{
+	cmd->in_redir = HEREDOC;
+	*i = 2;
+}
+
+static void	__get_input_redir(t_cmd *cmd, size_t *i)
+{
+	cmd->in_redir = SINGLE;
+	*i = 1;
+}
+
 int	get_input_redir(t_list **cmds, t_cmd *cmd, char *s, t_env_list *env)
 {
 	size_t	s_len;
@@ -26,15 +38,9 @@ int	get_input_redir(t_list **cmds, t_cmd *cmd, char *s, t_env_list *env)
 	if (s[0] != '<')
 		return (0);
 	if (s[1] == '<')
-	{
-		cmd->in_redir = HEREDOC;
-		i = 2;
-	}
+		_get_input_redir(cmd, &i);
 	else
-	{
-		cmd->in_redir = SINGLE;
-		i = 1;
-	}
+		__get_input_redir(cmd, &i);
 	if (i == 2)
 		ft_lstadd_back(&cmd->heredoc_del, ft_lstnew(extract_word(s, &j, i)));
 	else

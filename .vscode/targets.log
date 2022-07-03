@@ -1,0 +1,760 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.3
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Sun Jul  3 17:09:20 2022
+
+# Variables
+
+# environment
+LC_ALL = C
+# makefile (from 'Makefile', line 106)
+yellow = `tput setaf 3`
+# makefile (from 'Makefile', line 55)
+OFILES = $(addprefix $(OBJS_DIR), $(OFILES_))
+# makefile (from 'Makefile', line 52)
+CFILES = $(addprefix $(SRC_DIR), $(SRC_FILES)) $(addprefix $(BUILT_INT_DIR), $(BUILT_INS)) $(addprefix $(UTILS_INT_DIR), $(UTILS_INS)) $(addprefix $(PARSER_IN_DIR), $(PARSER_INS)) $(addprefix $(LEXER_IN_DIR), $(LEXER_INS)) $(addprefix $(SYNTAX_ANALYSIS_IN_DIR), $(SYNTAX_ANALYSIS_INS)) $(addprefix $(GENERATOR_DIR), $(GENERATOR)) $(addprefix $(EXECUTER_IN_DIR), $(EXECUTER_INS)) $(addprefix $(PROMPT_IN_DIR), $(PROMPT_INS))
+# makefile (from 'Makefile', line 10)
+SRC_DIR = src/
+# environment
+VSCODE_CWD = /vscode/bin/linux-x64/30d9c6cd9483b2cc586687151bcbcd635f373630
+# environment
+GIT_COMMITTER_NAME = GitHub
+# makefile (from 'Makefile', line 21)
+SYNTAX_ANALYSIS_IN_DIR = $(SRC_DIR)parser/syntax_analysis/
+# default
+MAKE_COMMAND := make
+# environment
+VSCODE_HANDLES_SIGPIPE = true
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# makefile (from 'Makefile', line 109)
+reset = `tput sgr0`
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
+# environment
+PWD = /workspaces/minishell
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+HOSTNAME = codespaces-2caa83
+# environment
+LSCOLORS = Gxfxcxdxbxegedabagacad
+# environment
+OLDPWD = /vscode/bin/linux-x64/30d9c6cd9483b2cc586687151bcbcd635f373630
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+VSCODE_LOG_STACK = false
+# automatic
+%F = $(notdir $%)
+# makefile (from 'Makefile', line 58)
+LIBFT = $(LIBFT_DIR)/libft.a
+# environment
+LANG = C
+# environment
+GITHUB_SERVER_URL = https://github.com
+# default
+.LOADED := 
+# default
+.INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
+# environment
+GITHUB_API_URL = https://api.github.com
+# makefile (from 'Makefile', line 16)
+BUILT_INS = echo.c pwd.c cd.c export.c ft_exit.c unset.c env.c utils.c
+# makefile
+MAKEFLAGS = pqrR --no-print-directory
+# makefile
+CURDIR := /workspaces/minishell
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+MFLAGS = -pqrR --no-print-directory
+# makefile (from 'Makefile', line 22)
+SYNTAX_ANALYSIS_INS = syntax_analysis.c utils.c checker.c
+# default
+.SHELLFLAGS := -c
+# environment
+GITHUB_USER = 0xPride
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+ContainerVersion = 12
+# makefile (from 'Makefile', line 15)
+BUILT_INT_DIR = $(SRC_DIR)builtins/
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST := Makefile
+# automatic
+@F = $(notdir $@)
+# environment
+ZSH = /root/.oh-my-zsh
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# environment
+SHELL_LOGGED_IN = true
+# environment
+INTERNAL_VSCS_TARGET_URL = https://westeurope.online.visualstudio.com
+# automatic
+*F = $(notdir $*)
+# makefile (from 'Makefile', line 25)
+PARSER_INS = parser.c get-cmd-name.c get-input-redir.c get-output-redir.c get-args.c parse-semicolon.c parse-pipe.c parse-and.c parse-or.c expand-string.c expand-asterisk.c parser-utils.c delete-commands.c expand-asterisk-utils.c parser-utils2.c expand-string-utils.c expand-string-utils2.c
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# makefile (from 'Makefile', line 35)
+PROMPT_IN_DIR = $(SRC_DIR)prompt/
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
+# makefile (from 'Makefile', line 5)
+INCLUDE = -I include -I utils/libft
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# makefile
+SHELL = /bin/sh
+# makefile (from 'Makefile', line 24)
+PARSER_IN_DIR = $(SRC_DIR)parser/
+# default
+MAKECMDGOALS := all
+# makefile (from 'Makefile', line 32)
+EXECUTER_INS = errors.c executer.c get_cmd_path.c utils.c params.c pipes.c redir_handler.c ft_exec.c heredocs_handler.c and_or_handler.c
+# environment
+GITHUB_TOKEN = ghu_8lum3FmFDLerxmODiC1pS3i48Y8dRG0ldWYW
+# environment
+SHLVL = 1
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+PATH = /vscode/bin/linux-x64/30d9c6cd9483b2cc586687151bcbcd635f373630/bin/remote-cli:/root/.volta/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+# default
+MAKEFILES := 
+# automatic
+^F = $(notdir $^)
+# makefile (from 'Makefile', line 57)
+LIBFT_DIR = ./utils/libft
+# environment
+GIT_COMMITTER_EMAIL = noreply@github.com
+# environment
+CODESPACES = true
+# makefile (from 'Makefile', line 38)
+UTILS_INT_DIR = $(UTILS_DIR)
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?F = $(notdir $?)
+# makefile (from 'Makefile', line 54)
+OFILES_ = $(patsubst %.c, %.o, $(CFILES))
+# makefile (from 'Makefile', line 2)
+NAME = minishell
+# environment
+LS_COLORS = 
+# automatic
++F = $(notdir $+)
+# environment
+LESS = -R
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+BROWSER = /vscode/bin/linux-x64/30d9c6cd9483b2cc586687151bcbcd635f373630/bin/helpers/browser.sh
+# makefile (from 'Makefile', line 108)
+red = `tput setaf 1`
+# environment
+LOGNAME = root
+# makefile (from 'Makefile', line 36)
+PROMPT_INS = prompt.c
+# makefile
+.DEFAULT_GOAL := all
+# default
+MAKE_VERSION := 4.3
+# makefile (from 'Makefile', line 11)
+SRC_FILES = main.c
+# makefile (from 'Makefile', line 31)
+EXECUTER_IN_DIR = $(SRC_DIR)executer/
+# environment
+VSCODE_EXTHOST_WILL_SEND_SOCKET = true
+# makefile (from 'Makefile', line 8)
+OBJS_DIR = objs/
+# environment
+PAGER = less
+# environment
+VSCODE_AGENT_FOLDER = /root/.vscode-remote
+# environment
+_ = /usr/bin/cat
+# makefile (from 'Makefile', line 6)
+CFLAGS = $(INCLUDE) 
+# environment
+CODESPACE_NAME = 0xpride-minishell-7w4p6465frvp9
+# makefile (from 'Makefile', line 18)
+LEXER_IN_DIR = $(SRC_DIR)parser/lexer/
+# makefile (from 'Makefile', line 13)
+UTILS_DIR = utils/
+# environment
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-7b0483ec-559c-4aea-9903-f4cfcb15b418.sock
+# environment
+CLOUDENV_ENVIRONMENT_ID = 6d9319ff-5b76-47c0-b28f-baa125ce515c
+# environment
+GITHUB_REPOSITORY = 0xPride/minishell
+# makefile (from 'Makefile', line 39)
+UTILS_INS = env_array_to_list.c env_list_to_array.c env_list_delete.c sort.c env_list_insert.c free_2d_array.c env_list_get.c ft_strcmp.c includes.c validate.c is_special.c env_list_clean.c ft_chardup.c env_list_new.c
+ 
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /root
+# environment
+GITHUB_GRAPHQL_URL = https://api.github.com/graphql
+# environment
+RepositoryName = minishell
+# makefile (from 'Makefile', line 19)
+LEXER_INS = lexer.c token.c checker.c
+# environment
+GITHUB_CODESPACE_TOKEN = AHUVKI7HK7RQ6VZ5A3EMEBDCYJA3LANCNFSM4ABUBJUQ
+# environment
+VOLTA_HOME = /root/.volta
+# default
+.RECIPEPREFIX := 
+# automatic
+<F = $(notdir $<)
+# makefile (from 'Makefile', line 107)
+green = `tput setaf 2`
+# default
+SUFFIXES := 
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
+# makefile (from 'Makefile', line 1)
+CC = gcc
+# variable set hash-table stats:
+# Load=112/1024=11%, Rehash=0, Collisions=5/207=2%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# src (device 1792, inode 1310933): 6 files, no impossibilities so far.
+# . (device 1792, inode 1310870): 14 files, no impossibilities.
+
+# 20 files, no impossibilities in 2 directories.
+
+# Implicit Rules
+
+objs/%.o: %.c
+#  recipe to execute (from 'Makefile', line 84):
+	@echo "$(yellow)Compiling $(reset)$<"
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+# 1 implicit rules, 0 (0.0%) terminal.
+# Files
+
+# Not a target:
+objs/src/parser/get-cmd-name.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# makefile (from 'Makefile', line 68)
+fsanitize: CFLAGS += -fsanitize=address -g
+fsanitize: re all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=1/32=3%, Rehash=0, Collisions=0/3=0%
+#  recipe to execute (from 'Makefile', line 70):
+	@echo "$(red)fsanitize activated $(reset)"
+
+# Not a target:
+objs/utils/env_list_to_array.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/parser/lexer/lexer.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/builtins/ft_exit.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/parser/get-output-redir.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/prompt/prompt.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/utils/env_list_delete.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+utils/libft/libft.a:
+#  Implicit rule search has not been done.
+#  Last modified 2022-07-03 17:09:15.164248796
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 79):
+	@echo "$(yellow)Compiling libft... $(reset)"
+	@$(MAKE) bonus -C $(LIBFT_DIR)
+	@echo "$(green)libft compiled \n$(reset)"
+
+# Not a target:
+objs/src/parser/syntax_analysis/syntax_analysis.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/utils/env_list_insert.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+minishell: utils/libft/libft.a objs/src/main.o objs/src/builtins/echo.o objs/src/builtins/pwd.o objs/src/builtins/cd.o objs/src/builtins/export.o objs/src/builtins/ft_exit.o objs/src/builtins/unset.o objs/src/builtins/env.o objs/src/builtins/utils.o objs/utils/env_array_to_list.o objs/utils/env_list_to_array.o objs/utils/env_list_delete.o objs/utils/sort.o objs/utils/env_list_insert.o objs/utils/free_2d_array.o objs/utils/env_list_get.o objs/utils/ft_strcmp.o objs/utils/includes.o objs/utils/validate.o objs/utils/is_special.o objs/utils/env_list_clean.o objs/utils/ft_chardup.o objs/utils/env_list_new.o objs/src/parser/parser.o objs/src/parser/get-cmd-name.o objs/src/parser/get-input-redir.o objs/src/parser/get-output-redir.o objs/src/parser/get-args.o objs/src/parser/parse-semicolon.o objs/src/parser/parse-pipe.o objs/src/parser/parse-and.o objs/src/parser/parse-or.o objs/src/parser/expand-string.o objs/src/parser/expand-asterisk.o objs/src/parser/parser-utils.o objs/src/parser/delete-commands.o objs/src/parser/expand-asterisk-utils.o objs/src/parser/parser-utils2.o objs/src/parser/expand-string-utils.o objs/src/parser/expand-string-utils2.o objs/src/parser/lexer/lexer.o objs/src/parser/lexer/token.o objs/src/parser/lexer/checker.o objs/src/parser/syntax_analysis/syntax_analysis.o objs/src/parser/syntax_analysis/utils.o objs/src/parser/syntax_analysis/checker.o objs/src/executer/errors.o objs/src/executer/executer.o objs/src/executer/get_cmd_path.o objs/src/executer/utils.o objs/src/executer/params.o objs/src/executer/pipes.o objs/src/executer/redir_handler.o objs/src/executer/ft_exec.o objs/src/executer/heredocs_handler.o objs/src/executer/and_or_handler.o objs/src/prompt/prompt.o
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/8=0%
+#  recipe to execute (from 'Makefile', line 63):
+	@echo "$(green)source files compiled successfully \n $(reset)"
+	@echo "$(yellow)linking object files.. $(reset)"
+	@$(CC) $(CFLAGS) $(OFILES) $(LIBFT) -o $(NAME) -lreadline
+	@echo "$(green)All done, binary file path: $(NAME)$(reset)"
+
+# Not a target:
+objs/src/builtins/echo.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/executer/and_or_handler.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# makefile (from 'Makefile', line 72)
+debug: CFLAGS += -g
+debug: re all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=1/32=3%, Rehash=0, Collisions=0/3=0%
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-03 17:08:54.959878227
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+objs/utils/free_2d_array.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/parser/get-input-redir.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/utils/validate.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/parser/syntax_analysis/checker.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/parser/parser-utils2.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 95):
+	@echo "$(yellow)Cleaning object files... $(reset)"
+	@rm -f $(OFILES)
+	@rm -rf $(OBJS_DIR)
+	@echo "$(green)object files cleaned \n $(reset)"
+	@echo "$(yellow)cleaning libft... $(reset)"
+	@$(MAKE) clean -C $(LIBFT_DIR)
+	@echo "$(green)libft cleaned \n $(reset)"
+
+# Not a target:
+objs/src/parser/expand-string.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/executer/redir_handler.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/utils/env_list_clean.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/parser/parse-and.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/utils/includes.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/main.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-03 17:02:30.564694484
+#  File has been updated.
+#  Successfully updated.
+
+re: fclean all
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+objs/src/parser/syntax_analysis/utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/parser/lexer/token.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/parser/expand-asterisk-utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/executer/params.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+objs/src/main.o: src/main.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'src/main'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := objs/src/main.o
+# automatic
+# * := src/main
+# automatic
+# < := src/main.c
+# automatic
+# + := src/main.c
+# automatic
+# % := 
+# automatic
+# ^ := src/main.c
+# automatic
+# ? := src/main.c
+# automatic
+# | := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=2/20=10%
+#  recipe to execute (from 'Makefile', line 84):
+	@echo "$(yellow)Compiling $(reset)$<"
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+# Not a target:
+objs/utils/ft_strcmp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/executer/pipes.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/utils/ft_chardup.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+ 
+# Not a target:
+objs/utils/is_special.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+all: minishell
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/8=0%
+
+fclean: clean
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 91):
+	@rm -f $(NAME)
+	@$(MAKE) fclean -C $(LIBFT_DIR)
+
+# Not a target:
+objs/src/parser/delete-commands.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/parser/parse-pipe.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/executer/utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/parser/parser-utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/parser/lexer/checker.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# makefile (from 'Makefile', line 75)
+error: CFLAGS += -Wall -Werror -Wextra
+error: re all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=1/32=3%, Rehash=0, Collisions=0/3=0%
+
+# Not a target:
+objs/src/builtins/export.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/builtins/utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/utils/sort.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/builtins/env.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/executer/ft_exec.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/parser/expand-string-utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/builtins/unset.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/parser/expand-asterisk.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/builtins/cd.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/parser/expand-string-utils2.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/parser/get-args.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/utils/env_list_get.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/executer/errors.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/parser/parser.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/executer/heredocs_handler.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/builtins/pwd.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/executer/executer.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/parser/parse-or.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.PHONY: clean fclean re
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/executer/get_cmd_path.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/utils/env_list_new.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/utils/env_array_to_list.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/src/parser/parse-semicolon.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=71/1024=7%, Rehash=0, Collisions=8/167=5%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 93 / storage = 1974 B / avg = 21 B
+# current buf: size = 8162 B / used = 1974 B / count = 93 / avg = 21 B
+
+# strcache performance: lookups = 132 / hit rate = 29%
+# hash-table stats:
+# Load=93/8192=1%, Rehash=0, Collisions=0/132=0%
+# Finished Make data base on Sun Jul  3 17:09:20 2022
+
+ 

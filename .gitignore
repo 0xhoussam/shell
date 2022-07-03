@@ -59,3 +59,7 @@ dkms.conf
 .clang-format
 compile_commands.json
 .cache
+
+# editor
+
+.vscode

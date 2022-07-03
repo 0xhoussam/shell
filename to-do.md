@@ -27,6 +27,7 @@
 - [x] handle pipe errors
 - [x] fix asterisk segfults
 - [x] fix export expanding error
+- [ ] expand $?
 
 ## Execution
 
@@ -59,3 +60,4 @@
 - [x] fix export (do not split with "=")
 - [ ] fix case of $ only
 - [x] fix case `cat Makefile | grep pr | cd file_not_exit` (exit: 1)
+- [ ] fix echo (ex: echo '$PWD$PWD')
