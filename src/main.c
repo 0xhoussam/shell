@@ -6,41 +6,54 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/07/03 15:07:38 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/03 19:16:08 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <readline/history.h>
 
-void shell_init(t_params *params, char **env);
-void shell_destroy(t_params *params);
+void	shell_init(t_params *params, char **env);
+void	shell_destroy(t_params *params);
+void	print_cmds(t_list *cmds);
+void	printc(t_list *cmds);
 
-int  g_exit_code = 0;
+int		g_exit_code = 0;
 
-void print_cmds(t_list *cmds);
-void printc(t_list *cmds);
-
-int  main(int ac, char **av, char **env)
+int	main(int ac, char **av, char **env)
 {
-	t_params params;
-	char    *line;
-	t_list  *cmds;
+	t_params	params;
+	char		*line;
+	t_list		*cmds;
 
 	shell_init(&params, env);
 	while (1)
 	{
 		line = prompt();
 		cmds = parser(line, params.env);
-		printc(cmds);
-		executer(&params, cmds);
 		free(line);
+		executer(&params, cmds);
 		delete_commands(&cmds);
 	}
 	shell_destroy(&params);
 	return (g_exit_code);
 }
 
+void	shell_init(t_params *params, char **env)
+{
+	params->env = env_array_to_list(env);
+	params->cwd = getcwd(NULL, 0);
+	if (!params->cwd)
+		perror(GET_CWD_ERROR);
+}
+
+void	shell_destroy(t_params *params)
+{
+	free(params->cwd);
+	env_list_clean(&params->env);
+	rl_clear_history();
+}
+
+/*
 void print_cmds(t_list *cmds)
 {
 	while (cmds)
@@ -106,19 +119,4 @@ void printc(t_list *cmds)
 	printf("\n------------------------------------------------\n");
 }
 
-void shell_init(t_params *params, char **env)
-{
-	char *error;
-
-	params->env = env_array_to_list(env);
-	params->cwd = getcwd(NULL, 0);
-	if (!params->cwd)
-		perror(GET_CWD_ERROR);
-}
-
-void shell_destroy(t_params *params)
-{
-	free(params->cwd);
-	env_list_clean(&params->env);
-	rl_clear_history();
-}
+*/
