@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:00:38 by habouiba          #+#    #+#             */
-/*   Updated: 2022/07/02 16:10:43 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/03 14:20:45 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	print_2d_array_to_fd(char **str, int std)
 		else
 			write(std, str[i], ft_strlen(str[i]));
 		i++;
-		if (str[i])
+		if (str[i] && *str[i - 1])
 			write(std, " ", 1);
 	}
 }
