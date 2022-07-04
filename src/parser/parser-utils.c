@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 11:20:49 by habouiba          #+#    #+#             */
-/*   Updated: 2022/07/03 15:26:31 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:40:03 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ char	*extract_word(const char *s, size_t *k, int start)
 {
 	size_t	j;
 	size_t	i;
-	char	c;
 
 	j = start;
 	while (s[j] && ft_isspace(s[j]))
@@ -106,7 +105,7 @@ int	is_matched(char *_pattern, char *filename)
 
 	pattern = remove_consecutive_asterisks(_pattern);
 	matrix = create_matching_matrix(ft_strlen(pattern), ft_strlen(filename));
-	setup_matrix(matrix, pattern, filename, &i);
+	setup_matrix(matrix, pattern, &i);
 	while (filename[++i])
 	{
 		j = -1;

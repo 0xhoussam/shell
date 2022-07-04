@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 12:14:08 by habouiba          #+#    #+#             */
-/*   Updated: 2022/07/03 17:01:23 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:39:42 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		get_cmd_name(t_list **cmds, t_cmd *cmd, char *s, t_env_list *lst);
 int		get_input_redir(t_list **cmds, t_cmd *cmd, char *s, t_env_list *env);
 int		get_output_redir(t_list **cmds, t_cmd *cmd, char *s, t_env_list *env);
 int		get_args(t_list **cmds, t_cmd *cmd, char *s, t_env_list *lst);
-void	expand_asterisk(t_list *cmds, t_env_list *lst);
+void	expand_asterisk(t_list *cmds);
 size_t	parse_pipe(t_list **cmds, t_cmd **cmd, char *s, t_env_list *lst);
 void	init_cmd(t_cmd *cmd);
 size_t	parse_semicolon(t_list **cmds, t_cmd **cmd, char *s, t_env_list *env);
@@ -45,7 +45,7 @@ char	*get_var_key(char *s);
 char	*joined_linked_list_of_strings(t_list *lst);
 char	*remove_consecutive_asterisks(char *pattern);
 char	**create_matching_matrix(size_t pattern_len, size_t filename_len);
-void	setup_matrix(char **matrix, char *pattern, char *filename, int *i);
+void	setup_matrix(char **matrix, char *pattern, int *i);
 void	remove_matrix(char **matrix, size_t height);
 void	printc(t_list *cmds);
 int		check_if_expandable(t_list *curr);

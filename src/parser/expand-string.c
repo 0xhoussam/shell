@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 10:46:44 by habouiba          #+#    #+#             */
-/*   Updated: 2022/07/03 16:27:40 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:37:11 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	evaluate_str_and_var(t_list *cmds, t_env_list *env)
 {
 	t_cmd	*cmd;
 	t_list	*var;
-	char	*tmp;
 
 	while (cmds)
 	{
@@ -74,8 +73,6 @@ void	_add_appropriate_val(char *key, t_env_list *env, t_list **lst)
 
 void	add_appropriate_val_v2(char *key, t_env_list *env, t_list **lst)
 {
-	char	*tmp;
-
 	if (ft_isalpha(key[0]) || key[0] == '_')
 	{
 		if (env_list_get(env, key))
@@ -99,7 +96,6 @@ void	add_appropriate_val_v2(char *key, t_env_list *env, t_list **lst)
 char	*expand(char *s, t_env_list *env)
 {
 	size_t	i;
-	char	*tmp;
 	t_list	*splits;
 
 	i = 0;

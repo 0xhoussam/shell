@@ -6,13 +6,13 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:49:53 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/07/02 20:59:22 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:43:03 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	builtins_handler(t_params *params, int id);
+static void	builtins_handler(t_params *params);
 static void	binary_handler(t_params *params, int id);
 static void	wait_helper(t_params *params);
 
@@ -32,7 +32,7 @@ void	executer(t_params *params, t_list *cmds)
 		params->index = i;
 		cmd_name = (char *)params->cmd->cmd_name;
 		if (ft_includes_str(BUILTINS, cmd_name))
-			builtins_handler(params, i);
+			builtins_handler(params);
 		else
 			binary_handler(params, i);
 		if (!and_or_handler(params))
@@ -45,7 +45,7 @@ void	executer(t_params *params, t_list *cmds)
 	free_params(params);
 }
 
-static void	builtins_handler(t_params *params, int id)
+static void	builtins_handler(t_params *params)
 {
 	char	*cmd_name;
 
@@ -83,7 +83,6 @@ static void	binary_handler(t_params *params, int id)
 
 static void	wait_helper(t_params *params)
 {
-	int		i;
 	t_cmd	*cmd;
 
 	cmd = params->cmd;

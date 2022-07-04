@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 12:14:57 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/07/04 18:26:40 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:36:14 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ static char	*get_key(char *arg)
 static char	*get_value(char *arg, char *key)
 {
 	char	*value;
-	int		i;
 
 	if (ft_strlen(key) == ft_strlen(arg))
 		value = NULL;

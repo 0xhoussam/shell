@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:33:20 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/07/02 20:29:52 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:41:55 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static int	valid_token(t_list *prev_node, t_list *node, t_analysis *an);
 int	syntax_analysis(t_list *tokens)
 {
 	t_list				*prev_token;
-	t_token				*token;
 	t_analysis			analysis;
 
 	analysis.open_parentheses = 0;

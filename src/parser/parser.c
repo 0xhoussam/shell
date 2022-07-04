@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:34:33 by habouiba          #+#    #+#             */
-/*   Updated: 2022/07/03 17:08:56 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:38:26 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ void	_recursive_parser(t_list **cmds, t_cmd **cmd, char *s, t_env_list *lst)
 
 void	recursive_parser(t_list **cmds, t_cmd *cmd, char *s, t_env_list *lst)
 {
-	size_t	i;
-
 	if (!s)
 		return ;
 	while (*s && ft_isspace(*s))
@@ -76,7 +74,7 @@ t_list	*parser(char *line, t_env_list *lst)
 	ft_lstclear(&tokens, free_token);
 	cmds = NULL;
 	recursive_parser(&cmds, NULL, line, lst);
-	expand_asterisk(cmds, lst);
+	expand_asterisk(cmds);
 	evaluate_str_and_var(cmds, lst);
 	return (cmds);
 }

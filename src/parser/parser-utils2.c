@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser-utils2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habouiba <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 11:41:59 by habouiba          #+#    #+#             */
-/*   Updated: 2022/07/03 11:42:01 by habouiba         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:41:26 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "parser.h"
-#include "utils.h"
 
-void	setup_matrix(char **matrix, char *pattern, char *filename, int *i)
+#include "minishell.h"
+
+void	setup_matrix(char **matrix, char *pattern, int *i)
 {
 	if (!matrix)
 		return ;

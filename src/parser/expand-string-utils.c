@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 12:49:21 by habouiba          #+#    #+#             */
-/*   Updated: 2022/07/03 14:53:41 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:41:40 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ char	*get_double_quotes(char *s, t_env_list *env)
 	size_t	i;
 	char	*word;
 	char	*expanded;
-	t_list	*lst;
 
 	i = 0;
 	while (s[i] && s[i] != '"')

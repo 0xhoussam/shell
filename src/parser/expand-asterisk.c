@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 07:37:48 by habouiba          #+#    #+#             */
-/*   Updated: 2022/07/03 16:31:53 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:38:10 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	_expand_asterisk(void *_cmd)
 	}
 }
 
-void	expand_asterisk(t_list *cmds, t_env_list *lst)
+void	expand_asterisk(t_list *cmds)
 {
 	ft_lstiter(cmds, _expand_asterisk);
 }

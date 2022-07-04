@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 18:17:23 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/07/04 18:21:54 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:36:29 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	env_list_append(t_env_list **head, char *key, char *value)
 {
-	t_env_list	*new;
 	t_env_list	*tmp;
 	char		*tmp_value;
 
