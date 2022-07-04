@@ -39,7 +39,7 @@ UTILS_INT_DIR = $(UTILS_DIR)
 UTILS_INS = env_array_to_list.c env_list_to_array.c \
 			env_list_delete.c sort.c env_list_insert.c free_2d_array.c \
 			env_list_get.c ft_strcmp.c includes.c validate.c is_special.c \
-			env_list_clean.c ft_chardup.c env_list_new.c
+			env_list_clean.c ft_chardup.c env_list_new.c env_list_append.c
 
 CFILES = $(addprefix $(SRC_DIR), $(SRC_FILES))
 CFILES += $(addprefix $(BUILT_INT_DIR), $(BUILT_INS))

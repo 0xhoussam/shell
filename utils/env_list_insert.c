@@ -6,14 +6,13 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 12:14:57 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/07/02 16:22:42 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:26:40 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 static int	is_valid_key(char *key);
-static void	env_list_insert_one(t_env_list **h, char *key, char *value);
 static char	*get_value(char *arg, char *key);
 static char	*get_key(char *arg);
 
@@ -34,14 +33,17 @@ void	env_list_insert(t_env_list **head, t_list *args)
 			continue ;
 		}
 		value = get_value(args->content, key);
-		env_list_insert_one(head, key, value);
+		if (((char *)args->content)[ft_strlen(key)] == '+')
+			env_list_append(head, key, value);
+		else
+			env_list_insert_one(head, key, value);
 		free(key);
 		free(value);
 		args = args->next;
 	}
 }
 
-static void	env_list_insert_one(t_env_list **head, char *key, char *value)
+void	env_list_insert_one(t_env_list **head, char *key, char *value)
 {
 	t_env_list	*new;
 	t_env_list	*tmp;
@@ -77,8 +79,13 @@ static char	*get_key(char *arg)
 	int		j;
 
 	i = 0;
-	while (arg[i] && arg[i] != '=')
+	while (arg[i] && arg[i] != '=' && arg[i] != '+')
 		i++;
+	j = 0;
+	while (arg[i + j] && arg[i + j] == '+')
+		j++;
+	if (j > 1 || arg[i + j] != '=')
+		i = ft_strlen(arg);
 	key = ft_substr(arg, 0, i);
 	return (key);
 }
@@ -90,6 +97,8 @@ static char	*get_value(char *arg, char *key)
 
 	if (ft_strlen(key) == ft_strlen(arg))
 		value = NULL;
+	else if (arg[ft_strlen(key)] == '+')
+		value = ft_substr(arg, ft_strlen(key) + 2, ft_strlen(arg));
 	else
 		value = ft_substr(arg, ft_strlen(key) + 1, ft_strlen(arg));
 	return (value);
