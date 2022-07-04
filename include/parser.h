@@ -61,6 +61,8 @@ void	expand_if_single(char *s, t_list **splits, size_t *i);
 void	expand_if_double(char *s, t_list **splits, size_t *i, t_env_list *env);
 void	expand_if_dollar(char *s, t_list **splits, t_env_list *env, size_t *i);
 char	*expand_ret(t_list **splits);
+void	add_appropriate_val_v2(char *key, t_env_list *env, t_list **lst);
+void	_add_appropriate_val(char *key, t_env_list *env, t_list **lst);
 
 // syntax analysis
 int		syntax_analysis(t_list *tokens);

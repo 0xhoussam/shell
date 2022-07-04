@@ -14,8 +14,7 @@
 
 int	check_if_expandable(t_list *curr)
 {
-	if ((ft_includes(curr->content, '*')
-			|| ft_includes(curr->content, '?'))
+	if ((ft_includes(curr->content, '*'))
 		&& !ft_includes(curr->content, '"')
 		&& !ft_includes(curr->content, '\''))
 		return (1);

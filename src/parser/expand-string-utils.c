@@ -45,7 +45,7 @@ char	*expand_string(char *s, t_env_list *env)
 		if (s[i] == '$')
 		{
 			key = get_var_key(&s[i + 1]);
-			add_appropriate_val(key, env, &lst);
+			add_appropriate_val_v2(key, env, &lst);
 			i += ft_strlen(key) + 1;
 			free(key);
 		}
@@ -77,12 +77,13 @@ char	*get_double_quotes(char *s, t_env_list *env)
 	size_t	i;
 	char	*word;
 	char	*expanded;
+	t_list	*lst;
 
 	i = 0;
 	while (s[i] && s[i] != '"')
 		i++;
 	word = ft_substr(s, 0, i);
-	expanded = expand_string(word, env);
+	expanded = expand(word, env);
 	free(word);
 	return (expanded);
 }

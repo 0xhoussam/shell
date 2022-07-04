@@ -51,7 +51,7 @@ void	expand_if_dollar(char *s, t_list **splits, t_env_list *env, size_t *i)
 	char	*key;
 
 	key = get_var_key(&s[*i + 1]);
-	add_appropriate_val(key, env, splits);
+	add_appropriate_val_v2(key, env, splits);
 	*i = *i + ft_strlen(key) + 1;
 	free(key);
 }

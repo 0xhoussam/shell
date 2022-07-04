@@ -14,6 +14,7 @@
 #include "parser.h"
 #include "types.h"
 #include "utils.h"
+#include "minishell.h"
 
 void	_replace_value(char **old_val, t_env_list *env)
 {
@@ -52,7 +53,26 @@ void	evaluate_str_and_var(t_list *cmds, t_env_list *env)
 	}
 }
 
-void	add_appropriate_val(char *key, t_env_list *env, t_list **lst)
+void	_add_appropriate_val(char *key, t_env_list *env, t_list **lst)
+{
+	char	**splits;
+	size_t	i;
+
+	splits = ft_split(env_list_get(env, key), ' ');
+	if (!splits || !*splits || !**splits)
+		return ;
+	i = 0;
+	while (i[splits])
+	{
+		ft_lstadd_back(lst, ft_lstnew(splits[i]));
+		i++;
+		if (i[splits])
+			ft_lstadd_back(lst, ft_lstnew(ft_chardup(' ')));
+	}
+	free(splits);
+}
+
+void	add_appropriate_val_v2(char *key, t_env_list *env, t_list **lst)
 {
 	char	*tmp;
 
@@ -68,7 +88,9 @@ void	add_appropriate_val(char *key, t_env_list *env, t_list **lst)
 	else
 	{
 		if (key[0] == '?')
-			ft_lstadd_back(lst, ft_lstnew(ft_strjoin("$", key)));
+			ft_lstadd_back(lst, ft_lstnew(ft_itoa(g_exit_code)));
+		else if (!*key)
+			ft_lstadd_back(lst, ft_lstnew(ft_chardup('$')));
 		else
 			ft_lstadd_back(lst, ft_lstnew(ft_substr(key, 1, -1)));
 	}
@@ -86,7 +108,7 @@ char	*expand(char *s, t_env_list *env)
 	splits = NULL;
 	while (s[i])
 	{
-		if (s[i] == '$')
+		if (s[i] == '$' && ft_strlen(&s[i]) > 1)
 			expand_if_dollar(s, &splits, env, &i);
 		else if (s[i] == '"')
 			expand_if_double(s, &splits, &i, env);
