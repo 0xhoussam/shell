@@ -6,11 +6,13 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 21:51:35 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/06/30 18:06:23 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/04 10:44:28 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static void	signal_handler(int ret, int *printed);
 
 char	**join_args(t_list *list)
 {
@@ -38,21 +40,16 @@ char	**join_args(t_list *list)
 int	wait_for_processes(int change_exit_code)
 {
 	int	ret;
+	int	printed;
 
 	ret = 1;
+	printed = 0;
 	while (ret > 0)
 	{	
 		if (change_exit_code)
 		{
 			ret = waitpid(-1, &g_exit_code, 0);
-			if (WIFSIGNALED(g_exit_code) && ret > 0)
-			{
-				if (128 + WTERMSIG(g_exit_code) == 131)
-					ft_putstr_fd("Quit (core dumped) \n", STDOUT_FILENO);
-				if (128 + WTERMSIG(g_exit_code) == 130)
-					ft_putstr_fd("\n", STDOUT_FILENO);
-				g_exit_code = 128 + WTERMSIG(g_exit_code);
-			}
+			signal_handler(ret, &printed);
 			if (errno != ECHILD && !WIFSIGNALED(g_exit_code))
 				g_exit_code = WEXITSTATUS(g_exit_code);
 		}
@@ -60,4 +57,24 @@ int	wait_for_processes(int change_exit_code)
 			ret = waitpid(-1, NULL, 0);
 	}
 	return (0);
+}
+
+static void	signal_handler(int ret, int *printed)
+{
+	if (WIFSIGNALED(g_exit_code) && ret > 0)
+	{
+		if (128 + WTERMSIG(g_exit_code) == 131)
+		{
+			if (!*printed)
+				ft_putstr_fd("Quit (core dumped) \n", STDOUT_FILENO);
+			*printed = 1;
+		}
+		if (128 + WTERMSIG(g_exit_code) == 130)
+		{
+			if (!*printed)
+				ft_putstr_fd("\n", STDOUT_FILENO);
+			*printed = 1;
+		}
+		g_exit_code = 128 + WTERMSIG(g_exit_code);
+	}
 }
