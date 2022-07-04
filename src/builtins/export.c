@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:50:05 by aoumouss          #+#    #+#             */
-/*   Updated: 2022/07/02 16:27:09 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/04 14:26:13 by aoumouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ void	export(t_params *params)
 	if (cmd->right_delimiter == PIPE)
 		fd = params->pipes[params->index + 1][1];
 	if (ft_lstsize(cmd->args) <= 1)
-		return (print_env_list(params->env, fd));
+	{
+		print_env_list(params->env, fd);
+		g_exit_code = 0;
+		return ;
+	}
 	env_list_insert(&params->env, cmd->args->next);
 	if (g_exit_code == -1)
 		g_exit_code = 1;
@@ -35,25 +39,28 @@ void	export(t_params *params)
 
 static void	print_env_list(t_env_list *env, int fd)
 {
-	int	i;
+	char		**env_strs;
+	t_env_list	*env_list;
+	t_env_list	*tmp;
 
-	while (env)
+	env_strs = env_list_to_array(env);
+	sort_strs(env_strs);
+	env_list = env_array_to_list(env_strs);
+	free_2d_array(env_strs);
+	tmp = env_list;
+	while (tmp)
 	{
 		write(fd, "declare -x ", 11);
-		write(fd, env->key, ft_strlen(env->key));
+		write(fd, tmp->key, ft_strlen(tmp->key));
 		write(fd, "=", 1);
-		if (!env->value)
+		if (!tmp->value)
 			write(fd, "", 0);
 		else
-		{
-			write(fd, "\"", 1);
-			print_env_value(env->value, fd);
-			write(fd, "\"", 1);
-		}
+			print_env_value(tmp->value, fd);
 		write(fd, "\n", 1);
-		env = env->next;
+		tmp = tmp->next;
 	}
-	g_exit_code = 0;
+	env_list_clean(&env_list);
 }
 
 static void	print_env_value(char *str, int fd)
@@ -61,6 +68,7 @@ static void	print_env_value(char *str, int fd)
 	int	i;
 
 	i = 0;
+	write(fd, "\"", 1);
 	while (str[i])
 	{
 		if (str[i] == '"')
@@ -69,4 +77,5 @@ static void	print_env_value(char *str, int fd)
 			ft_putchar_fd(str[i], fd);
 		i++;
 	}
+	write(fd, "\"", 1);
 }
