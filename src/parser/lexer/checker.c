@@ -30,6 +30,7 @@ void	check_redir(t_list **tokens, char *line, int *index)
 {
 	t_token		*token;
 
+	token = NULL;
 	if (line[*index] == '>' || line[*index] == '<')
 	{
 		if (line[*index] == '>' && line[*index + 1] == '>')

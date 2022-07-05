@@ -6,7 +6,7 @@
 /*   By: aoumouss <aoumouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:51:26 by habouiba          #+#    #+#             */
-/*   Updated: 2022/07/04 18:35:47 by aoumouss         ###   ########.fr       */
+/*   Updated: 2022/07/05 11:06:03 by habouiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void	printc(t_list *cmds);
 
 int		g_exit_code = 0;
 
-int	main(int _, char **__, char **env)
+int	main(int argc, char **argv, char **env)
 {
 	t_params	params;
 	char		*line;
 	t_list		*cmds;
 
-	__ = __;
-	_ = _;
+	argv = (char **)argv;
+	argc = (int)argc;
 	shell_init(&params, env);
 	while (1)
 	{
