@@ -7,6 +7,7 @@
 - Unix-compliant system
 - c compiler
 - make
+- readline dev version
 
 ### Build
 
