@@ -10,7 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "defs.h"
+#include "executer.h"
+#include "types.h"
+#include <fcntl.h>
 
 static void	dup_std(t_cmd *cmd, char *file, int std, int mode);
 static void	pipe_handler(t_params *params);

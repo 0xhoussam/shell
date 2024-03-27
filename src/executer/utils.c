@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "minishell.h"
+#include <errno.h>
 
 static void	signal_handler(int ret, int *printed);
 

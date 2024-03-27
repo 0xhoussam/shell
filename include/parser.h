@@ -15,9 +15,6 @@
 
 # include "types.h"
 # include <dirent.h>
-# include <stdio.h>
-
-// int prev_exit_code;
 
 t_list	*parser(char *line, t_env_list *lst);
 void	recursive_parser(t_list **cmds, t_cmd *cmd, char *s, t_env_list *lst);

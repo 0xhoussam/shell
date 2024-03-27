@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "parser.h"
 
 static int	valid_token(t_list *prev_node, t_list *node, t_analysis *an);
 

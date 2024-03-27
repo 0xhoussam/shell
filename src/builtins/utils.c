@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "types.h"
+#include <fcntl.h>
 
 int	get_redir_fd(t_params *params)
 {

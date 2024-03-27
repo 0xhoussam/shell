@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "executer.h"
+#include "types.h"
 
 int	init_params(t_params *params, int list_size)
 {

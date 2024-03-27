@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "builtins.h"
+#include "executer.h"
 
 static int	is_number(char *str);
 

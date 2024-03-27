@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "utils.h"
 
 t_env_list	*new_node(void);
 t_env_list	*add_node(t_env_list **head, char *str);

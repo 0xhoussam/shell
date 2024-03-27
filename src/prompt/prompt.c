@@ -10,7 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "defs.h"
+#include "libft.h"
 #include "minishell.h"
+#include <stdlib.h>
+#include <errno.h>
 
 static void	int_handler(int sig);
 static int	is_spaces(char *line);

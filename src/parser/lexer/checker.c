@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
+#include "lexer.h"
+#include "utils.h"
 
 void	check_pipe(t_list **tokens, char *line, int *index)
 {

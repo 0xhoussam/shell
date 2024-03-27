@@ -10,7 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "defs.h"
+#include "executer.h"
+#include "types.h"
+#include "utils.h"
 
 int			check_access(char *path);
 static char	*search_for_cmd(char *command, char **paths);

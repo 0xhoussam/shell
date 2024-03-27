@@ -10,7 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "defs.h"
+#include "executer.h"
+#include "types.h"
+#include "utils.h"
+#include <asm-generic/errno-base.h>
+#include <dirent.h>
+#include <errno.h>
 
 static int	is_dir(t_params *params);
 

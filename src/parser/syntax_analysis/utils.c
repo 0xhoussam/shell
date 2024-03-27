@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "parser.h"
 #include "minishell.h"
+#include "defs.h"
 
 int	syntax_error_logger(char *token)
 {

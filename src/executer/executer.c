@@ -10,7 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "executer.h"
+#include "signal.h"
+#include "builtins.h"
+#include "utils.h"
+#include "defs.h"
 
 static void	builtins_handler(t_params *params);
 static void	binary_handler(t_params *params, int id);

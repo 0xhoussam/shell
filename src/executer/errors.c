@@ -11,6 +11,9 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "utils.h"
+#include "defs.h"
+#include <errno.h>
 
 char	*generate_error_string(const char *cmd, char *error);
 

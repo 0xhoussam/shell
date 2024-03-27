@@ -11,6 +11,9 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "builtins.h"
+#include "executer.h"
+#include "utils.h"
 
 static void	print_2d_array_to_fd(char **str, int std);
 static int	is_flag(char *str);

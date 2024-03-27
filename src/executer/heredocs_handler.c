@@ -10,7 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "executer.h"
 #include "minishell.h"
+#include "types.h"
+#include "utils.h"
 
 static void	heredoc_handler(t_params *params);
 static void	heredocs(t_list *cmds, t_params *params);

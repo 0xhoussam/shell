@@ -1,8 +1,8 @@
 CC = gcc
-NAME=minishell
+NAME=shell
 MAKEFLAGS += --no-print-directory
 
-INCLUDE = -I include -I utils/libft -I /goinfre/habouiba/habouiba/.brew/opt/readline/include/
+INCLUDE = -I include -I utils/libft
 CFLAGS = $(INCLUDE) -Wall -Werror -Wextra
 
 OBJS_DIR = objs/
@@ -62,7 +62,7 @@ all: $(NAME)
 $(NAME): $(LIBFT) $(OFILES)
 	@echo "$(green)source files compiled successfully \n $(reset)"
 	@echo "$(yellow)linking object files.. $(reset)"
-	@$(CC) $(CFLAGS) -lreadline -L/goinfre/habouiba/habouiba/.brew/opt/readline/lib/ $(OFILES) $(LIBFT) -o $(NAME)
+	@$(CC) $(OFILES) $(LIBFT) -lreadline  $(CFLAGS) -o $(NAME)
 	@echo "$(green)All done, binary file path: $(NAME)$(reset)"
 
 fsanitize: CFLAGS += -fsanitize=address -g

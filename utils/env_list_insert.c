@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "utils.h"
 #include "minishell.h"
+#include "executer.h"
 
 static int	is_valid_key(char *key);
 static char	*get_value(char *arg, char *key);

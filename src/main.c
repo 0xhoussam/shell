@@ -11,6 +11,12 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "prompt.h"
+#include "types.h"
+#include "executer.h"
+#include "parser.h"
+#include "utils.h"
+#include "defs.h"
 
 void	shell_init(t_params *params, char **env);
 void	shell_destroy(t_params *params);

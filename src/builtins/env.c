@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "builtins.h"
 
 static void	print_env_variables(t_env_list *env, int fd);
 

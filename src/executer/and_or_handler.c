@@ -10,7 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "executer.h"
+#include "utils.h"
+#include "defs.h"
 #include "minishell.h"
+#include <sys/wait.h>
 
 static int	is_signaled(void);
 

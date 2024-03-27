@@ -11,6 +11,11 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "executer.h"
+#include "builtins.h"
+#include "libft.h"
+#include "defs.h"
+#include "utils.h"
 #define VERY_LONG_ERROR "cd: error retrieving current directory: \
 getcwd: cannot access parent directories"
 

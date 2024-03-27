@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "utils.h"
 
 void	unset(t_params *params)
 {

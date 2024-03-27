@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "utils.h"
+#include "builtins.h"
 
 static void	print_env_value(char *str, int fd);
 static void	print_env_list(t_env_list *list, int fd);

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "parser.h"
 
 size_t	parse_and(t_list **cmds, t_cmd **cmd, char *s, t_env_list *env)
 {

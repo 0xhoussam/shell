@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "defs.h"
+#include "executer.h"
+#include <stdlib.h>
 
 int	**init_pipes(int size)
 {

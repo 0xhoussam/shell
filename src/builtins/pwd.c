@@ -11,6 +11,9 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "builtins.h"
+#include "executer.h"
+#include "defs.h"
 
 static void	print_cwd(char *cwd, int std);
 
@@ -24,7 +27,7 @@ void	pwd(t_params *params)
 	if (!cwd)
 	{
 		if (!params->cwd)
-			return (print_error_no_exit("pwd", USE_ERRNO));
+			return (void)(print_error_no_exit("pwd", USE_ERRNO));
 		else
 			return (print_cwd(params->cwd, fd));
 	}

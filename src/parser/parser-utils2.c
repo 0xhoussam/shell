@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "parser.h"
+#include "utils.h"
 
 void	setup_matrix(char **matrix, char *pattern, int *i)
 {
